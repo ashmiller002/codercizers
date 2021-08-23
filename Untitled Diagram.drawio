@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-08-23T19:10:19.070Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="TJZAkFDVIg2Yevv_0OIr" version="14.9.7" type="github" pages="9">
+<mxfile host="app.diagrams.net" modified="2021-08-23T19:11:26.402Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="o031dEgSgEj1yGBVHTK9" version="14.9.7" type="github" pages="9">
   <diagram name="Login/Main" id="c9db0220-8083-56f3-ca83-edcdcd058819">
     <mxGraphModel dx="1038" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1.5" pageWidth="826" pageHeight="1169" background="#9AC7BF" math="0" shadow="0">
       <root>
@@ -185,6 +185,9 @@
         </mxCell>
         <mxCell id="6URn3e41-EdkBD0kqMsq-0" value="&lt;font&gt;Add External Workout&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="lePLtSTRhXZwTNIoqb9m-1">
           <mxGeometry x="640" y="90" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="hJKT_F3yLoz2UC0DBVu3-0" value="Select" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#0085FC;fontColor=#FFFFFF;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=0;fontStyle=1;fontSize=14;spacing=5;" vertex="1" parent="lePLtSTRhXZwTNIoqb9m-1">
+          <mxGeometry x="570" y="360" width="160" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
