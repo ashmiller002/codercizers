@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-08-23T19:00:46.610Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="bJvCriLKpZNxQoy8tPLW" version="14.9.7" type="github" pages="9">
+<mxfile host="app.diagrams.net" modified="2021-08-23T19:05:45.020Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="mI-04Pc6iDBQkGRrQite" version="14.9.7" type="github" pages="9">
   <diagram name="Login/Main" id="c9db0220-8083-56f3-ca83-edcdcd058819">
     <mxGraphModel dx="1038" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1.5" pageWidth="826" pageHeight="1169" background="#9AC7BF" math="0" shadow="0">
       <root>
@@ -133,34 +133,11 @@
         <mxCell id="cOCVyIWhIHRmD6h50iid-4" value="App Name" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=29;fontColor=#4FA7FF;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-3">
           <mxGeometry x="360" y="20" width="270" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-5" value="Username" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#CED4DA;html=1;whiteSpace=wrap;fillColor=#FFFFFF;fontColor=#7D868C;align=left;spacing=15;spacingLeft=40;fontSize=14;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="125" y="130" width="800" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-6" value="Email Address" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#CED4DA;html=1;whiteSpace=wrap;fillColor=#FFFFFF;fontColor=#7D868C;align=left;spacingLeft=0;spacing=15;fontSize=14;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="125" y="190" width="800" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-7" value="@example.com" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rightButton;strokeColor=inherit;gradientColor=inherit;fontColor=inherit;fillColor=#E9ECEF;rSize=5;perimeter=none;whiteSpace=wrap;resizeHeight=1;fontSize=14;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-6">
-          <mxGeometry x="1" width="120" height="40" relative="1" as="geometry">
-            <mxPoint x="-120" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-8" value="First name" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#999999;align=left;spacing=15;fontSize=14;fontColor=#6C767D;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="125" y="250" width="390" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-9" value="Last name" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#999999;align=left;spacing=15;fontSize=14;fontColor=#6C767D;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="530" y="250" width="390" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-10" value="Date of Birth" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#999999;align=left;spacing=15;fontSize=14;fontColor=#6C767D;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="125" y="310" width="390" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-11" value="New Password" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#CED4DA;html=1;whiteSpace=wrap;fillColor=#FFFFFF;fontColor=#7D868C;align=left;spacing=15;spacingLeft=40;fontSize=14;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="125" y="360" width="445" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-12" value="Confirm Password" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#CED4DA;html=1;whiteSpace=wrap;fillColor=#FFFFFF;fontColor=#7D868C;align=left;spacing=15;spacingLeft=40;fontSize=14;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="125" y="420" width="445" height="40" as="geometry" />
-        </mxCell>
         <mxCell id="cOCVyIWhIHRmD6h50iid-13" value="Edit" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#0085FC;fontColor=#FFFFFF;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=0;fontStyle=1;fontSize=14;spacing=5;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="140" y="490" width="80" height="40" as="geometry" />
+          <mxGeometry x="110" y="310" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="HfH6PYJwOjFChOLTranR-0" value="Username: user&lt;br&gt;Email: email@email.com&lt;br&gt;Birthday: 07/18&lt;br&gt;Activity Level: Sometimes&lt;br&gt;Goal: Weight Loss&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontColor=#1A1A1A;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
+          <mxGeometry x="100" y="100" width="279" height="210" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
