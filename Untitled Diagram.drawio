@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-08-23T18:48:18.572Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="WAO5ny15yBggFFY2lG0O" version="14.9.7" type="github" pages="9">
+<mxfile host="app.diagrams.net" modified="2021-08-23T19:00:46.610Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="bJvCriLKpZNxQoy8tPLW" version="14.9.7" type="github" pages="9">
   <diagram name="Login/Main" id="c9db0220-8083-56f3-ca83-edcdcd058819">
     <mxGraphModel dx="1038" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1.5" pageWidth="826" pageHeight="1169" background="#9AC7BF" math="0" shadow="0">
       <root>
@@ -159,35 +159,8 @@
         <mxCell id="cOCVyIWhIHRmD6h50iid-12" value="Confirm Password" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#CED4DA;html=1;whiteSpace=wrap;fillColor=#FFFFFF;fontColor=#7D868C;align=left;spacing=15;spacingLeft=40;fontSize=14;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
           <mxGeometry x="125" y="420" width="445" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-13" value="Submit" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#0085FC;fontColor=#FFFFFF;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=0;fontStyle=1;fontSize=14;spacing=5;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
+        <mxCell id="cOCVyIWhIHRmD6h50iid-13" value="Edit" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#0085FC;fontColor=#FFFFFF;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=0;fontStyle=1;fontSize=14;spacing=5;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
           <mxGeometry x="140" y="490" width="80" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-14" value="Cancel" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#6C767D;fontColor=#FFFFFF;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=0;fontStyle=1;fontSize=14;spacing=5;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="230" y="490" width="80" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-15" value="" style="group;fontSize=11;" vertex="1" connectable="0" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="660" y="315" width="300" height="105" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-16" value="Activity Level" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=29;fontColor=#1A1A1A;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-15">
-          <mxGeometry width="190" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-17" value="Sometimes (0-3x per week)" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.radioButton2;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;gradientColor=#DEDEDE;fillColor=#EDEDED;checked=1;spacing=5;checkedFill=#0085FC;checkedStroke=#ffffff;fontSize=19;fontColor=#1A1A1A;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-15">
-          <mxGeometry x="30" y="55" width="10" height="10" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-18" value="Frequently (3+ x per week)" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.radioButton2;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;gradientColor=#DEDEDE;fillColor=#EDEDED;checked=0;spacing=5;checkedFill=#0085FC;checkedStroke=#ffffff;fontSize=19;fontColor=#1A1A1A;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-15">
-          <mxGeometry x="30" y="75" width="10" height="10" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-19" value="Strength" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.radioButton2;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;gradientColor=#DEDEDE;fillColor=#EDEDED;checked=1;spacing=5;checkedFill=#0085FC;checkedStroke=#ffffff;fontSize=19;fontColor=#1A1A1A;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="670" y="505" width="10" height="10" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-20" value="Mobility" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.radioButton2;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;gradientColor=#DEDEDE;fillColor=#EDEDED;checked=0;spacing=5;checkedFill=#0085FC;checkedStroke=#ffffff;fontSize=19;fontColor=#1A1A1A;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="670" y="530" width="10" height="10" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-21" value="Weight Loss" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.radioButton2;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;gradientColor=#DEDEDE;fillColor=#EDEDED;checked=0;spacing=5;fontColor=#6C767D;checkedFill=#0085FC;checkedStroke=#ffffff;fontSize=19;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="670" y="560" width="10" height="10" as="geometry" />
-        </mxCell>
-        <mxCell id="cOCVyIWhIHRmD6h50iid-22" value="Fitness Goal" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=25;fontColor=#1A1A1A;" vertex="1" parent="cOCVyIWhIHRmD6h50iid-1">
-          <mxGeometry x="680" y="470" width="190" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
