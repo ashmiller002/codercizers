@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-08-23T16:54:33.183Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="htDyytu1ZOV2NbWCZQsR" version="14.9.7" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2021-08-23T18:23:52.346Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="ypdbFhlPl6Ik9guEdPxJ" version="14.9.7" type="github" pages="9">
   <diagram name="Login/Main" id="c9db0220-8083-56f3-ca83-edcdcd058819">
     <mxGraphModel dx="1038" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1.5" pageWidth="826" pageHeight="1169" background="#9AC7BF" math="0" shadow="0">
       <root>
@@ -46,7 +46,7 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="XdSo8zkT5q5WITGw7VHO" name="Registration">
+  <diagram id="XdSo8zkT5q5WITGw7VHO" name="Registration/Edit">
     <mxGraphModel dx="1038" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#9AC7BF" math="0" shadow="0">
       <root>
         <mxCell id="9rSkTSQi808rzdNGA-j7-0" />
@@ -116,6 +116,14 @@
         <mxCell id="m-LbC8e8WrS4qlXbVvxq-27" value="Fitness Goal" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=25;fontColor=#1A1A1A;" vertex="1" parent="9rSkTSQi808rzdNGA-j7-1">
           <mxGeometry x="680" y="470" width="190" height="20" as="geometry" />
         </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="yQkZQ6ATMNXNRC4m-w2p" name="Account">
+    <mxGraphModel dx="1038" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="ecK7CD26oTDhwgEzEdAm-0" />
+        <mxCell id="ecK7CD26oTDhwgEzEdAm-1" parent="ecK7CD26oTDhwgEzEdAm-0" />
       </root>
     </mxGraphModel>
   </diagram>
@@ -234,19 +242,19 @@
           <mxGeometry x="220" y="30" width="180" height="20" as="geometry" />
         </mxCell>
         <mxCell id="WYbdEHQaj03rt7n9uEtY-8" value="Upper Body Strength" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#2D3338;html=1;whiteSpace=wrap;fontColor=#ffffff;verticalAlign=middle;align=center;spacing=20;fontSize=20;container=0;fillColor=#EA6B66;" vertex="1" parent="WYbdEHQaj03rt7n9uEtY-1">
-          <mxGeometry x="70" y="160" width="250" height="40" as="geometry" />
+          <mxGeometry x="50" y="165" width="250" height="40" as="geometry" />
         </mxCell>
         <mxCell id="WYbdEHQaj03rt7n9uEtY-10" value="&lt;font&gt;Add Custom Workout&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="WYbdEHQaj03rt7n9uEtY-1">
           <mxGeometry x="640" y="90" width="250" height="20" as="geometry" />
         </mxCell>
         <mxCell id="EdLYYb4sKsfsCS-WhI0F-0" value="Cardio" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#2D3338;html=1;whiteSpace=wrap;fillColor=#868E96;fontColor=#ffffff;verticalAlign=middle;align=center;spacing=20;fontSize=20;container=0;" vertex="1" parent="WYbdEHQaj03rt7n9uEtY-1">
-          <mxGeometry x="850" y="165" width="130" height="40" as="geometry" />
+          <mxGeometry x="720" y="160" width="130" height="40" as="geometry" />
         </mxCell>
         <mxCell id="EdLYYb4sKsfsCS-WhI0F-1" value="Mobility" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#2D3338;html=1;whiteSpace=wrap;fillColor=#868E96;fontColor=#ffffff;verticalAlign=middle;align=center;spacing=20;fontSize=20;container=0;" vertex="1" parent="WYbdEHQaj03rt7n9uEtY-1">
-          <mxGeometry x="690" y="165" width="120" height="55" as="geometry" />
+          <mxGeometry x="580" y="160" width="120" height="55" as="geometry" />
         </mxCell>
         <mxCell id="EdLYYb4sKsfsCS-WhI0F-3" value="Lower Body Strength" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#2D3338;html=1;whiteSpace=wrap;fillColor=#868E96;fontColor=#ffffff;verticalAlign=middle;align=center;spacing=20;fontSize=20;container=0;" vertex="1" parent="WYbdEHQaj03rt7n9uEtY-1">
-          <mxGeometry x="390" y="155" width="250" height="50" as="geometry" />
+          <mxGeometry x="310" y="160" width="250" height="50" as="geometry" />
         </mxCell>
         <mxCell id="EdLYYb4sKsfsCS-WhI0F-4" value="&lt;span style=&quot;font-size: 20px&quot;&gt;&lt;b&gt;Upper Body 1&lt;/b&gt;&lt;/span&gt;" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#DFDFDF;html=1;whiteSpace=wrap;fillColor=#ffffff;fontColor=#000000;verticalAlign=top;align=left;spacing=20;fontSize=14;spacingLeft=170;" vertex="1" parent="WYbdEHQaj03rt7n9uEtY-1">
           <mxGeometry x="50" y="260" width="450" height="110" as="geometry" />
@@ -260,30 +268,156 @@
         <mxCell id="EdLYYb4sKsfsCS-WhI0F-7" value="Image" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.leftButton;rSize=5;perimeter=none;whiteSpace=wrap;fillColor=#868E96;strokeColor=#DFDFDF;fontColor=#DEE2E6;resizeWidth=1;fontSize=18;" vertex="1" parent="EdLYYb4sKsfsCS-WhI0F-6">
           <mxGeometry width="140" height="110" relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="vAbUksVqLy3_T_zSQKQT-0" value="Rest Day" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#2D3338;html=1;whiteSpace=wrap;fillColor=#868E96;fontColor=#ffffff;verticalAlign=middle;align=center;spacing=20;fontSize=20;container=0;" vertex="1" parent="WYbdEHQaj03rt7n9uEtY-1">
+          <mxGeometry x="860" y="157.5" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="S2OJLHekMFoNSGz-luKL-0" value="Select" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#0085FC;fontColor=#FFFFFF;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=0;fontStyle=1;fontSize=14;spacing=5;" vertex="1" parent="WYbdEHQaj03rt7n9uEtY-1">
+          <mxGeometry x="380" y="330" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="S2OJLHekMFoNSGz-luKL-3" value="Select" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#0085FC;fontColor=#FFFFFF;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=0;fontStyle=1;fontSize=14;spacing=5;" vertex="1" parent="WYbdEHQaj03rt7n9uEtY-1">
+          <mxGeometry x="380" y="470" width="60" height="20" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="JmIUNd6MnAU5AwLoI_AY" name="Workout History">
-    <mxGraphModel dx="1038" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+  <diagram name="Workout Confirmation" id="QfmXOVIvvelrgfBrQ7e7">
+    <mxGraphModel dx="1038" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#9AC7BF" math="0" shadow="0">
       <root>
-        <mxCell id="E1o2PRguKZm43uwhEAPU-0" />
-        <mxCell id="E1o2PRguKZm43uwhEAPU-1" parent="E1o2PRguKZm43uwhEAPU-0" />
+        <mxCell id="747xaVlMYDw1PpJOtbQh-0" />
+        <mxCell id="747xaVlMYDw1PpJOtbQh-1" parent="747xaVlMYDw1PpJOtbQh-0" />
+        <mxCell id="747xaVlMYDw1PpJOtbQh-2" value="" style="group" vertex="1" connectable="0" parent="747xaVlMYDw1PpJOtbQh-1">
+          <mxGeometry x="60" y="60" width="930" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="747xaVlMYDw1PpJOtbQh-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A1A1A;" vertex="1" parent="747xaVlMYDw1PpJOtbQh-2">
+          <mxGeometry width="930" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="747xaVlMYDw1PpJOtbQh-4" value="App Name" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=29;fontColor=#4FA7FF;" vertex="1" parent="747xaVlMYDw1PpJOtbQh-2">
+          <mxGeometry x="-20" y="20" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="747xaVlMYDw1PpJOtbQh-5" value="&lt;font&gt;Account&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="747xaVlMYDw1PpJOtbQh-2">
+          <mxGeometry x="860" y="30" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="747xaVlMYDw1PpJOtbQh-6" value="&lt;font&gt;Workout History&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="747xaVlMYDw1PpJOtbQh-2">
+          <mxGeometry x="410" y="30" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="747xaVlMYDw1PpJOtbQh-7" value="&lt;font&gt;Workout Catalog&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="747xaVlMYDw1PpJOtbQh-2">
+          <mxGeometry x="220" y="30" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="747xaVlMYDw1PpJOtbQh-8" value="&lt;font&gt;Add Custom Workout&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="747xaVlMYDw1PpJOtbQh-1">
+          <mxGeometry x="640" y="90" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="747xaVlMYDw1PpJOtbQh-15" value="Continue" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#0085FC;fontColor=#FFFFFF;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="747xaVlMYDw1PpJOtbQh-1">
+          <mxGeometry x="220" y="420" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="747xaVlMYDw1PpJOtbQh-16" value="Cancel" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#6C767D;fontColor=#FFFFFF;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=0;fontStyle=1;fontSize=14;spacing=5;" vertex="1" parent="747xaVlMYDw1PpJOtbQh-1">
+          <mxGeometry x="400" y="420" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="IZ9DNeNKkxqDTiJyPhax-0" value="&lt;span style=&quot;font-size: 20px&quot;&gt;&lt;b&gt;Upper Body 1&lt;/b&gt;&lt;/span&gt;" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#DFDFDF;html=1;whiteSpace=wrap;fillColor=#ffffff;fontColor=#000000;verticalAlign=top;align=left;spacing=20;fontSize=14;spacingLeft=170;" vertex="1" parent="747xaVlMYDw1PpJOtbQh-1">
+          <mxGeometry x="210" y="220" width="450" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="IZ9DNeNKkxqDTiJyPhax-1" value="Image" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.leftButton;rSize=5;perimeter=none;whiteSpace=wrap;fillColor=#868E96;strokeColor=#DFDFDF;fontColor=#DEE2E6;resizeWidth=1;fontSize=18;" vertex="1" parent="IZ9DNeNKkxqDTiJyPhax-0">
+          <mxGeometry width="140" height="110" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tD63iLtOl0QRek64qeA5-0" value="Continue with selected workout?" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontColor=#FFFFFF;" vertex="1" parent="747xaVlMYDw1PpJOtbQh-1">
+          <mxGeometry x="240" y="370" width="360" height="20" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="yQkZQ6ATMNXNRC4m-w2p" name="Account">
-    <mxGraphModel dx="1038" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+  <diagram name="Current Workout" id="yVP0yQxdWUObs2TWkqXn">
+    <mxGraphModel dx="1038" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#9AC7BF" math="0" shadow="0">
       <root>
-        <mxCell id="ecK7CD26oTDhwgEzEdAm-0" />
-        <mxCell id="ecK7CD26oTDhwgEzEdAm-1" parent="ecK7CD26oTDhwgEzEdAm-0" />
+        <mxCell id="2I_qjotF6XqMEblR_NAr-0" />
+        <mxCell id="2I_qjotF6XqMEblR_NAr-1" parent="2I_qjotF6XqMEblR_NAr-0" />
+        <mxCell id="2I_qjotF6XqMEblR_NAr-2" value="" style="group" vertex="1" connectable="0" parent="2I_qjotF6XqMEblR_NAr-1">
+          <mxGeometry x="60" y="60" width="930" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2I_qjotF6XqMEblR_NAr-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A1A1A;" vertex="1" parent="2I_qjotF6XqMEblR_NAr-2">
+          <mxGeometry width="930" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2I_qjotF6XqMEblR_NAr-4" value="App Name" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=29;fontColor=#4FA7FF;" vertex="1" parent="2I_qjotF6XqMEblR_NAr-2">
+          <mxGeometry x="-20" y="20" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="2I_qjotF6XqMEblR_NAr-5" value="&lt;font&gt;Account&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="2I_qjotF6XqMEblR_NAr-2">
+          <mxGeometry x="860" y="30" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="2I_qjotF6XqMEblR_NAr-6" value="&lt;font&gt;Workout History&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="2I_qjotF6XqMEblR_NAr-2">
+          <mxGeometry x="410" y="30" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="2I_qjotF6XqMEblR_NAr-7" value="&lt;font&gt;Workout Catalog&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="2I_qjotF6XqMEblR_NAr-2">
+          <mxGeometry x="220" y="30" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="2I_qjotF6XqMEblR_NAr-8" value="&lt;font&gt;Add Custom Workout&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="2I_qjotF6XqMEblR_NAr-1">
+          <mxGeometry x="640" y="90" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="2I_qjotF6XqMEblR_NAr-9" value="Done" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#0085FC;fontColor=#FFFFFF;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="2I_qjotF6XqMEblR_NAr-1">
+          <mxGeometry x="220" y="420" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="2I_qjotF6XqMEblR_NAr-10" value="Cancel" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#6C767D;fontColor=#FFFFFF;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=0;fontStyle=1;fontSize=14;spacing=5;" vertex="1" parent="2I_qjotF6XqMEblR_NAr-1">
+          <mxGeometry x="400" y="420" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="2I_qjotF6XqMEblR_NAr-14" value="Upper Body 1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontColor=#FFFFFF;" vertex="1" parent="2I_qjotF6XqMEblR_NAr-1">
+          <mxGeometry x="240" y="170" width="360" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="2I_qjotF6XqMEblR_NAr-15" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#D05C17;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.container_registry_image;" vertex="1" parent="2I_qjotF6XqMEblR_NAr-1">
+          <mxGeometry x="560" y="160" width="330" height="330" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="M-w3Lgz0mWNNnqbOt-za" name="Edit Account">
-    <mxGraphModel dx="1038" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+  <diagram name="Workout History" id="egwF3Q_JyXa-VG9u-yEV">
+    <mxGraphModel dx="1038" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#9AC7BF" math="0" shadow="0">
       <root>
-        <mxCell id="lzhAPzCYCUnFFO-gQtut-0" />
-        <mxCell id="lzhAPzCYCUnFFO-gQtut-1" parent="lzhAPzCYCUnFFO-gQtut-0" />
+        <mxCell id="6CRHLzaZDwCAoOwgwMRB-0" />
+        <mxCell id="6CRHLzaZDwCAoOwgwMRB-1" parent="6CRHLzaZDwCAoOwgwMRB-0" />
+        <mxCell id="6CRHLzaZDwCAoOwgwMRB-2" value="" style="group" vertex="1" connectable="0" parent="6CRHLzaZDwCAoOwgwMRB-1">
+          <mxGeometry x="60" y="60" width="930" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6CRHLzaZDwCAoOwgwMRB-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A1A1A;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-2">
+          <mxGeometry width="930" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6CRHLzaZDwCAoOwgwMRB-4" value="App Name" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=29;fontColor=#4FA7FF;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-2">
+          <mxGeometry x="-20" y="20" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="6CRHLzaZDwCAoOwgwMRB-5" value="&lt;font&gt;Account&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-2">
+          <mxGeometry x="860" y="30" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="6CRHLzaZDwCAoOwgwMRB-6" value="&lt;font&gt;Workout History&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-2">
+          <mxGeometry x="410" y="30" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="6CRHLzaZDwCAoOwgwMRB-7" value="&lt;font&gt;Workout Catalog&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-2">
+          <mxGeometry x="220" y="30" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="6CRHLzaZDwCAoOwgwMRB-9" value="&lt;font&gt;Add Custom Workout&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontColor=#FFFFFF;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-1">
+          <mxGeometry x="640" y="90" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="6CRHLzaZDwCAoOwgwMRB-13" value="&lt;span style=&quot;font-size: 20px&quot;&gt;&lt;b&gt;Upper Body 1&lt;/b&gt;&lt;/span&gt;" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#DFDFDF;html=1;whiteSpace=wrap;fillColor=#ffffff;fontColor=#000000;verticalAlign=top;align=left;spacing=20;fontSize=14;spacingLeft=170;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-1">
+          <mxGeometry x="370" y="170" width="450" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="6CRHLzaZDwCAoOwgwMRB-14" value="Image" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.leftButton;rSize=5;perimeter=none;whiteSpace=wrap;fillColor=#868E96;strokeColor=#DFDFDF;fontColor=#DEE2E6;resizeWidth=1;fontSize=18;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-13">
+          <mxGeometry width="140" height="110" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6CRHLzaZDwCAoOwgwMRB-15" value="&lt;span style=&quot;font-size: 20px&quot;&gt;&lt;b&gt;Upper Body 2&lt;/b&gt;&lt;/span&gt;" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#DFDFDF;html=1;whiteSpace=wrap;fillColor=#ffffff;fontColor=#000000;verticalAlign=top;align=left;spacing=20;fontSize=14;spacingLeft=170;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-1">
+          <mxGeometry x="370" y="330" width="450" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="6CRHLzaZDwCAoOwgwMRB-16" value="Image" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.leftButton;rSize=5;perimeter=none;whiteSpace=wrap;fillColor=#868E96;strokeColor=#DFDFDF;fontColor=#DEE2E6;resizeWidth=1;fontSize=18;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-15">
+          <mxGeometry width="140" height="110" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="R-uWZGm3LVEKKaVF6zg4-1" value="Mon 8/23" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;fontColor=#FFFFFF;fillColor=#EA6B66;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-1">
+          <mxGeometry x="170" y="180" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="R-uWZGm3LVEKKaVF6zg4-2" value="Sat 8/21" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;fontColor=#FFFFFF;fillColor=#EA6B66;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-1">
+          <mxGeometry x="170" y="345" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="R-uWZGm3LVEKKaVF6zg4-3" value="&lt;span style=&quot;font-size: 20px&quot;&gt;&lt;b&gt;Upper Body 2&lt;/b&gt;&lt;/span&gt;" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#DFDFDF;html=1;whiteSpace=wrap;fillColor=#ffffff;fontColor=#000000;verticalAlign=top;align=left;spacing=20;fontSize=14;spacingLeft=170;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-1">
+          <mxGeometry x="370" y="480" width="450" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="R-uWZGm3LVEKKaVF6zg4-4" value="Image" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.leftButton;rSize=5;perimeter=none;whiteSpace=wrap;fillColor=#868E96;strokeColor=#DFDFDF;fontColor=#DEE2E6;resizeWidth=1;fontSize=18;" vertex="1" parent="R-uWZGm3LVEKKaVF6zg4-3">
+          <mxGeometry width="140" height="110" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="R-uWZGm3LVEKKaVF6zg4-5" value="Fri 8/20" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;fontColor=#FFFFFF;fillColor=#EA6B66;" vertex="1" parent="6CRHLzaZDwCAoOwgwMRB-1">
+          <mxGeometry x="180" y="495" width="120" height="80" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
