@@ -8,7 +8,7 @@
     <artifactId>workout-app</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
+    <properties>s
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
