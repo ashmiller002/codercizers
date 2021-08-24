@@ -66,7 +66,7 @@
 * A full test suite that covers the domain and data layers
 
 ## Steps
-* General - 9 hours
+* General - 22 hours
     * Create Maven Project IntelliJ - 5 minutes
     * Connect user API - 4 hours
     * Add dependencies to POM - 30 minutes
@@ -86,7 +86,8 @@
     * Activity Level - Enum
     * Program (has goal and activity level)
     * UserWorkout
-* Data - 21 hours
+
+* Data - 25 hours
     * Get rid of activity_level and goal from database schema - 15 minutes
     * WorkoutRepository - Interface - 15 minutes
     * WorkoutJDBCRepository - 2 hours
@@ -109,7 +110,7 @@
      UserJDBCRepository testing - 4 hours
     * File i/o for image url - 4 hours
 
-* Domain - 24 hours
+* Domain - 30 hours
     * UserWorkout Service - 4 hours
         * enforce program rules
     * UserWorkout Service Testing - 4 hours
@@ -140,7 +141,7 @@
     * Response Entity - 2 hours
 
 
-* React - 64 hours - Melissa
+* React - 76 hours - Melissa
     * Components
         * NavBar - 4 hours
         * Login - 4 hours
@@ -154,7 +155,6 @@
         * Account - 4 hours
         * Admin: Add Workout - 4 hours
         * Admin: Edit Workout - 4 hours
-
     * authorization - 4 hours
     * troubleshoot authorization - 4 hours
     * Researching Materialize - 4 hours
@@ -162,7 +162,7 @@
     * Research making responsive - 4 hours
     * Making Responsive (using materialize)- 8 hours
 
-* Android App - Ashley will take lead with Ryan - 54 hours
+* Android App - Ashley will take lead with Ryan - 82 hours
     * Research native react app - 16 hours
     * Research connect server to client - 4 hours
     * Research global CORS configuration - b/c will not be port 3000 from app - 4 hours
@@ -187,7 +187,15 @@
         * add workout
         * Edit workout - enable and disable
 
-* Additional features if have extra time:
+* Additional features if time:
+    * Add Milestone Badge - 20 hours
+        * add milestone to user service - 4 hours
+        * update user model - 4 hours
+        * Add milestone to web app - 4 hours
+        * Add milestone to android app - 4 hours
+        * Design Badges - 4 hours
+        
+* Additional stretch goal if time: 
     * Notification - 34 hours
         * Research adding notifications to android app - 7 hours
         * Research adding notifications to web app - 7 hours
@@ -198,10 +206,7 @@
         * Add notifications to web app - 4 hours
 
 
-
-Need 270 hours
-
-Total Time:  212 hours
+Total Time:  269 hours (not including notification)
 
 
 
