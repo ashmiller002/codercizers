@@ -1,6 +1,6 @@
 function WorkoutCatalogue() {
     return (
-        <div>Hello!!!</div>
+        <div>catalogue!!!</div>
     )
 }
 

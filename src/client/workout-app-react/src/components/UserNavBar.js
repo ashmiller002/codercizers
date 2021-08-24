@@ -37,6 +37,14 @@ function UserNavBar() {
         }
     }
 
+    if (view === "home") {
+        let selectedCopy = blank;
+        selectedCopy[4] = "selected";
+        if (selected !== selectedCopy) {
+            selected = selectedCopy;
+        }
+    }
+
     if (view === "login") {
         let selectedCopy = blank;
         selectedCopy[5] = "selected";
@@ -55,18 +63,18 @@ function UserNavBar() {
 
     function handleClick(evt) {
         if (evt.target.id === "logout") {
-            setView();
+            setView("login");
         }
         setView(evt.target.id);
     }
 
     return (
         <div id="navbar" >
-            <span>Workout Buddy</span>
-            <Link  className={"btn " + selected[0]} id="workoutCatalogue" onClick={handleClick}>Workout Catalog</Link>
-            <Link  className={"btn " + selected[1]} id="workoutHistory" onClick={handleClick}>Workout History</Link>
-            <Link  className={"btn " + selected[2]} id="addExternalWorkout" onClick={handleClick}>Add External Workout</Link>
-            <Link  className={"btn " + selected[3]} id="account" onClick={handleClick}>Account</Link>
+            <Link to="/" className={"btn " + selected[4]} id="home" onClick={handleClick}>Home</Link>
+            <Link to="/workoutcatalogue" className={"btn " + selected[0]} id="workoutCatalogue" onClick={handleClick}>Workout Catalog</Link>
+            <Link to="workouthistory" className={"btn " + selected[1]} id="workoutHistory" onClick={handleClick}>Workout History</Link>
+            <Link to="addexternalworkout" className={"btn " + selected[2]} id="addExternalWorkout" onClick={handleClick}>Add External Workout</Link>
+            <Link to="account" className={"btn " + selected[3]} id="account" onClick={handleClick}>Account</Link>
             {/* {auth.user == null &&
                 <Link to="/login" className={"btn " + selected[5]} id="login" onClick={handleClick}>Login</Link>
             }
