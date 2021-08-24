@@ -68,6 +68,7 @@
 ## Steps
 * General - 9 hours
     * Create Maven Project IntelliJ - 5 minutes
+    * Connect user API - 4 hours
     * Add dependencies to POM - 30 minutes
         * See lessons and field agent
     * Create packages - 5 minutes
@@ -75,6 +76,7 @@
     * Create React App - Melissa - 15 minutes
     * Build SQL Schema - 4 hours
     * Build Test SQL - 4 hours
+    * Draw workouts - 4 hours
 
 * Models - 4 hours
     * User
@@ -105,12 +107,13 @@
         * add a user
         * edit a user
      UserJDBCRepository testing - 4 hours
+    * File i/o for image url - 4 hours
 
 * Domain - 24 hours
     * UserWorkout Service - 4 hours
         * enforce program rules
     * UserWorkout Service Testing - 4 hours
-    * Program Service - 1 hours
+    * Program Service - 2 hours
         * decide which program based on goals and activity level
     * Program Service Testing - 2 hours
     * UserService - 2 hours
@@ -118,21 +121,26 @@
         * talk to user API?
     * UserService Testing - 2 hours
     * Workout Service - 4 hours
-        * if admin: edit workout, disable workout, enable workout. maybe add?
+        * admin: edit workout, disable workout, enable workout. add workout
         * get workout by category
     * Workout Service Testing - 4 hours
     * Result - 2 hours
+    * Figure out user and writing to file - 4 hours
 
 * Controllers/HTTP requests to validate - 8 hours
     * UserWorkout Controller - 2 hour
         * get workouts by user
     * User Controller - 2 hours
         * get user information
-    * Workout Controller - 2 hour
+    * Workout Controller - 4 hour
         * get workouts by category
+        * add workout
+        * edit workout
+        * enable/disable workouts
     * Response Entity - 2 hours
 
-* React - 52 hours
+
+* React - 64 hours - Melissa
     * Components
         * NavBar - 4 hours
         * Login - 4 hours
@@ -144,13 +152,56 @@
         * Main - redirect to login if not logged in - 4 hours
         * Current Workout - 4 hours
         * Account - 4 hours
+        * Admin: Add Workout - 4 hours
+        * Admin: Edit Workout - 4 hours
+
+    * authorization - 4 hours
+    * troubleshoot authorization - 4 hours
     * Researching Materialize - 4 hours
     * Adding Materialize - 4 hours
+    * Research making responsive - 4 hours
     * Making Responsive (using materialize)- 8 hours
 
-* With extra time, make android app
+* Android App - Ashley will take lead with Ryan - 54 hours
+    * Research native react app - 16 hours
+    * Research connect server to client - 4 hours
+    * Research global CORS configuration - b/c will not be port 3000 from app - 4 hours
+    * Create project and install dependencies - 2 hours
+    * Create Frames
+        * NavBar - 4 hours
+        * Login - 4 hours
+        * Register - 4 hours
+        * WorkoutCard - 4 hours
+        * Workout History - 4 hours
+        * Workout Catalogue - 4 hours
+        * Custom Workout - 4 hours
+        * Main - redirect to login if not logged in - 4 hours
+        * Current Workout - 4 hours
+        * Account - 4 hours
+        * Admin: Add Workout - 4 hours
+        * Admin: Edit Workout - 4 hours
+    * Authorization - 4 hours
+    * Linking everything - 4 hours
+* Planning
+    * Admin wireframes - 2 hours
+        * add workout
+        * Edit workout - enable and disable
 
-Total Time:  122 hours
+* Additional features if have extra time:
+    * Notification - 34 hours
+        * Research adding notifications to android app - 7 hours
+        * Research adding notifications to web app - 7 hours
+        * Add notifications to domain - 4 hours
+        * Test notifications in domain - 4 hours
+        * Add notifications to controller - 4 hours
+        * Add notifications to android app - 4 hours
+        * Add notifications to web app - 4 hours
+
+
+
+Need 270 hours
+
+Total Time:  212 hours
 
 
 
