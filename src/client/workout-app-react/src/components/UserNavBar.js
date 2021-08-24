@@ -1,13 +1,15 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./UserNavBar.css";
+import LoginContext from "../contexts/LoginContext";
 
 function UserNavBar() {
 
+    const auth = useContext(LoginContext);
     const [view, setView] = useState();
     const blank = ["", "", "", "", "", "", "",];
     let selected = [...blank];
-    if (view === "workoutCatalogue") {
+    if (view === "workoutCatalog") {
         let selectedCopy = blank;
         selectedCopy[0] = "selected";
         if (selected !== selectedCopy) {
@@ -65,13 +67,14 @@ function UserNavBar() {
         if (evt.target.id === "logout") {
             setView("login");
         }
+        
         setView(evt.target.id);
     }
 
     return (
         <div id="navbar" >
             <Link to="/" className={"btn " + selected[4]} id="home" onClick={handleClick}>Home</Link>
-            <Link to="/workoutcatalogue" className={"btn " + selected[0]} id="workoutCatalogue" onClick={handleClick}>Workout Catalog</Link>
+            <Link to="/workoutcatalog" className={"btn " + selected[0]} id="workoutCatalog" onClick={handleClick}>Workout Catalog</Link>
             <Link to="workouthistory" className={"btn " + selected[1]} id="workoutHistory" onClick={handleClick}>Workout History</Link>
             <Link to="addexternalworkout" className={"btn " + selected[2]} id="addExternalWorkout" onClick={handleClick}>Add External Workout</Link>
             <Link to="account" className={"btn " + selected[3]} id="account" onClick={handleClick}>Account</Link>
@@ -81,11 +84,11 @@ function UserNavBar() {
             {auth.user !== null &&
                 <button type="button" className={"btn"} id="logout" onClick={auth.logout}>Logout</button>
             }
-            <Link to="/register" className={"btn " + selected[6]} id="register" onClick={handleClick}>Register</Link>}
+            <Link to="/register" className={"btn " + selected[6]} id="register" onClick={handleClick}>Register</Link>} */}
 
             {auth.user !== null &&
                 <span>Hello,&nbsp;{auth.user}</span>
-            } */}
+            }
         </div>
     )
 }

@@ -3,10 +3,18 @@ import { Link } from "react-router-dom";
 import "./UserNavBar.css";
 
 function AdminNavBar() {
-const [view, setView] = useState();
+const [adminView, setAdminView] = useState();
+
+function handleClick(evt) {
+    if (evt.target.id === "logout") {
+        setAdminView();
+    }
+    setAdminView(evt.target.id);
+}
+
     const blank = ["", "", "", "", "", "", "",];
     let selected = [...blank];
-    if (view === "workoutCatalogue") {
+    if (adminView === "home") {
         let selectedCopy = blank;
         selectedCopy[0] = "selected";
         if (selected !== selectedCopy) {
@@ -14,29 +22,23 @@ const [view, setView] = useState();
         }
     }
 
-    if (view === "workoutHistory") {
+    if (adminView === "adminWorkoutCatalog") {
         let selectedCopy = blank;
         selectedCopy[1] = "selected";
         if (selected !== selectedCopy) {
             selected = selectedCopy;
         }
     }
-    if (view === "addExternalWorkout") {
+    if (adminView === "addWorkout") {
         let selectedCopy = blank;
         selectedCopy[2] = "selected";
         if (selected !== selectedCopy) {
             selected = selectedCopy;
         }
     }
-    if (view === "account") {
-        let selectedCopy = blank;
-        selectedCopy[3] = "selected";
-        if (selected !== selectedCopy) {
-            selected = selectedCopy;
-        }
-    }
 
-    if (view === "login") {
+
+    if (adminView === "login") {
         let selectedCopy = blank;
         selectedCopy[5] = "selected";
         if (selected !== selectedCopy) {
@@ -44,7 +46,7 @@ const [view, setView] = useState();
         }
     }
 
-    if (view === "register") {
+    if (adminView === "register") {
         let selectedCopy = blank;
         selectedCopy[6] = "selected";
         if (selected !== selectedCopy) {
@@ -52,20 +54,14 @@ const [view, setView] = useState();
         }
     }
 
-    function handleClick(evt) {
-        if (evt.target.id === "logout") {
-            setView();
-        }
-        setView(evt.target.id);
-    }
+
 
     return (
         <div id="navbar" >
-            <span>Workout Buddy</span>
-            <Link  className={"btn " + selected[0]} id="workoutCatalogue" onClick={handleClick}>Workout Catalog</Link>
-            <Link  className={"btn " + selected[1]} id="workoutHistory" onClick={handleClick}>Workout History</Link>
-            <Link  className={"btn " + selected[2]} id="addExternalWorkout" onClick={handleClick}>Add External Workout</Link>
-            <Link  className={"btn " + selected[3]} id="account" onClick={handleClick}>Account</Link>
+            <Link to="/" className={"btn " + selected[0]} id="home" onClick={handleClick}>Home</Link>
+            <Link  to="/adminworkoutcatalog" className={"btn " + selected[1]} id="adminWorkoutCatalog" onClick={handleClick}>Workout Catalog</Link>
+            <Link to="/addworkout" className={"btn " + selected[2]} id="addWorkout" onClick={handleClick}>Add Workout</Link>
+
             {/* {auth.user == null &&
                 <Link to="/login" className={"btn " + selected[5]} id="login" onClick={handleClick}>Login</Link>
             }
