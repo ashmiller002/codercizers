@@ -132,7 +132,7 @@
         * get workouts by category
     * Response Entity - 2 hours
 
-* React - 48 hours
+* React - 52 hours
     * Components
         * NavBar - 4 hours
         * Login - 4 hours
@@ -144,12 +144,13 @@
         * Main - redirect to login if not logged in - 4 hours
         * Current Workout - 4 hours
         * Account - 4 hours
-    * Adding Material Design - 4 hours
-    * Making Responsive - 8 hours
+    * Researching Materialize - 4 hours
+    * Adding Materialize - 4 hours
+    * Making Responsive (using materialize)- 8 hours
 
 * With extra time, make android app
 
-Total Time:  118 hours
+Total Time:  122 hours
 
 
 
