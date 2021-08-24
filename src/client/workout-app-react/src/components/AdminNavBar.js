@@ -2,9 +2,8 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./UserNavBar.css";
 
-function UserNavBar() {
-
-    const [view, setView] = useState();
+function AdminNavBar() {
+const [view, setView] = useState();
     const blank = ["", "", "", "", "", "", "",];
     let selected = [...blank];
     if (view === "workoutCatalogue") {
@@ -82,4 +81,4 @@ function UserNavBar() {
     )
 }
 
-export default UserNavBar;
+export default AdminNavBar;
