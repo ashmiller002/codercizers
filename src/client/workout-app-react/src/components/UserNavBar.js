@@ -87,7 +87,7 @@ function UserNavBar() {
             <Link to="/register" className={"btn " + selected[6]} id="register" onClick={handleClick}>Register</Link>} */}
 
             {auth.user !== null &&
-                <span>Hello,&nbsp;{auth.user}</span>
+                <span>Hello,&nbsp;{auth.user[0]}</span>
             }
         </div>
     )

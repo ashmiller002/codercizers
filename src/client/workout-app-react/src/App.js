@@ -23,10 +23,7 @@ function App() {
 
   const onAuthenticated = (token) => {
     const payload = jwtDecode(token);
-    setUser({
-      username: payload.sub,
-      role: payload.roles
-    });
+    setUser([payload.sub, payload.roles]);
     localStorage.setItem('jwt_token', token);
   }
 
@@ -35,6 +32,7 @@ function App() {
     if (token) {
       onAuthenticated(token);
     }
+
     setInitialized(true);
   }, [history])
 
@@ -49,58 +47,64 @@ function App() {
     logout
   }
 
-if (!initialized) {
-  return null;
-}
+  if (!initialized) {
+    return null;
+  }
 
   return (
     <div>
       <LoginContext.Provider value={auth}>
-      <Router>
-        <Switch>
-          {/* Do these routes if user role = user */}
-          <Route path="/workouthistory">
-            <UserNavBar />
-            <WorkoutHistory />
-          </Route>
-          <Route path="/workoutcatalog">
-            <UserNavBar />
-            <WorkoutCatalog />
-          </Route>
-          <Route path="/addexternalworkout">
-            <UserNavBar />
-            <AddExternalWorkout />
-          </Route>
-          <Route path="/account">
-            <UserNavBar />
-            <Account />
-          </Route>
-          {/* do these route if user role = admin */}
-          <Route path="/addworkout">
-            <AdminNavBar />
-            <AddWorkout />
-          </Route>
-          <Route path="/editworkout:workoutid">
-            <AdminNavBar />
-            <EditWorkout />
-          </Route>
-          <Route path="/adminworkoutcatalog">
-            <AdminNavBar />
-            <AdminWorkoutCatalog />
-          </Route>
-          {/* Do these routes below with both roles. if not logged in, redirect to login */}
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/">
-            {/* if user: */}
-            <UserNavBar/>
-            {/* if admin: */}
-            <AdminNavBar/>
-            <Home />
-          </Route>
-        </Switch>
-      </Router>
+        <Router>
+          <Switch>
+            {/* Do these routes if user role = user */}
+            <Route path="/workouthistory">
+              <UserNavBar />
+              <WorkoutHistory />
+            </Route>
+            <Route path="/workoutcatalog">
+              <UserNavBar />
+              <WorkoutCatalog />
+            </Route>
+            <Route path="/addexternalworkout">
+              <UserNavBar />
+              <AddExternalWorkout />
+            </Route>
+            <Route path="/account">
+              <UserNavBar />
+              <Account />
+            </Route>
+            {/* do these route if user role = admin */}
+            <Route path="/addworkout">
+              <AdminNavBar />
+              <AddWorkout />
+            </Route>
+            <Route path="/editworkout:workoutid">
+              <AdminNavBar />
+              <EditWorkout />
+            </Route>
+            <Route path="/adminworkoutcatalog">
+              <AdminNavBar />
+              <AdminWorkoutCatalog />
+            </Route>
+            {/* Do these routes below with both roles. if not logged in, redirect to login */}
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/">
+              {/* if user: */}
+              {auth.user[1] === "USER" &&
+                <UserNavBar />
+              }
+
+              {/* if admin: */}
+              {auth.user[1] === "ADMIN" &&
+                <AdminNavBar />
+              }
+
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
       </LoginContext.Provider>
     </div>
   );
