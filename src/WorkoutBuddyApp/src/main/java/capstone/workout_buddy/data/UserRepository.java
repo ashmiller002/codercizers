@@ -5,7 +5,9 @@ import capstone.workout_buddy.models.User;
 
 public interface UserRepository {
 
-    User findById();
+    User findByUserId();
+
+    User findByLoginId();
 
     User add(User user);
 

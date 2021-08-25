@@ -11,10 +11,13 @@ public class User {
     private String email;
     private String loginId;
     private int programId;
+    private String userStatus;
+
+
 
     public User(){};
 
-    public User(int userId, String firstName, String lastName, LocalDate dob, String email, String loginId) {
+    public User(int userId, String firstName, String lastName, LocalDate dob, String email, String loginId, String userStatus) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -76,5 +79,13 @@ public class User {
 
     public void setProgramId(int programId) {
         this.programId = programId;
+    }
+
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
     }
 }
