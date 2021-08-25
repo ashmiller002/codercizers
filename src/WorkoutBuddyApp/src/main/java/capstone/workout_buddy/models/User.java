@@ -12,6 +12,7 @@ public class User {
     private int programId;
     private int roleId;
 
+    public User(){};
 
     public User(int userId, String firstName, String lastName, int age, String email) {
         this.userId = userId;
