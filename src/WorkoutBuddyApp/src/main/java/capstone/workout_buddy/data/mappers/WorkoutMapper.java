@@ -15,6 +15,7 @@ public class WorkoutMapper implements RowMapper<Workout> {
         workout.setWorkoutName(resultSet.getString("workout_name"));
         workout.setCategoryId(resultSet.getInt("category_id"));
         workout.setImageUrl(resultSet.getString("image_url"));
+        workout.setWorkoutStatus(resultSet.getString("workout_status"));
 
         return workout;
     }

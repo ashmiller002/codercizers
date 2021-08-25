@@ -6,6 +6,7 @@ public class Workout {
     private String workoutName;
     private int categoryId;
     private String imageUrl;
+    private String workoutStatus;
 
     public Workout(){};
 
@@ -44,5 +45,13 @@ public class Workout {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getWorkoutStatus() {
+        return workoutStatus;
+    }
+
+    public void setWorkoutStatus(String workoutStatus) {
+        this.workoutStatus = workoutStatus;
     }
 }
