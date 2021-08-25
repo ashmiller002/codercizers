@@ -1,8 +1,11 @@
-import { useState, useContext, useEffect } from 'react';
+import jwtDecode from 'jwt-decode';
+import { useState, useContext, useEffect, useImperativeHandle } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import LoginContext from '../contexts/LoginContext';
 import { authenticate } from '../services/auth.js';
+import { getUserWithLoginId } from '../services/user';
 import Error from './Error';
+import FullUserContext from '../contexts/FullUserContext.js';
 import './Login.css';
 
 
@@ -11,6 +14,7 @@ function Login() {
 
     const [errors, setErrors] = useState();
     const auth = useContext(LoginContext);
+    const fullUser = useContext(FullUserContext);
     const history = useHistory();
     const blankCredentials = {
         username: "",
@@ -34,9 +38,12 @@ function Login() {
                     setErrors(["Username/Password combination does not exist."])
                 } else {
                     const { jwt_token } = body;
-                    auth.onAuthenticated(jwt_token);
-                    
-                    history.push("/");
+                    localStorage.setItem('jwt_token', jwt_token);
+                    const { id } = jwtDecode(jwt_token);
+                    if (setUserInformation(id)) {
+                        auth.onAuthenticated(jwt_token);
+                        history.push("/");
+                    }                    
                 }
             })
             .catch(err => {
@@ -44,6 +51,26 @@ function Login() {
             })
     }
 
+    function setUserInformation(id) {
+        getUserWithLoginId(id)
+            .then((userInfo) => {
+                const { userId, firstName, lastName, dateBirth, email, goal, activityLevel } = userInfo;
+                fullUser.userId = userId;
+                fullUser.firstName = firstName;
+                fullUser.lastName = lastName;
+                fullUser.dateBirth = dateBirth;
+                fullUser.email = email;
+                fullUser.goal = goal;
+                fullUser.activityLevel = activityLevel;
+                return true;
+            }
+            )
+            .catch ( ()=> {
+                setErrors("No user found with those credentials.")
+                return false;
+            }
+            )
+    }
     return (
         <div className="login">
             <div className="container ">
