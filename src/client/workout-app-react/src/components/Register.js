@@ -1,14 +1,11 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import LoginContext from '../contexts/LoginContext';
-import { authenticate } from '../services/auth.js';
+import { register } from '../services/auth';
 import Error from './Error';
-import './Login.css'
-import * as M from 'materialize-css';
 
 
-
-function Login() {
+function Register() {
 
     const [errors, setErrors] = useState();
     const auth = useContext(LoginContext);
@@ -22,44 +19,41 @@ function Login() {
         const nextCredentials = { ...credentials };
         nextCredentials[evt.target.name] = evt.target.value;
         setCredentials(nextCredentials);
-    };
+      };
 
     const [credentials, setCredentials] = useState(blankCredentials)
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
+    
+        register(credentials)
+        .then((body) => {
+        const { id } = body;
+        console.log(id);
 
-        authenticate(credentials)
-            .then(body => {
-                if (body === null) {
-                    setErrors(["Username/Password combination does not exist."])
-                } else {
-                    const { jwt_token } = body;
-                    auth.onAuthenticated(jwt_token);
-                    history.push("/");
-                }
-            })
-            .catch(err => {
-                console.error(err);
-            })
-    }
+        })
+        .catch(errors => {
+          setErrors(errors.messages);
+        });
+      }
 
-    return (
+      return (
         <div className="login">
             <div className="container ">
                 <h1>Welcome to Workout Buddy!</h1>
-                <h4>Login</h4>
+                <h4>Register</h4>
                 <Error errorMessages={errors} />
                 <form className="login" onSubmit={handleSubmit}>
                     <div className="input-field">
                         <input placeholder="Username" type="text" id="username" name="username" class="validate" value={credentials.username} onChange={onChange} />
+                        <span class="helper-text">We'll never share your email with anyone else.</span>
                     </div>
                     <div className="input-field">
                         <input placeholder="Password" type="password" id="password" name="password" value={credentials.password} onChange={onChange} />
                     </div>
                     <div>
-                        <button type="submit" className="btn">Login</button>
-                        <span class="new">New? <Link to="/register" class="registerLink">Register Here</Link></span>
+                        <button type="submit" className="btn">Register</button>
+                        <span class="new">Account already exists? <Link to="/login" class="registerLink">Login Here</Link></span>
                     </div>
                 </form>
             </div>
@@ -67,4 +61,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default Register;

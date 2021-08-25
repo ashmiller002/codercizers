@@ -16,7 +16,7 @@ function handleClick(evt) {
 
     const blank = ["", "", "", "", "", "", "",];
     let selected = [...blank];
-    if (adminView === "home") {
+    if (adminView === "home" || adminView === undefined) {
         let selectedCopy = blank;
         selectedCopy[0] = "selected";
         if (selected !== selectedCopy) {

@@ -39,7 +39,7 @@ function UserNavBar() {
         }
     }
 
-    if (view === "home") {
+    if (view === "home" || view === undefined) {
         let selectedCopy = blank;
         selectedCopy[4] = "selected";
         if (selected !== selectedCopy) {
