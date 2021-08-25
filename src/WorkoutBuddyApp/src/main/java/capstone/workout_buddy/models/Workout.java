@@ -7,6 +7,7 @@ public class Workout {
     private int categoryId;
     private String imageUrl;
 
+    public Workout(){};
 
     public Workout(int workoutId, String workoutName) {
         this.workoutId = workoutId;
