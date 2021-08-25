@@ -1,6 +1,6 @@
-drop database if exists workout_buddy;
-create database workout_buddy;
-use workout_buddy;
+drop database if exists workout_buddy_test;
+create database workout_buddy_test;
+use workout_buddy_test;
 
 -- create tables and relationships
 create table category (
@@ -65,44 +65,3 @@ create table workout (
 		foreign key (workout_id)
         references workout(workout_id)
  );
- 
- insert into category (category_id, category_name)
-	values (1, 'Upper Body Strength'),
-			(2, 'Lower Body Strength'),
-		(3, 'Cardio'),
-		(4, 'Mobility'),
-        (5, 'Rest Day');
-        
-insert into goal (goal_id, goal_name)
-	values (1, 'Strength'),
-		(2, 'Mobility'),
-        (3, 'Weight Loss');
-        
-insert into workout (workout_id, workout_name, category_id)
-	values (1, 'Upper Body 1', 1),
-			(2, 'Upper Body 2', 1),
-            (3, 'Upper Body External', 1),
-            (4, 'Lower Body 1', 2),
-            (5, 'Lower Body 2', 2),
-            (6, 'Lower Body External', 2),
-            (7, 'Running', 3),
-            (8, 'Dance Cardio', 3),
-            (9, 'Cardio External', 3),
-            (10, 'Stretching', 4),
-            (11, 'Yoga', 4),
-            (12, 'Stretching External', 4),
-            (13, 'Rest Day', 5);
-            
-	insert into activity_level (activity_level_id, activity_level_name)
-		values (1, 'infrequent'),
-			(2, 'frequent');
-	
-    insert into program (program_id, activity_level_id, goal_id)
-		values (1, 1, 1),
-			(2, 1, 2),
-            (3, 1, 3),
-            (4, 2, 1),
-            (5, 2, 2),
-            (6, 2, 3);
-    
-    
