@@ -12,6 +12,7 @@ create table workout (
 	workout_id int primary key auto_increment,
     workout_name varchar(100) not null,
     category_id int not null,
+    workout_status varchar(20) not null,
     image_url varchar(10000),
     constraint fk_workout_category_id
 		foreign key (category_id)
@@ -47,6 +48,7 @@ create table workout (
     date_birth date not null,
     email varchar(100) unique,
     program_id int not null,
+    user_status varchar(20) not null,
     login_id varchar(50) not null,
     constraint fk_user_program_id
 		foreign key (program_id)
@@ -78,20 +80,20 @@ insert into goal (goal_id, goal_name)
 		(2, 'Mobility'),
         (3, 'Weight Loss');
         
-insert into workout (workout_id, workout_name, category_id)
-	values (1, 'Upper Body 1', 1),
-			(2, 'Upper Body 2', 1),
-            (3, 'Upper Body External', 1),
-            (4, 'Lower Body 1', 2),
-            (5, 'Lower Body 2', 2),
-            (6, 'Lower Body External', 2),
-            (7, 'Running', 3),
-            (8, 'Dance Cardio', 3),
-            (9, 'Cardio External', 3),
-            (10, 'Stretching', 4),
-            (11, 'Yoga', 4),
-            (12, 'Stretching External', 4),
-            (13, 'Rest Day', 5);
+insert into workout (workout_id, workout_name, category_id, workout_status)
+	values (1, 'Upper Body 1', 1, 'enable'),
+			(2, 'Upper Body 2', 1, 'enable'),
+            (3, 'Upper Body External', 1, 'enable'),
+            (4, 'Lower Body 1', 2, 'enable'),
+            (5, 'Lower Body 2', 2, 'enable'),
+            (6, 'Lower Body External', 2, 'enable'),
+            (7, 'Running', 3, 'enable'),
+            (8, 'Dance Cardio', 3, 'enable'),
+            (9, 'Cardio External', 3, 'enable'),
+            (10, 'Stretching', 4, 'enable'),
+            (11, 'Yoga', 4, 'enable'),
+            (12, 'Stretching External', 4, 'enable'),
+            (13, 'Rest Day', 5, 'enable');
             
 	insert into activity_level (activity_level_id, activity_level_name)
 		values (1, 'infrequent'),
