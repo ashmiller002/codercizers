@@ -12,6 +12,7 @@ create table workout (
 	workout_id int primary key auto_increment,
     workout_name varchar(100) not null,
     category_id int not null,
+    workout_status varchar(20) not null,
     image_url varchar(10000),
     constraint fk_workout_category_id
 		foreign key (category_id)
@@ -47,6 +48,7 @@ create table workout (
     date_birth date not null,
     email varchar(100) unique,
     program_id int not null,
+    user_status varchar(20) not null,
     login_id varchar(50) not null,
     constraint fk_user_program_id
 		foreign key (program_id)
@@ -78,20 +80,20 @@ insert into goal (goal_id, goal_name)
 		(2, 'Mobility'),
         (3, 'Weight Loss');
         
-insert into workout (workout_id, workout_name, category_id)
-	values (1, 'Upper Body 1', 1),
-			(2, 'Upper Body 2', 1),
-            (3, 'Upper Body External', 1),
-            (4, 'Lower Body 1', 2),
-            (5, 'Lower Body 2', 2),
-            (6, 'Lower Body External', 2),
-            (7, 'Running', 3),
-            (8, 'Dance Cardio', 3),
-            (9, 'Cardio External', 3),
-            (10, 'Stretching', 4),
-            (11, 'Yoga', 4),
-            (12, 'Stretching External', 4),
-            (13, 'Rest Day', 5);
+insert into workout (workout_id, workout_name, category_id, workout_status)
+	values (1, 'Upper Body 1', 1, 'enable'),
+			(2, 'Upper Body 2', 1, 'enable'),
+            (3, 'Upper Body External', 1, 'enable'),
+            (4, 'Lower Body 1', 2, 'enable'),
+            (5, 'Lower Body 2', 2, 'enable'),
+            (6, 'Lower Body External', 2, 'enable'),
+            (7, 'Running', 3, 'enable'),
+            (8, 'Dance Cardio', 3, 'enable'),
+            (9, 'Cardio External', 3, 'enable'),
+            (10, 'Stretching', 4, 'enable'),
+            (11, 'Yoga', 4, 'enable'),
+            (12, 'Stretching External', 4, 'enable'),
+            (13, 'Rest Day', 5, 'enable');
             
 	insert into activity_level (activity_level_id, activity_level_name)
 		values (1, 'infrequent'),
@@ -115,13 +117,13 @@ alter table `user` auto_increment = 1;
 delete from user_workout;
 alter table user_workout auto_increment = 1;
 
-insert into `user` (user_id, first_name, last_name, date_birth, email, program_id, login_id)
-	values (1, 'Taryn', 'Kapi', '1990-07-13', 'taryn@test.com', 4, 1),
-		(2, 'Testy', 'McTesterston', '1972-04-24', 'tester@test.com', 1, 2),
-        (3, 'Bob', 'Bobberson', '2000-10-12', 'bob@bob.com', 3, 3),
-        (4, 'Keaton', 'Mollusk', '1991-08-16', 'keaton@test.com', 2, 4),
-        (5, 'Fantasia', 'Captain', '1967-06-20', 'capn@test.com', 5, 5),
-        (6, 'Another', 'Dude', '1988-10-08', 'dude@test.com', 6, 6);
+insert into `user` (user_id, first_name, last_name, date_birth, email, program_id, login_id, user_status)
+	values (1, 'Taryn', 'Kapi', '1990-07-13', 'taryn@test.com', 4, 1, 'enable'),
+		(2, 'Testy', 'McTesterston', '1972-04-24', 'tester@test.com', 1, 2, 'enable'),
+        (3, 'Bob', 'Bobberson', '2000-10-12', 'bob@bob.com', 3, 3, 'enable'),
+        (4, 'Keaton', 'Mollusk', '1991-08-16', 'keaton@test.com', 2, 4, 'enable'),
+        (5, 'Fantasia', 'Captain', '1967-06-20', 'capn@test.com', 5, 5, 'enable'),
+        (6, 'Another', 'Dude', '1988-10-08', 'dude@test.com', 6, 6, 'enable');
         
 insert into user_workout (user_workout_id, user_id, workout_id, workout_date)
 	values (1, 1, 1, '2021-08-25'),
@@ -130,10 +132,10 @@ insert into user_workout (user_workout_id, user_id, workout_id, workout_date)
         (4, 1, 5, '2021-08-22'),
         (5, 1, 2, '2021-08-21'),
         (6, 1, 4, '2021-08-20'),
-        (1, 2, 2, '2021-08-25'),
-        (2, 2, 13, '2021-08-24'),
-        (3, 2, 4, '2021-08-23'),
-        (4, 2, 13, '2021-08-22');
+        (7, 2, 2, '2021-08-25'),
+        (8, 2, 13, '2021-08-24'),
+        (9, 2, 4, '2021-08-23'),
+        (10, 2, 13, '2021-08-22');
 
 end //
 delimiter ;
