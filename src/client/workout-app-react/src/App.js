@@ -31,6 +31,7 @@ function App() {
     email: null,
     goal: null, // strength = 1, mobility = 2, weight loss = 3 
     activityLevel: null, // frequent = 2 or infrequent = 1 send just number
+    userStatus: "enable"
   }
 
   // on login get user info and setFullUser

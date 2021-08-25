@@ -67,7 +67,7 @@ function Register() {
                 <h1>Welcome to Workout Buddy!</h1>
                 <h4>Register</h4>
                 <Error errorMessages={errors} />
-                <form className="login" onSubmit={handleSubmit} className="register">
+                <form onSubmit={handleSubmit} className="register">
                     <div className="input-field">
                         <input placeholder="Username" type="text" id="username" name="username" class="validate" value={credentials.username} onChange={onChangeLogin} />
                         <label class="active" for="username">Username</label>
@@ -93,14 +93,29 @@ function Register() {
                         <input placeholder="Email" type="email" id="email" name="email" value={fullUserInfo.email} onChange={onChangeFullUser} />
                         <label class="active" for="email">Email</label>
                     </div>
-                    <div>
+                    <div className="activityLevelOrGoal">
 
                         <label><div className="radioPrompt">How often do you exercise?</div>
-                            <input class="with-gap" name="group1" type="radio" />
+                            <input className="with-gap" name="activityLevel" value="1" type="radio" checked={fullUserInfo.activityLevel === "1"}/>
                             <span>Less than 3 times per week</span>
-                        
-                            <input class="with-gap" name="group1" type="radio" />
+                        </label><br />
+                        <label>
+                            <input className="with-gap" name="activityLevel" value="2" type="radio" checked={fullUserInfo.activityLevel === "2"}/>
                             <span>3 times per week or more</span>
+                        </label>
+                    </div>
+                    <div className="activityLevelOrGoal">
+                        <label><div className="radioPrompt">What is your goal?</div>
+                            <input className="with-gap" name="goal" value="1" type="radio" checked={fullUserInfo.goal === "1"}/>
+                            <span>Strength</span>
+                        </label><br />
+                        <label>
+                            <input className="with-gap" name="goal" value="2" type="radio" checked={fullUserInfo.goal === "2"}/>
+                            <span>Mobility</span>
+                        </label><br/>
+                        <label>
+                            <input className="with-gap" name="goal" value="3" type="radio" checked={fullUserInfo.goal === "3"}/>
+                            <span>Lose weight</span>
                         </label>
                     </div>
                     <div>

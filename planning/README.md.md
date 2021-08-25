@@ -241,6 +241,8 @@ response:
     }
 * GET get all goals
 * GET get all activity levels
+* GET user by user id
+* GET user by loginId
 
 
 
