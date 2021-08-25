@@ -35,6 +35,7 @@ function Login() {
                 } else {
                     const { jwt_token } = body;
                     auth.onAuthenticated(jwt_token);
+                    
                     history.push("/");
                 }
             })

@@ -7,5 +7,25 @@ export async function getUserWithLoginId(id) {
             "Authorization": `Bearer ${token}`
         }
     }
-    fetch
+
+}
+
+export async function registerUser(user) {
+    const init = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(user)
+      };
+
+      return fetch(`${url}/workouts/create_account`, init)
+      .then(async response => {
+        if (response.status === 201) {
+          return response.json();
+        }
+        const messages = await response.json();
+        return Promise.reject(messages);
+      });
 }

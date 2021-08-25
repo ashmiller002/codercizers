@@ -3,6 +3,7 @@ import { useHistory, Link } from 'react-router-dom';
 import FullUserContext from '../contexts/FullUserContext';
 import LoginContext from '../contexts/LoginContext';
 import { register } from '../services/auth';
+import { registerUser } from '../services/user';
 import Error from './Error';
 import './Register.css';
 
@@ -21,6 +22,7 @@ function Register() {
     }
 
     const blankFullUserInfo = {
+        loginId: "",
         firstName: "",
         lastName: "",
         dateBirth: "",
@@ -56,25 +58,34 @@ function Register() {
         const nextFullUserInfo = { ...fullUserInfo };
         if (evt.target.checked) {
             nextFullUserInfo.goal = evt.target.value;
-            console.log(nextFullUserInfo);
             setFullUserInfo(nextFullUserInfo);
         }
     }
 
 
-    const handleSubmit = (evt) => {
+   function handleSubmit(evt) {
         evt.preventDefault();
-
         register(credentials)
             .then((body) => {
                 const { id } = body;
-                fullUser.loginId = id;
-                console.log(fullUser.loginId)
+                const nextFullUserInfo = { ...fullUserInfo };
+                nextFullUserInfo.loginId = id;
 
+                setErrors();
+                handleRegistration(nextFullUserInfo);
             })
             .catch(errors => {
                 setErrors(errors.messages);
             });
+    }
+
+    function handleRegistration(user) {
+        registerUser(user)
+        .then(history.push("/login"))
+        .catch( errors => {
+            setErrors(errors.messages);
+        });
+
     }
 
     return (
@@ -85,34 +96,34 @@ function Register() {
                 <Error errorMessages={errors} />
                 <form onSubmit={handleSubmit} className="register">
                     <div className="input-field">
-                        <input placeholder="Username" type="text" id="username" name="username" class="validate" value={credentials.username} onChange={onChangeLogin} />
-                        <label class="active" for="username">Username</label>
+                        <input placeholder="Username" required type="text" id="username" name="username" className="validate" value={credentials.username} onChange={onChangeLogin} />
+                        <label class="active" htmlFor="username">Username</label>
                         <span class="helper-text">We'll never share your email with anyone else.</span>
                     </div>
                     <div className="input-field">
-                        <input placeholder="Password" type="password" id="password" name="password" value={credentials.password} onChange={onChangeLogin} />
-                        <label class="active" for="password">Password</label>
+                        <input placeholder="Password" required type="password" id="password" name="password" value={credentials.password} onChange={onChangeLogin} />
+                        <label class="active" htmlFor="password">Password</label>
                     </div>
                     <div className="input-field">
-                        <input placeholder="First Name" type="text" id="firstName" name="firstName" value={fullUserInfo.firstName} onChange={onChangeFullUser} />
-                        <label class="active" for="firstName">First Name</label>
+                        <input placeholder="First Name" required type="text" id="firstName" name="firstName" value={fullUserInfo.firstName} onChange={onChangeFullUser} />
+                        <label class="active" htmlFor="firstName">First Name</label>
                     </div>
                     <div className="input-field">
-                        <input placeholder="Last Name" type="text" id="lastName" name="lastName" value={fullUserInfo.lastName} onChange={onChangeFullUser} />
-                        <label class="active" for="lastName">Last Name</label>
+                        <input placeholder="Last Name" required type="text" id="lastName" name="lastName" value={fullUserInfo.lastName} onChange={onChangeFullUser} />
+                        <label class="active" htmlFor="lastName">Last Name</label>
                     </div>
                     <div className="input-field">
-                        <input placeholder="Date of Birth" type="date" id="dateBirth" name="dateBirth" value={fullUserInfo.dateBirth} onChange={onChangeFullUser} />
-                        <label class="active" for="dateBirth">Date of Birth</label>
+                        <input placeholder="Date of Birth" required type="date" id="dateBirth" name="dateBirth" value={fullUserInfo.dateBirth} onChange={onChangeFullUser} />
+                        <label class="active" htmlFor="dateBirth">Date of Birth</label>
                     </div>
                     <div className="input-field">
-                        <input placeholder="Email" type="email" id="email" name="email" value={fullUserInfo.email} onChange={onChangeFullUser} />
-                        <label class="active" for="email">Email</label>
+                        <input placeholder="Email" type="email" required id="email" name="email" value={fullUserInfo.email} onChange={onChangeFullUser} />
+                        <label class="active" htmlFor="email">Email</label>
                     </div>
                     <div className="activityLevelOrGoal">
 
                         <label><div className="radioPrompt">How often do you exercise?</div>
-                            <input className="with-gap" name="activityLevel" value="1" type="radio" checked={fullUserInfo.activityLevel === "1"} onChange={onChangeActivityLevel}/>
+                            <input className="with-gap" name="activityLevel" value="1" type="radio" required checked={fullUserInfo.activityLevel === "1"} onChange={onChangeActivityLevel}/>
                             <span>Less than 3 times per week</span>
                         </label><br />
                         <label>
@@ -122,7 +133,7 @@ function Register() {
                     </div>
                     <div className="activityLevelOrGoal">
                         <label><div className="radioPrompt">What is your goal?</div>
-                            <input className="with-gap" name="goal" value="1" type="radio" checked={fullUserInfo.goal === "1"} onChange={onChangeGoal}/>
+                            <input className="with-gap" name="goal" value="1" type="radio" required checked={fullUserInfo.goal === "1"} onChange={onChangeGoal}/>
                             <span>Strength</span>
                         </label><br />
                         <label>
