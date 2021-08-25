@@ -10,17 +10,18 @@ public class User {
     private LocalDate dob;
     private String email;
     private String loginId;
-    private int programId;
+    private Program program;
 
     public User(){};
 
-    public User(int userId, String firstName, String lastName, LocalDate dob, String email, String loginId) {
+    public User(int userId, String firstName, String lastName, LocalDate dob, String email, String loginId, Program program) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
         this.email = email;
         this.loginId = loginId;
+        this.program = program;
     }
 
     public int getUserId() {
@@ -70,12 +71,12 @@ public class User {
         this.loginId = loginId;
     }
 
-    public int getProgramId() {
-        return programId;
+    public Program getProgram() {
+        return program;
     }
 
-    public void setProgramId(int programId) {
-        this.programId = programId;
+    public void setProgramId(Program program) {
+        this.program = program;
     }
 
 }
