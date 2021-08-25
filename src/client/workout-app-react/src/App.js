@@ -52,52 +52,71 @@ function App() {
   }
 
   return (
-    <div>
+    <div class="App">
       <LoginContext.Provider value={auth}>
         <Router>
           <Switch>
             {/* Do these routes if user role = user */}
             <Route path="/workouthistory">
-              <UserNavBar />
-              <WorkoutHistory />
+              {auth.user !== null && auth.user[1] === "USER"
+                ? <div>
+                  <UserNavBar />
+                  <WorkoutHistory />
+                </div>
+                : <Redirect to="/login" />
+              }
+
             </Route>
             <Route path="/workoutcatalog">
-              <UserNavBar />
-              <WorkoutCatalog />
+              {auth.user !== null && auth.user[1] === "USER"
+                ? <UserNavBar />
+                : <WorkoutCatalog />
+              }
             </Route>
             <Route path="/addexternalworkout">
-              <UserNavBar />
-              <AddExternalWorkout />
+              {auth.user !== null && auth.user[1] === "USER"
+                ? <UserNavBar />
+                : <AddExternalWorkout />
+              }
             </Route>
             <Route path="/account">
-              <UserNavBar />
-              <Account />
+              {auth.user !== null && auth.user[1] === "USER"
+                ? <UserNavBar />
+                : <Account />
+              }
             </Route>
             {/* do these route if user role = admin */}
             <Route path="/addworkout">
-              <AdminNavBar />
-              <AddWorkout />
+              {auth.user !== null && auth.user[1] === "ADMIN"
+                ? <AdminNavBar />
+                : <AddWorkout />
+              }
             </Route>
             <Route path="/editworkout:workoutid">
-              <AdminNavBar />
-              <EditWorkout />
+              {auth.user !== null && auth.user[1] === "ADMIN"
+                ? <AdminNavBar />
+                : <EditWorkout />
+              }
             </Route>
             <Route path="/adminworkoutcatalog">
-              <AdminNavBar />
-              <AdminWorkoutCatalog />
+              {auth.user !== null && auth.user[1] === "ADMIN"
+                ? <AdminNavBar />
+                : <AdminWorkoutCatalog />
+              }
             </Route>
             {/* Do these routes below with both roles. if not logged in, redirect to login */}
             <Route path="/login">
               <Login />
             </Route>
             <Route exact path="/">
-              {/* if user: */}
-              {auth.user[1] === "USER" &&
+              {auth.user === null &&
+                <Redirect to="/login" />}
+              {auth.user !== null && auth.user[1] === "USER" &&
                 <UserNavBar />
               }
 
               {/* if admin: */}
-              {auth.user[1] === "ADMIN" &&
+              {auth.user !== null && auth.user[1] === "ADMIN" &&
                 <AdminNavBar />
               }
 

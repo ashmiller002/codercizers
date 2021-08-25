@@ -78,13 +78,11 @@ function UserNavBar() {
             <Link to="workouthistory" className={"btn " + selected[1]} id="workoutHistory" onClick={handleClick}>Workout History</Link>
             <Link to="addexternalworkout" className={"btn " + selected[2]} id="addExternalWorkout" onClick={handleClick}>Add External Workout</Link>
             <Link to="account" className={"btn " + selected[3]} id="account" onClick={handleClick}>Account</Link>
-            {/* {auth.user == null &&
-                <Link to="/login" className={"btn " + selected[5]} id="login" onClick={handleClick}>Login</Link>
-            }
+
             {auth.user !== null &&
                 <button type="button" className={"btn"} id="logout" onClick={auth.logout}>Logout</button>
             }
-            <Link to="/register" className={"btn " + selected[6]} id="register" onClick={handleClick}>Register</Link>} */}
+            {/* <Link to="/register" className={"btn " + selected[6]} id="register" onClick={handleClick}>Register</Link> */}
 
             {auth.user !== null &&
                 <span>Hello,&nbsp;{auth.user[0]}</span>

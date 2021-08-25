@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./UserNavBar.css";
+import LoginContext from "../contexts/LoginContext";
 
 function AdminNavBar() {
 const [adminView, setAdminView] = useState();
+const auth = useContext(LoginContext);
 
 function handleClick(evt) {
     if (evt.target.id === "logout") {
@@ -64,15 +66,15 @@ function handleClick(evt) {
 
             {/* {auth.user == null &&
                 <Link to="/login" className={"btn " + selected[5]} id="login" onClick={handleClick}>Login</Link>
-            }
+            } */}
             {auth.user !== null &&
                 <button type="button" className={"btn"} id="logout" onClick={auth.logout}>Logout</button>
             }
-            <Link to="/register" className={"btn " + selected[6]} id="register" onClick={handleClick}>Register</Link>}
+            {/* <Link to="/register" className={"btn " + selected[6]} id="register" onClick={handleClick}>Register</Link> */}
 
             {auth.user !== null &&
-                <span>Hello,&nbsp;{auth.user}</span>
-            } */}
+                <span>Hello,&nbsp;{auth.user[0]}</span>
+            }
         </div>
     )
 }
