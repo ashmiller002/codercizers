@@ -44,6 +44,22 @@ function Register() {
         setFullUserInfo(nextFullUserInfo);
     }
 
+    function onChangeActivityLevel(evt) {
+        const nextFullUserInfo = { ...fullUserInfo };
+        if (evt.target.checked) {
+            nextFullUserInfo.activityLevel = evt.target.value;
+            setFullUserInfo(nextFullUserInfo);
+        }
+    }
+
+    function onChangeGoal(evt) {
+        const nextFullUserInfo = { ...fullUserInfo };
+        if (evt.target.checked) {
+            nextFullUserInfo.goal = evt.target.value;
+            console.log(nextFullUserInfo);
+            setFullUserInfo(nextFullUserInfo);
+        }
+    }
 
 
     const handleSubmit = (evt) => {
@@ -96,25 +112,25 @@ function Register() {
                     <div className="activityLevelOrGoal">
 
                         <label><div className="radioPrompt">How often do you exercise?</div>
-                            <input className="with-gap" name="activityLevel" value="1" type="radio" checked={fullUserInfo.activityLevel === "1"}/>
+                            <input className="with-gap" name="activityLevel" value="1" type="radio" checked={fullUserInfo.activityLevel === "1"} onChange={onChangeActivityLevel}/>
                             <span>Less than 3 times per week</span>
                         </label><br />
                         <label>
-                            <input className="with-gap" name="activityLevel" value="2" type="radio" checked={fullUserInfo.activityLevel === "2"}/>
+                            <input className="with-gap" name="activityLevel" value="2" type="radio" checked={fullUserInfo.activityLevel === "2"} onChange={onChangeActivityLevel}/>
                             <span>3 times per week or more</span>
                         </label>
                     </div>
                     <div className="activityLevelOrGoal">
                         <label><div className="radioPrompt">What is your goal?</div>
-                            <input className="with-gap" name="goal" value="1" type="radio" checked={fullUserInfo.goal === "1"}/>
+                            <input className="with-gap" name="goal" value="1" type="radio" checked={fullUserInfo.goal === "1"} onChange={onChangeGoal}/>
                             <span>Strength</span>
                         </label><br />
                         <label>
-                            <input className="with-gap" name="goal" value="2" type="radio" checked={fullUserInfo.goal === "2"}/>
+                            <input className="with-gap" name="goal" value="2" type="radio" checked={fullUserInfo.goal === "2"} onChange={onChangeGoal}/>
                             <span>Mobility</span>
                         </label><br/>
                         <label>
-                            <input className="with-gap" name="goal" value="3" type="radio" checked={fullUserInfo.goal === "3"}/>
+                            <input className="with-gap" name="goal" value="3" type="radio" checked={fullUserInfo.goal === "3"} onChange={onChangeGoal}/>
                             <span>Lose weight</span>
                         </label>
                     </div>
