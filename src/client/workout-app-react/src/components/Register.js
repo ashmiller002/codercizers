@@ -70,7 +70,6 @@ function Register() {
                 const { id } = body;
                 const nextFullUserInfo = { ...fullUserInfo };
                 nextFullUserInfo.loginId = id;
-
                 setErrors();
                 handleRegistration(nextFullUserInfo);
             })

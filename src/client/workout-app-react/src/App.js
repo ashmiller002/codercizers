@@ -32,7 +32,7 @@ function App() {
     goal: null, // strength = 1, mobility = 2, weight loss = 3 
     activityLevel: null, // frequent = 2 or infrequent = 1 send just number
   }
-
+  const [fullUser, setFullUser] = useState(blankUser);
   // on login get user info and setFullUser
 
   const onAuthenticated = (token) => {
@@ -50,15 +50,29 @@ function App() {
     setInitialized(true);
   }, [history])
 
+  function setFullUserInformation(userInfo) {
+    const { userId, firstName, lastName, dateBirth, email, goal, activityLevel } = userInfo;
+    let nextFullUser = blankUser;
+    nextFullUser.userId = userId;
+    nextFullUser.firstName = firstName;
+    nextFullUser.lastName = lastName;
+    nextFullUser.dateBirth = dateBirth;
+    nextFullUser.email = email;
+    nextFullUser.goal = goal;
+    nextFullUser.activityLevel = activityLevel;
+    setFullUser(nextFullUser);
+  }
+
   function logout() {
-    // need to edit logout to remove fullUser
     setUser(null);
     localStorage.removeItem('jwt_token');
+    setFullUser(blankUser);
   }
 
   const auth = {
     user,
     onAuthenticated,
+    setFullUserInformation,
     logout
   }
 
@@ -69,7 +83,7 @@ function App() {
   return (
     <div class="App">
       <LoginContext.Provider value={auth}>
-        <FullUserContext.Provider value={blankUser}>
+        <FullUserContext.Provider value={fullUser}>
           <Router>
             <Switch>
               {/* Do these routes if user role = user */}

@@ -2,9 +2,11 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./UserNavBar.css";
 import LoginContext from "../contexts/LoginContext";
+import FullUserContext from "../contexts/FullUserContext";
 
 function UserNavBar() {
 
+    const fullUser = useContext(FullUserContext);
     const auth = useContext(LoginContext);
     const [view, setView] = useState();
     const blank = ["", "", "", "", "", "", "",];
@@ -82,10 +84,8 @@ function UserNavBar() {
             {auth.user !== null &&
                 <button type="button" className={"btn"} id="logout" onClick={auth.logout}>Logout</button>
             }
-            {/* <Link to="/register" className={"btn " + selected[6]} id="register" onClick={handleClick}>Register</Link> */}
-
             {auth.user !== null &&
-                <span>Hello,&nbsp;{auth.user[0]}</span>
+                <span>Hello,&nbsp;{fullUser.firstName}</span>
             }
         </div>
     )

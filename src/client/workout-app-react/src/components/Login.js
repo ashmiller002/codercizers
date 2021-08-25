@@ -39,11 +39,16 @@ function Login() {
                 } else {
                     const { jwt_token } = body;
                     localStorage.setItem('jwt_token', jwt_token);
-                    const { id } = jwtDecode(jwt_token);
-                    if (setUserInformation(id)) {
+                    const { id, roles } = jwtDecode(jwt_token);
+                    if (roles === "USER") {
+                        if (setUserInformation(id)) {
+                            auth.onAuthenticated(jwt_token);
+                            history.push("/");
+                        }
+                    } else {
                         auth.onAuthenticated(jwt_token);
                         history.push("/");
-                    }                    
+                    }
                 }
             })
             .catch(err => {
@@ -54,19 +59,12 @@ function Login() {
     function setUserInformation(id) {
         getUserWithLoginId(id)
             .then((userInfo) => {
-                const { userId, firstName, lastName, dateBirth, email, goal, activityLevel } = userInfo;
-                fullUser.userId = userId;
-                fullUser.firstName = firstName;
-                fullUser.lastName = lastName;
-                fullUser.dateBirth = dateBirth;
-                fullUser.email = email;
-                fullUser.goal = goal;
-                fullUser.activityLevel = activityLevel;
+                auth.setFullUserInformation(userInfo);
                 return true;
             }
             )
-            .catch ( ()=> {
-                setErrors("No user found with those credentials.")
+            .catch(() => {
+                setErrors(["No user found with those credentials."])
                 return false;
             }
             )

@@ -19,7 +19,7 @@ export async function registerUser(user) {
         },
         body: JSON.stringify(user)
       };
-
+    debugger;
       return fetch(`${url}/workouts/create_account`, init)
       .then(async response => {
         if (response.status === 201) {
