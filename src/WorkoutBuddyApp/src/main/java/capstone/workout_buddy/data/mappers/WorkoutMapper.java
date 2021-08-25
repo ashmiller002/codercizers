@@ -9,8 +9,8 @@ import java.sql.SQLException;
 public class WorkoutMapper implements RowMapper<Workout> {
 
     @Override
-    public Workout mapRow(ResultSet resultSrt, int i) throws SQLException {
-        Workout work
+    public Workout mapRow(ResultSet resultSet, int i) throws SQLException {
+        Workout workout = new
     }
 
 }
