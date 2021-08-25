@@ -229,6 +229,7 @@ response:
         "imageUrl": "path/directory/hereitis"
     ]}
 * POST user - need to look into more with "register" and user api
+
 * PUT user - change account info - need to be logged in
     PUT http://localhost8080/workouts/{loginId} - loginId comes from UserApi
 * GET suggested workout
@@ -238,6 +239,8 @@ response:
     {
         workoutId: 01
     }
+* GET get all goals
+* GET get all activity levels
 
 
 

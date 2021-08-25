@@ -3,8 +3,7 @@ import { useHistory, Link } from 'react-router-dom';
 import LoginContext from '../contexts/LoginContext';
 import { authenticate } from '../services/auth.js';
 import Error from './Error';
-import './Login.css'
-import * as M from 'materialize-css';
+import './Login.css';
 
 
 
@@ -59,7 +58,7 @@ function Login() {
                     </div>
                     <div>
                         <button type="submit" className="btn">Login</button>
-                        <span class="new">New? <Link to="/register" class="registerLink">Register Here</Link></span>
+                        <span className="new">New? <Link to="/register" className="registerLink">Register Here</Link></span>
                     </div>
                 </form>
             </div>

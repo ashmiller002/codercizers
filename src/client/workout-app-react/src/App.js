@@ -22,7 +22,18 @@ function App() {
   const [user, setUser] = useState(null);
   const [initialized, setInitialized] = useState(false);
   const history = useHistory();
-  const fullUser = null;
+  const fullUser = {
+    loginId: null,
+    userId: 0,
+    firstName: null,
+    lastName: null,
+    dateBirth: null,
+    email: null,
+    goal: null, // strength = 1, mobility = 2, weight loss = 3 
+    activityLevel: null, // frequent = 2 or infrequent = 1 send just number
+  }
+
+  // on login get user info and setFullUser
 
   const onAuthenticated = (token) => {
     const payload = jwtDecode(token);
