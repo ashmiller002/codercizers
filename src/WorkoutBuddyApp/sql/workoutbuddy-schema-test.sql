@@ -111,10 +111,11 @@ insert into workout (workout_id, workout_name, category_id, workout_status)
 create procedure set_known_good_state()
 begin
 
-delete from `user`;
-alter table `user` auto_increment = 1;
 delete from user_workout;
 alter table user_workout auto_increment = 1;
+delete from `user`;
+alter table `user` auto_increment = 1;
+
 
 insert into `user` (user_id, first_name, last_name, date_birth, email, program_id, login_id)
 	values (1, 'Taryn', 'Kapi', '1990-07-13', 'taryn@test.com', 4, 1),
