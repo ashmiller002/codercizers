@@ -39,11 +39,15 @@ function Login() {
                 } else {
                     const { jwt_token } = body;
                     localStorage.setItem('jwt_token', jwt_token);
+                    debugger;
                     const { id, roles } = jwtDecode(jwt_token);
+
                     if (roles === "USER") {
                         if (setUserInformation(id) === true) {
                             auth.onAuthenticated(jwt_token);
                             history.push("/");
+                        } else {
+                            auth.logout();
                         }
                     } else {
                         auth.onAuthenticated(jwt_token);
@@ -57,14 +61,14 @@ function Login() {
     }
 
     async function setUserInformation(id) {
-        getUserWithLoginId(id)
+         getUserWithLoginId(id)
             .then((userInfo) => {
                 auth.setFullUserInformation(userInfo);
                 return true;
             }
             )
             .catch((err) => {
-                setErrors(err)
+                    setErrors(err);
                 return false;
             }
             )

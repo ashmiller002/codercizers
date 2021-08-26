@@ -36,6 +36,7 @@ function App() {
   // on login get user info and setFullUser
 
   const onAuthenticated = (token) => {
+    debugger;
     const payload = jwtDecode(token);
     setUser([payload.sub, payload.roles]);
     localStorage.setItem('jwt_token', token);
@@ -80,6 +81,129 @@ function App() {
     return null;
   }
 
+  //temporary return value when Workout API isn't set up to handle users
+  return (
+    <div class="App">
+      <LoginContext.Provider value={auth}>
+        <FullUserContext.Provider value={fullUser}>
+          <Router>
+            <Switch>
+              {/* Do these routes if user role = user */}
+              <Route path="/workouthistory">
+                {auth.user !== null && auth.user[1] === "USER"
+                  ? <div>
+                    <UserNavBar />
+                    <WorkoutHistory />
+                  </div>
+                  : <div>
+                  <UserNavBar />
+                  <WorkoutHistory />
+                </div>
+                }
+
+              </Route>
+              <Route path="/workoutcatalog">
+                {auth.user !== null && auth.user[1] === "USER"
+                  ? <div>
+                    <UserNavBar />
+                    <WorkoutCatalog />
+                  </div>
+                  : <div>
+                  <UserNavBar />
+                  <WorkoutCatalog />
+                </div>
+                }
+              </Route>
+              <Route path="/addexternalworkout">
+                {auth.user !== null && auth.user[1] === "USER"
+                  ? <div>
+                    <UserNavBar />
+                    <AddExternalWorkout />
+                  </div>
+                  : <div>
+                  <UserNavBar />
+                  <AddExternalWorkout />
+                </div>
+                }
+              </Route>
+              <Route path="/account">
+                {auth.user !== null && auth.user[1] === "USER"
+                  ? <div>
+                    <UserNavBar />
+                    <Account />
+                  </div>
+                  : <div>
+                  <UserNavBar />
+                  <Account />
+                </div>
+                }
+              </Route>
+              {/* do these route if user role = admin */}
+              <Route path="/addworkout">
+                {auth.user !== null && auth.user[1] === "ADMIN"
+                  ? <div>
+                    <AdminNavBar />
+                    <AddWorkout />
+                  </div>
+                  : <div>
+                  <AdminNavBar />
+                  <AddWorkout />
+                </div>
+                }
+              </Route>
+              <Route path="/editworkout:workoutid">
+                {auth.user !== null && auth.user[1] === "ADMIN"
+                  ? <div>
+                    <AdminNavBar />
+                    <EditWorkout />
+                  </div>
+                  : <div>
+                  <AdminNavBar />
+                  <EditWorkout />
+                </div>
+                }
+              </Route>
+              <Route path="/adminworkoutcatalog">
+                {auth.user !== null && auth.user[1] === "ADMIN"
+                  ? <div>
+                    <AdminNavBar />
+                    <AdminWorkoutCatalog />
+                  </div>
+                  : <div>
+                  <AdminNavBar />
+                  <AdminWorkoutCatalog />
+                </div>
+                }
+              </Route>
+              {/* Do these routes below with both roles. if not logged in, redirect to login */}
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route path="/register">
+                <Register />
+              </Route>
+              <Route exact path="/">
+                {auth.user === null &&
+                  <Redirect to="/login" />}
+                {auth.user !== null && auth.user[1] === "USER" &&
+                  <UserNavBar />
+                }
+
+                {/* if admin: */}
+                {auth.user !== null && auth.user[1] === "ADMIN" &&
+                  <AdminNavBar />
+                }
+
+                <Home />
+              </Route>
+            </Switch>
+          </Router>
+        </FullUserContext.Provider>
+      </LoginContext.Provider>
+    </div>
+  );
+
+  //real return value once workout API is set up to handle users
   return (
     <div class="App">
       <LoginContext.Provider value={auth}>

@@ -14,8 +14,7 @@ export async function getUserWithLoginId(id) {
     if (response.status === 404) {
         return Promise.reject(["No user found with those credentials."])
     }
-    const messages = await response.json();
-    return Promise.reject([messages]);
+    return Promise.reject(["login failed"]);
     // why is it skipping over this .then and .catch?
 }
 
