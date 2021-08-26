@@ -21,7 +21,19 @@ export async function getWorkoutsByCategoryId(categoryId) {
 }
 
 export async function getSuggestedWorkout(user){
-
+    const init = {
+        headers: {
+            "Authorization":  `Bearer ${token}`
+        }
+    };
+    fetch(`${url}/workouts/suggestedworkout/${user.loginId}`, init)
+    .then(response => {
+        if (response.status !== 200) {
+            return Promise.reject(["Suggested workout fetch failed"]);
+        }
+        return response.json();
+    })
+}
 }
 
 export async function getWorkoutByWorkoutId(workoutId) {
@@ -51,7 +63,7 @@ export async function addWorkoutToUserHistory(workoutId, userId) {
     };
     fetch(`${url}/workouts/${userId}`, init)
     .then(response => {
-        if (response.status !== 200) {
+        if (response.status !== 201) {
             return Promise.reject(["Could not add workout to user history"]);
         }
         return response.json();

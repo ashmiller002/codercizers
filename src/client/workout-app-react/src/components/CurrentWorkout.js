@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import FullUserContext from '../contexts/FullUserContext';
+import { addWorkoutToUserHistory } from '../services/workouts';
 import Error from './Error';
 import CurrentWorkoutCard from './workoutCards/CurrentWorkoutCard';
 
 function CurrentWorkout() {
 
     const history = useHistory();
+    const fullUser = useContext(FullUserContext);
 
     // temp workout: delete when app is working
     const tempworkout = {
@@ -30,12 +33,14 @@ function CurrentWorkout() {
 
 
     //function to add to user workout history
-    function handleSubmit(submittedWorkoutId) {
-        
-        .then(history.push("/workouthistory"))
-            .catch(errs =>
+    function handleSubmit(submittedWorkoutId,) {
+        addWorkoutToUserHistory("1", "2")
+            .then(() => {
+                history.push("/workouthistory")
+            })
+            .catch(errs => {
                 setErrors([errs])
-            )
+            })
     }
 
     return (
