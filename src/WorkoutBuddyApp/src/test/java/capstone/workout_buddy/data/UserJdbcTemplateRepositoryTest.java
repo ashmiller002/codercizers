@@ -39,4 +39,8 @@ class UserJdbcTemplateRepositoryTest {
         assertEquals(4, actual.getUserId());
         assertEquals("Mollusk", actual.getLastName());
     }
+
+    @Test
+    void add() {
+    }
 }
