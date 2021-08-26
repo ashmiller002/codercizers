@@ -1,5 +1,8 @@
 package capstone.workout_buddy.models;
 
+import org.apache.tomcat.jni.Local;
+
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class User {
