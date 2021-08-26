@@ -3,7 +3,7 @@ import { useHistory, Link } from 'react-router-dom';
 import FullUserContext from '../contexts/FullUserContext';
 import LoginContext from '../contexts/LoginContext';
 import { register } from '../services/auth';
-import { registerUser } from '../services/user';
+import { editUser } from '../services/user';
 import Error from './Error';
 import './Register.css';
 
@@ -37,6 +37,7 @@ function Register() {
         const nextFullUserInfo = { ...fullUserInfo };
         nextFullUserInfo[evt.target.name] = evt.target.value;
         setFullUserInfo(nextFullUserInfo);
+        console.log(fullUserInfo.dateBirth);
     }
 
     function onChangeActivityLevel(evt) {
@@ -58,12 +59,12 @@ function Register() {
 
     function handleSubmit(evt) {
         evt.preventDefault();
-        handleRegistration({...fullUserInfo});
+        handleEdit({...fullUserInfo});
 
     }
 
-    function handleRegistration(user) {
-        registerUser(user)
+    function handleEdit(user) {
+        editUser(user)
             .then(history.push("/login"))
             .catch(errors => {
                 setErrors(errors.messages);
@@ -74,8 +75,7 @@ function Register() {
     return (
         <div className="login">
             <div className="container ">
-                <h1>Welcome to Workout Buddy!</h1>
-                <h4>Register</h4>
+                <h2>Edit Account</h2>
                 <Error errorMessages={errors} />
                 <form onSubmit={handleSubmit} className="register">
 
@@ -121,8 +121,8 @@ function Register() {
                         </label>
                     </div>
                     <div>
-                        <button type="submit" className="btn">Register</button>
-                        <span className="new">Account already exists? <Link to="/login" className="registerLink">Login Here</Link></span>
+                        <button type="submit" className="btn">Edit</button>
+                        <Link to="/account" type="button" className="btn cancel">Cancel</Link>
                     </div>
 
 

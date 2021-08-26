@@ -15,7 +15,6 @@ export async function getUserWithLoginId(id) {
         return Promise.reject(["No user found with those credentials."])
     }
     return Promise.reject(["login failed"]);
-    // why is it skipping over this .then and .catch?
 }
 
 // export async function getUserWithLoginId(id) {
@@ -59,4 +58,23 @@ export async function registerUser(user) {
             const messages = await response.json();
             return Promise.reject(messages);
         });
+}
+
+export async function editUser(user) {
+    const init = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(user)
+    };
+    return fetch(`${url}/workouts/${user.loginId}`, init)
+    .then(async response => {
+        if (response.status === 204) {
+            return response.json();
+        }
+        const messages = await response.json();
+        return Promise.reject(messages);
+    });
 }

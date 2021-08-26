@@ -29,7 +29,7 @@ function App() {
     userId: "1",
     firstName: "firstName",
     lastName: "lastName",
-    dateBirth: "0120-23-12",
+    dateBirth: "2000-03-12",
     email: "email@email.com",
     goal: "2",
     activityLevel: "1"
