@@ -37,7 +37,6 @@ function Register() {
         const nextFullUserInfo = { ...fullUserInfo };
         nextFullUserInfo[evt.target.name] = evt.target.value;
         setFullUserInfo(nextFullUserInfo);
-        console.log(fullUserInfo.dateBirth);
     }
 
     function onChangeActivityLevel(evt) {
@@ -58,6 +57,7 @@ function Register() {
 
 
     function handleSubmit(evt) {
+        
         evt.preventDefault();
         handleEdit({...fullUserInfo});
 
@@ -65,9 +65,10 @@ function Register() {
 
     function handleEdit(user) {
         editUser(user)
-            .then(history.push("/login"))
-            .catch(errors => {
-                setErrors(errors.messages);
+            .then(() => {
+                history.push("/account")})
+            .catch(error => {
+                setErrors(error);
             });
 
     }

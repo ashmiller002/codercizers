@@ -74,6 +74,12 @@ export async function editUser(user) {
         if (response.status === 204) {
             return response.json();
         }
+        if (response.status === 404) {
+            return Promise.reject(["User was not found."]);
+        }
+        if (response.status === 403) {
+            return Promise.reject(["Something went wrong on our end"]);
+        }
         const messages = await response.json();
         return Promise.reject(messages);
     });
