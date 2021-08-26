@@ -41,7 +41,7 @@ function Login() {
                     localStorage.setItem('jwt_token', jwt_token);
                     const { id, roles } = jwtDecode(jwt_token);
                     if (roles === "USER") {
-                        if (setUserInformation(id)) {
+                        if (setUserInformation(id) === true) {
                             auth.onAuthenticated(jwt_token);
                             history.push("/");
                         }
@@ -56,15 +56,15 @@ function Login() {
             })
     }
 
-    function setUserInformation(id) {
+    async function setUserInformation(id) {
         getUserWithLoginId(id)
             .then((userInfo) => {
                 auth.setFullUserInformation(userInfo);
                 return true;
             }
             )
-            .catch(() => {
-                setErrors(["No user found with those credentials."])
+            .catch((err) => {
+                setErrors(err)
                 return false;
             }
             )
