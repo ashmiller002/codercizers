@@ -1,0 +1,13 @@
+.login .new {
+    margin-left: 1rem;
+    color:black;
+    font-size: larger;
+}
+
+.registerLink:hover {
+    text-decoration: underline;
+}
+
+.input-field label{
+    pointer-events: all !important;
+}
