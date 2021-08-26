@@ -102,6 +102,9 @@ function App() {
           <Router>
             <Switch>
               {/* Do these routes if user role = user */}
+              <Route path="/home">
+                <Home />
+              </Route>
               <Route path="/workouthistory">
                 {auth.user !== null && auth.user[1] === "USER"
                   ? <div>
