@@ -7,7 +7,7 @@ public interface UserRepository {
 
     User findByUserId(int userId);
 
-    User findByLoginId();
+    User findByLoginId(String loginId);
 
     User add(User user);
 

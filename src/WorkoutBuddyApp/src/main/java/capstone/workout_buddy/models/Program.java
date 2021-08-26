@@ -3,8 +3,8 @@ package capstone.workout_buddy.models;
 public class Program {
 
     private int programId;
-    private int activityLevelId;
     private int goalId;
+    private int activityLevelId;
 
     public int getProgramId() {
         return programId;
