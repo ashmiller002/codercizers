@@ -22,7 +22,6 @@ public class WorkoutJdbcTemplateRepository implements WorkoutRepository {
     }
 
     @Override
-
     public List<Workout> findByCategory(int categoryId){
 
         final String sql = "select workout_id, workout_name, image_url" +
@@ -37,15 +36,15 @@ public class WorkoutJdbcTemplateRepository implements WorkoutRepository {
     @Override
     public Workout add(Workout workout){
 
-        final String sql = "insert into workout_buddy (workout_name, category_id, image_url) " +
+        final String sql = "insert into workout (workout_name, category_id, workout_status) " +
                 "values (?, ?, ?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection ->{
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, workout.getWorkoutName());
-            ps.setInt(2, workout.getCategoryId());
-            ps.setString(1, workout.getImageUrl());
+            ps.setInt(1, workout.getCategoryId());
+            ps.setString(2, workout.getWorkoutName());
+            ps.setString(3, workout.getWorkoutStatus());
             return ps;
         }, keyHolder);
 

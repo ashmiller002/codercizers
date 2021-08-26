@@ -1,5 +1,6 @@
 package capstone.workout_buddy.data;
 
+import capstone.workout_buddy.models.Workout;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,20 @@ class WorkoutJdbcTemplateRepositoryTest {
 
     @Test
     void findByCategory() {
+        assertTrue(true);
     }
 
     @Test
-    void add() {
+    void shouldAdd() {
+        Workout actual = new Workout(30, "upperBodyTest", 20,  "enable" );
+        repository.add(actual);
+
+        assertNotNull(actual);
     }
+    //int workoutId, String workoutName, int categoryId, String imageUrl, String workoutStatus)
 
     @Test
     void update() {
+        assertTrue(true);
     }
 }

@@ -10,9 +10,12 @@ public class Workout {
 
     public Workout(){};
 
-    public Workout(int workoutId, String workoutName) {
+    public Workout(int categoryId, String workoutName, int workoutId, String workoutStatus) {
         this.workoutId = workoutId;
         this.workoutName = workoutName;
+        this.categoryId = categoryId;
+        this.imageUrl = imageUrl;
+        this.workoutStatus = workoutStatus;
     }
 
     public int getWorkoutId() {
