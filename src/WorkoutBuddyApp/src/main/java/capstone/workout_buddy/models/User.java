@@ -13,18 +13,18 @@ public class User {
     private LocalDate dob;
     private String email;
     private String loginId;
-    private Program program;
+    private int programId;
 
     public User(){};
 
-    public User(int userId, String firstName, String lastName, LocalDate dob, String email, String loginId, Program program) {
+    public User(int userId, String firstName, String lastName, LocalDate dob, String email, String loginId, int programId) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
         this.email = email;
         this.loginId = loginId;
-        this.program = program;
+        this.programId = programId;
     }
 
     public int getUserId() {
@@ -78,7 +78,7 @@ public class User {
         return program;
     }
 
-    public void setProgramId(Program program) {
+    public void setProgramId(int program) {
         this.program = program;
     }
 
