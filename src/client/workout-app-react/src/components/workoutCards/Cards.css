@@ -1,0 +1,10 @@
+
+
+.card .sticky-action {
+    position: absolute;
+    bottom: 0;
+}
+
+.card .sticky-action .btn-small {
+    margin: 1.5rem;
+}

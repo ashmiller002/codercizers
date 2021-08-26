@@ -103,6 +103,7 @@ function App() {
             <Switch>
               {/* Do these routes if user role = user */}
               <Route path="/home">
+                <UserNavBar/>
                 <Home />
               </Route>
               <Route path="/workouthistory">
