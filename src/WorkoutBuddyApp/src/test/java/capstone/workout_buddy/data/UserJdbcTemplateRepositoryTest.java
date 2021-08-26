@@ -25,6 +25,18 @@ class UserJdbcTemplateRepositoryTest {
         User actual = repository.findByUserId(5);
         assertEquals(5, actual.getUserId());
         assertEquals("Fantasia", actual.getFirstName());
+    }
 
+    @Test
+    void shouldNotFindUserId() {
+        User actual = repository.findByUserId(100);
+        assertNull(actual);
+    }
+
+    @Test
+    void shouldFindByLoginId() {
+        User actual = repository.findByLoginId("login4");
+        assertEquals(4, actual.getUserId());
+        assertEquals("Mollusk", actual.getLastName());
     }
 }

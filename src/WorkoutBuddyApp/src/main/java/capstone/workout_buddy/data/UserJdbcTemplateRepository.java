@@ -27,8 +27,14 @@ public class UserJdbcTemplateRepository implements UserRepository {
 
 
     @Override
-    public User findByLoginId() {
-        return null;
+    public User findByLoginId(String loginId) {
+        final String sql = "select user_id, first_name, last_name, date_birth, email, program_id, " +
+                "login_id from `user` where login_id = ?;";
+
+        User user = jdbcTemplate.query(sql, new UserMapper(), loginId).stream()
+                .findFirst().orElse(null);
+
+        return user;
     }
 
     @Override
