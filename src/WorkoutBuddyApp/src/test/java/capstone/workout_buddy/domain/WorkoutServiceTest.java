@@ -22,6 +22,7 @@ class WorkoutServiceTest {
 
     @Test
     void findByCategory() {
+
     }
 
     @Test
