@@ -22,9 +22,27 @@ public class WorkoutJdbcTemplateRepository implements WorkoutRepository {
     }
 
     @Override
+    public List<Workout> findAll(){
+        final String sql = "select workout_id, workout_name, category_id, image_url, workout_status " +
+                "from workout limit 1000;";
+        return jdbcTemplate.query(sql, new WorkoutMapper());
+    }
+
+    @Override
+    public Workout findById(int workoutId){
+        final String sql = "select category_id, workout_status, workout_id, workout_name, image_url "
+                + "from workout "
+                + "where workout_id = ?;";
+
+        return jdbcTemplate.query(sql, new WorkoutMapper(), workoutId)
+                .stream()
+                .findFirst().orElse(null);
+    }
+
+    @Override
     public List<Workout> findByCategory(int categoryId){
 
-        final String sql = "select category_id, workout_id, workout_name, image_url" +
+        final String sql = "select category_id, workout_status, workout_id, workout_name, image_url" +
                 " from workout "
                 + "where category_id = ?;";
 

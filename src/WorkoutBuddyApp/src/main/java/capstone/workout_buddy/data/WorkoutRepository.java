@@ -7,6 +7,10 @@ import java.util.List;
 public interface WorkoutRepository {
     Workout add(Workout workout);
 
+    List<Workout> findAll();
+
+    Workout findById(int workoutId);
+
     List<Workout> findByCategory(int categoryId);
 
     boolean update(Workout workout);

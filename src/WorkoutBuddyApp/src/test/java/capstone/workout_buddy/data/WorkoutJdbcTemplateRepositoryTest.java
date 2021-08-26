@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -21,12 +23,38 @@ class WorkoutJdbcTemplateRepositoryTest {
     void setup() {knownGoodState.set();}
 
     @Test
+    void shouldFindWorkoutById(){
+        Workout upperBody = new Workout(1,"upperBodyTest", 1,  "enable" );
+        Workout lowerBody = new Workout(2,"lowerBodyTest", 2,  "enable" );
+
+        Workout actual = repository.findById(1);
+        assertEquals("upperBodyTest", actual.getWorkoutName());
+
+        actual = repository.findById(2);
+        assertEquals("lowerBodyTest", actual.getWorkoutName());
+    }
+
+    @Test
+    void shouldNotFindWorkoutByIdMissing(){
+        Workout actual = repository.findById(3000);
+        assertNull(actual);
+    }
+
+    @Test
     void shouldFindAllWorkouts(){
-        assertTrue(true);
+        List<Workout> all = repository.findAll();
+        assertNotNull(all);
+        assertTrue(all.size() >= 1);
+        Workout actual = all.get(0);
+
+        assertEquals(1, actual.getWorkoutId());
+        assertEquals("upperBodyTest", actual.getWorkoutName());
     }
     @Test
     void shouldFindWorkoutsByCategory() {
-        assertTrue(true);
+        List<Workout> workouts = repository.findByCategory(1);
+        assertNotNull(workouts);
+        assertEquals(1, workouts.get(0).getCategoryId());
     }
 
     @Test
