@@ -5,6 +5,7 @@ import capstone.workout_buddy.models.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+@Repository
 public class UserJdbcTemplateRepository implements UserRepository {
 
     private final JdbcTemplate jdbcTemplate;
@@ -21,8 +22,7 @@ public class UserJdbcTemplateRepository implements UserRepository {
 
         User user = jdbcTemplate.query(sql, new UserMapper(), userId).stream()
                 .findFirst().orElse(null);
-
-        return null;
+        return user;
     }
 
 

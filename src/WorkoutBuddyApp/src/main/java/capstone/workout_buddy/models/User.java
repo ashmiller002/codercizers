@@ -74,12 +74,12 @@ public class User {
         this.loginId = loginId;
     }
 
-    public Program getProgram() {
-        return program;
+    public int getProgram() {
+        return programId;
     }
 
     public void setProgramId(int program) {
-        this.program = program;
+        this.programId = program;
     }
 
 }
