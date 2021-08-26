@@ -4,12 +4,14 @@
 @baseurl = http://{{host}}/api
 @url = {{baseurl}}/user
 
-
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkZXYxMC11c2Vycy1hcGkiLCJzdWIiOiJqb2huc21pdGgiLCJpZCI6Ijk4M2YxMjI0LWFmNGYtMTFlYi04MzY4LTAyNDJhYzExMDAwMiIsImZpcnN0X25hbWUiOiJKb2huIiwibGFzdF9uYW1lIjoiU21pdGgiLCJlbWFpbF9hZGRyZXNzIjoiam9obkBzbWl0aC5jb20iLCJtb2JpbGVfcGhvbmUiOiI1NTUtNTU1LTU1NTUiLCJyb2xlcyI6IkFETUlOIiwiZXhwIjoxNjI5MTU4OTg5fQ.ZhQiyNAe7_Bn40pffnfbK4kVcmCDe3BzcRC6AiNluhg
 
 ###
 
 GET {{url}}/userid/1 HTTP/1.1
+Authorization: Bearer {{token}}
 
 
 ###
 GET {{url}}/login5 HTTP/1.1
+Authorization: Bearer {{token}}
