@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 public class UserJdbcTemplateRepository implements UserRepository{
   
     private final JdbcTemplate jdbcTemplate;
-
     public UserJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
