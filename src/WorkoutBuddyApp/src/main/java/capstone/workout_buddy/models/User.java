@@ -1,24 +1,27 @@
 package capstone.workout_buddy.models;
 
+import java.time.LocalDate;
+
 public class User {
 
     private int userId;
     private String firstName;
     private String lastName;
-    private int age;
+    private LocalDate dob;
     private String email;
+    private String loginId;
+    private Program program;
 
-    private int loginId;
-    private int programId;
-    private int roleId;
+    public User(){};
 
-
-    public User(int userId, String firstName, String lastName, int age, String email) {
+    public User(int userId, String firstName, String lastName, LocalDate dob, String email, String loginId, Program program) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
+        this.dob = dob;
         this.email = email;
+        this.loginId = loginId;
+        this.program = program;
     }
 
     public int getUserId() {
@@ -45,14 +48,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -60,4 +55,28 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public String getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
+    }
+
+    public Program getProgram() {
+        return program;
+    }
+
+    public void setProgramId(Program program) {
+        this.program = program;
+    }
+
 }
