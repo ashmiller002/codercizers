@@ -22,7 +22,12 @@ public class UserService {
     //validation for add user
     // no duplicate emails
     // date must be in the past for birthday
-    // 
+    //
+
+    public User add(User user){
+
+        return null;
+    }
 
 
 }
