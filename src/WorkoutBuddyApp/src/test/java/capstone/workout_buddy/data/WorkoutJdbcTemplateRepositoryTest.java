@@ -21,7 +21,11 @@ class WorkoutJdbcTemplateRepositoryTest {
     void setup() {knownGoodState.set();}
 
     @Test
-    void findByCategory() {
+    void shouldFindAllWorkouts(){
+        assertTrue(true);
+    }
+    @Test
+    void shouldFindWorkoutsByCategory() {
         assertTrue(true);
     }
 
@@ -35,8 +39,15 @@ class WorkoutJdbcTemplateRepositoryTest {
 
 
     @Test
-    void update() {
-        assertTrue(true);
+    void shouldUpdateWorkout() {
+        Workout workout = new Workout(1,"upperBodyTest", 1,  "enable" );
+        assertTrue(repository.update(workout));
+    }
+
+    @Test
+    void shouldNotUpdateMissing(){
+        Workout workout = new Workout(70,"upperBodyTest", 70,  "enable" );
+        assertFalse(repository.update(workout));
     }
 
 
