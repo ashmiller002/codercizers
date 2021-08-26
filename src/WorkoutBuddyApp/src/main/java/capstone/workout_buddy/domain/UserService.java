@@ -19,5 +19,10 @@ public class UserService {
         return repository.findByLoginId(loginId);
     }
 
+    //validation for add user
+    // no duplicate emails
+    // date must be in the past for birthday
+    // 
+
 
 }

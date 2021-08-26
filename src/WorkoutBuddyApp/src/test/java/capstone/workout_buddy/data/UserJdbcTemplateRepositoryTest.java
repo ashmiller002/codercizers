@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -38,5 +40,21 @@ class UserJdbcTemplateRepositoryTest {
         User actual = repository.findByLoginId("login4");
         assertEquals(4, actual.getUserId());
         assertEquals("Mollusk", actual.getLastName());
+    }
+
+    @Test
+    void shouldAdd() {
+        User user = new User();
+        user.setFirstName("Chad");
+        user.setLastName("Ginsy");
+        user.setEmail("chad@test.com");
+        user.setDob(LocalDate.of(1972, 4, 24));
+        user.setLoginId("login111");
+        user.setProgramId(2);
+
+        User actual = repository.add(user);
+        assertNotNull(actual);
+        assertEquals(7, actual.getUserId());
+
     }
 }

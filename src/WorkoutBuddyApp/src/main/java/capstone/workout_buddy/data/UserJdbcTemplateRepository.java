@@ -3,7 +3,13 @@ package capstone.workout_buddy.data;
 import capstone.workout_buddy.data.mappers.UserMapper;
 import capstone.workout_buddy.models.User;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 
 @Repository
 public class UserJdbcTemplateRepository implements UserRepository {
@@ -39,7 +45,27 @@ public class UserJdbcTemplateRepository implements UserRepository {
 
     @Override
     public User add(User user) {
-        return null;
+        final String sql = "insert into `user` (first_name, last_name, date_birth, email, program_id, login_id) " +
+                "values (?, ?, ?, ?, ?, ?);";
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        int rowsAffected = jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, user.getFirstName());
+            ps.setString(2, user.getLastName());
+            ps.setDate(3, Date.valueOf(user.getDob()));
+            ps.setString(4, user.getEmail());
+            ps.setInt(5, user.getProgram());
+            ps.setString(6, user.getLoginId());
+            return ps;
+        }, keyHolder);
+
+        if (rowsAffected <= 0){
+            return null;
+        }
+
+        user.setUserId(keyHolder.getKey().intValue());
+        return user;
     }
 
     @Override

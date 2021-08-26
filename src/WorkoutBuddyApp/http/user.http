@@ -3,3 +3,13 @@
 @host = {{hostname}}:{{port}}
 @baseurl = http://{{host}}/api
 @url = {{baseurl}}/user
+
+
+
+###
+
+GET {{url}}/userid/1 HTTP/1.1
+
+
+###
+GET {{url}}/login5 HTTP/1.1
