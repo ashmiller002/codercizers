@@ -1,0 +1,1 @@
+// like workoutCard but also has the date attached in the object passed and is used in workout history. doesn't matter if workout is enabled or disabled
