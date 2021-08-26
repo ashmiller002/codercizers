@@ -38,3 +38,24 @@ export async function getWorkoutByWorkoutId(workoutId) {
         return response.json();
     })
 }
+
+export async function addWorkoutToUserHistory(workoutId, userId) {
+    const init = {
+        method: "PUT",
+        headers: {
+            "Authorization":  `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            workoutId: "1"
+        })
+    };
+    fetch(`${url}/workouts/${userId}`, init)
+    .then(response => {
+        if (response.status !== 200) {
+            return Promise.reject(["Could not add workout to user history"]);
+        }
+        return response.json();
+    })
+
+
+}

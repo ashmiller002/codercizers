@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './Cards.css'
 
 
-function CurrentWorkoutCard({ workout }) {
+function CurrentWorkoutCard({ workout, handleSubmit }) {
 
     function getCategory() {
         if (workout === undefined) {
@@ -18,9 +18,6 @@ function CurrentWorkoutCard({ workout }) {
         }
     }
 
-    function handleSubmit(){
-        //does a POST request to add the workout to a user's history
-    }
 
     const realCategory = getCategory();
     return (
@@ -38,7 +35,7 @@ function CurrentWorkoutCard({ workout }) {
 
                 </div>
                 <div className="sticky-action">
-                    <Link to="/workouthistory" className="btn-small" onClick={handleSubmit}>Done</Link>
+                    <button className="btn-small" onClick={handleSubmit}>Done</button>
                     <Link to="/" className="btn-small cancel">Cancel</Link>
                 </div>
             </div>
