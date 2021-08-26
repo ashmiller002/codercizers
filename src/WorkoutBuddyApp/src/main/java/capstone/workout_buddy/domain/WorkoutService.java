@@ -15,6 +15,10 @@ public class WorkoutService {
         this.repository = repository;
     }
 
+    public List<Workout> findAll(){
+        return repository.findAll();
+    }
+
     public List<Workout> findByCategory(int categoryId){
         return repository.findByCategory(categoryId);
     }
@@ -70,9 +74,9 @@ public class WorkoutService {
             result.addMessage("Workout status is required", ResultType.INVALID);
         }
 
-        if (workout.getCategoryId() <= 0) {
-            result.addMessage("CategoryId is required.", ResultType.INVALID);
-        }
+//        if (workout.getCategoryId() >= 0) {
+//            result.addMessage("CategoryId is required.", ResultType.INVALID);
+//        }
 
         return result;
 
