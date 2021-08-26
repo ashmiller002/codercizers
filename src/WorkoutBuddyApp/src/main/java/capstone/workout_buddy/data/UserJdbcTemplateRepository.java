@@ -5,6 +5,7 @@ import capstone.workout_buddy.models.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+@Repository
 public class UserJdbcTemplateRepository implements UserRepository {
 
     private final JdbcTemplate jdbcTemplate;
@@ -19,16 +20,21 @@ public class UserJdbcTemplateRepository implements UserRepository {
         final String sql = "select user_id, first_name, last_name, date_birth, email, program_id, " +
                 "login_id from `user` where user_id = ?;";
 
-        //User user = jdbcTemplate.query(sql, new UserMapper(), userId).stream()
-//                .findFirst().orElse(null);
-//
-        return null;
+        User user = jdbcTemplate.query(sql, new UserMapper(), userId).stream()
+                .findFirst().orElse(null);
+        return user;
     }
 
 
     @Override
-    public User findByLoginId() {
-        return null;
+    public User findByLoginId(String loginId) {
+        final String sql = "select user_id, first_name, last_name, date_birth, email, program_id, " +
+                "login_id from `user` where login_id = ?;";
+
+        User user = jdbcTemplate.query(sql, new UserMapper(), loginId).stream()
+                .findFirst().orElse(null);
+
+        return user;
     }
 
     @Override

@@ -1,23 +1,35 @@
 package capstone.workout_buddy.models;
 
-public class ActivityLevel {
+public enum ActivityLevel {
+
+    INFREQUENT(1, "infrequent"),
+    FREQUENT(2, "frequent");
+
 
     private int activityLevelId;
     private String activityLevelName;
 
-    public int getActivityLevelId() {
-        return activityLevelId;
+    private ActivityLevel(int activityLevelId, String activityLevelName) {
+        this.activityLevelId = activityLevelId;
+        this.activityLevelName = activityLevelName;
     }
 
-    public void setActivityLevelId(int activityLevelId) {
-        this.activityLevelId = activityLevelId;
+    public static ActivityLevel fromActivityId(int activityLevelId){
+        for (ActivityLevel option: ActivityLevel.values()){
+            if (option.getActivityLevelId() == activityLevelId){
+                return option;
+            }
+        }
+        return null;
+    }
+
+    public int getActivityLevelId() {
+        return activityLevelId;
     }
 
     public String getActivityLevelName() {
         return activityLevelName;
     }
 
-    public void setActivityLevelName(String activityLevelName) {
-        this.activityLevelName = activityLevelName;
-    }
+
 }

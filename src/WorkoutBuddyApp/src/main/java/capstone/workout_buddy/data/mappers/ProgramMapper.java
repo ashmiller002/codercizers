@@ -16,8 +16,6 @@ public class ProgramMapper implements RowMapper<Program> {
         program.setGoalId(resultSet.getInt("goal_id"));
         return program;
 
-
-
     }
 
 

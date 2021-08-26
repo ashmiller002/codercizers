@@ -1,5 +1,8 @@
 package capstone.workout_buddy.models;
 
+import org.apache.tomcat.jni.Local;
+
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class User {
@@ -10,18 +13,18 @@ public class User {
     private LocalDate dob;
     private String email;
     private String loginId;
-    private Program program;
+    private int programId;
 
     public User(){};
 
-    public User(int userId, String firstName, String lastName, LocalDate dob, String email, String loginId, Program program) {
+    public User(int userId, String firstName, String lastName, LocalDate dob, String email, String loginId, int programId) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
         this.email = email;
         this.loginId = loginId;
-        this.program = program;
+        this.programId = programId;
     }
 
     public int getUserId() {
@@ -71,12 +74,12 @@ public class User {
         this.loginId = loginId;
     }
 
-    public Program getProgram() {
-        return program;
+    public int getProgram() {
+        return programId;
     }
 
-    public void setProgramId(Program program) {
-        this.program = program;
+    public void setProgramId(int program) {
+        this.programId = program;
     }
 
 }
