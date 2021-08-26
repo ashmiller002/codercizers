@@ -17,6 +17,7 @@ import LoginContext from './contexts/LoginContext.js';
 import Register from './components/Register.js';
 import FullUserContext from './contexts/FullUserContext.js';
 import EditAccount from './components/EditAccount.js';
+import CurrentWorkout from './components/CurrentWorkout.js';
 
 function App() {
 
@@ -106,6 +107,10 @@ function App() {
                 <UserNavBar/>
                 <Home />
               </Route>
+              <Route path="/currentworkout/:workoutid">
+                <UserNavBar />
+                <CurrentWorkout />
+              </Route>
               <Route path="/workouthistory">
                 {auth.user !== null && auth.user[1] === "USER"
                   ? <div>
@@ -180,7 +185,7 @@ function App() {
                   </div>
                 }
               </Route>
-              <Route path="/editworkout:workoutid">
+              <Route path="/editworkout/:workoutid">
                 {auth.user !== null && auth.user[1] === "ADMIN"
                   ? <div>
                     <AdminNavBar />
@@ -250,6 +255,15 @@ function App() {
                 }
 
               </Route>
+              <Route path="/currentworkout/:workoutid">
+              {auth.user !== null && auth.user[1] === "USER"
+                ? <div>
+                  <UserNavBar />
+                <CurrentWorkout />
+                </div>
+                : <Redirect to="/login" />
+              }
+              </Route>
               <Route path="/workoutcatalog">
                 {auth.user !== null && auth.user[1] === "USER"
                   ? <div>
@@ -296,7 +310,7 @@ function App() {
                   : <Redirect to="/login" />
                 }
               </Route>
-              <Route path="/editworkout:workoutid">
+              <Route path="/editworkout/:workoutid">
                 {auth.user !== null && auth.user[1] === "ADMIN"
                   ? <div>
                     <AdminNavBar />

@@ -8,7 +8,7 @@ export async function getWorkoutsByCategoryId(categoryId) {
         }
     };
 
-    fetch(`${url}/workouts/${categoryId}`, init)
+    fetch(`${url}/workouts/category/${categoryId}`, init)
         .then(response => {
             if (response.status !== 200) {
                 return Promise.reject(["Suggested workout fetch failed"]);
@@ -22,4 +22,19 @@ export async function getWorkoutsByCategoryId(categoryId) {
 
 export async function getSuggestedWorkout(user){
 
+}
+
+export async function getWorkoutByWorkoutId(workoutId) {
+    const init = {
+        headers: {
+            "Authorization":  `Bearer ${token}`
+        }
+    };
+    fetch(`${url}/workouts/${workoutId}`, init)
+    .then(response => {
+        if (response.status !== 200) {
+            return Promise.reject(["Current workout fetch failed"]);
+        }
+        return response.json();
+    })
 }

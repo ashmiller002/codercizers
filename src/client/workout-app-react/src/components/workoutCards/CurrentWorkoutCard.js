@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import './Cards.css'
 
-// used in workout catalogue. Also used on User Home page. has select button that lists as current workout.
 
-function UserWorkoutCatalogueCard({ workout }) {
+function CurrentWorkoutCard({ workout }) {
 
     function getCategory() {
         if (workout === undefined) {
@@ -17,6 +16,10 @@ function UserWorkoutCatalogueCard({ workout }) {
             case "5": return "Rest Day"
             default: return "Unknown"
         }
+    }
+
+    function handleSubmit(){
+        //does a POST request to add the workout to a user's history
     }
 
     const realCategory = getCategory();
@@ -35,11 +38,12 @@ function UserWorkoutCatalogueCard({ workout }) {
 
                 </div>
                 <div className="sticky-action">
-                    <Link to={`/currentworkout/${workout.workoutId}`} className="btn-small">Select</Link>
+                    <Link to="/workouthistory" className="btn-small" onClick={handleSubmit}>Done</Link>
+                    <Link to="/" className="btn-small cancel">Cancel</Link>
                 </div>
             </div>
         </div>
     );
 }
 
-export default UserWorkoutCatalogueCard;
+export default CurrentWorkoutCard;

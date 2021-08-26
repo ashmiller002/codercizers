@@ -39,7 +39,6 @@ function Login() {
                 } else {
                     const { jwt_token } = body;
                     localStorage.setItem('jwt_token', jwt_token);
-                    debugger;
                     const { id, roles } = jwtDecode(jwt_token);
 
                     if (roles === "USER") {
@@ -68,7 +67,8 @@ function Login() {
             }
             )
             .catch((err) => {
-                    setErrors(err);
+                console.log(err);
+                    //setErrors(err);
                 return false;
             }
             )
