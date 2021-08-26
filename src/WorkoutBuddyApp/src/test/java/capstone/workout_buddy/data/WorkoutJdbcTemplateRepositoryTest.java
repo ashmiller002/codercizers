@@ -26,13 +26,13 @@ class WorkoutJdbcTemplateRepositoryTest {
     }
 
     @Test
-    void shouldAdd() {
+    void shouldAddWorkout() {
         Workout actual = new Workout(1,"upperBodyTest", 1,  "enable" );
         repository.add(actual);
-
         assertNotNull(actual);
+        assertEquals("upperBodyTest", actual.getWorkoutName());
     }
-    //int workoutId, String workoutName, int categoryId, String imageUrl, String workoutStatus)
+
 
     @Test
     void update() {
