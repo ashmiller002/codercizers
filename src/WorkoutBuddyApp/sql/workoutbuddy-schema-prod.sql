@@ -48,7 +48,6 @@ create table workout (
     date_birth date not null,
     email varchar(100) unique,
     program_id int not null,
-    user_status varchar(20) not null,
     login_id varchar(50) not null,
     constraint fk_user_program_id
 		foreign key (program_id)

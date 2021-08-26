@@ -1,0 +1,17 @@
+.register {
+    padding-top:.5rem;
+}
+
+.register .radioPrompt {
+    font-size: larger;
+}
+
+
+
+.activityLevelOrGoal input {
+    padding: 0px;
+}
+
+.activityLevelOrGoal {
+    padding-bottom: 1.5rem;
+}

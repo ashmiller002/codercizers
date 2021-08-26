@@ -1,11 +1,14 @@
 package capstone.workout_buddy.data;
 
+import capstone.workout_buddy.data.mappers.UserMapper;
+import capstone.workout_buddy.models.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 public class UserJdbcTemplateRepository implements UserRepository{
-  
+
     private final JdbcTemplate jdbcTemplate;
+
     public UserJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
