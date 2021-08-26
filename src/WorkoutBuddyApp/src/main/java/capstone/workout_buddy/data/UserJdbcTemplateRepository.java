@@ -26,7 +26,7 @@ public class UserJdbcTemplateRepository implements UserRepository{
         return user;
     }
 
-    
+
 
     @Override
     public User findByLoginId() {
