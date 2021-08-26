@@ -42,8 +42,8 @@ public class WorkoutJdbcTemplateRepository implements WorkoutRepository {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection ->{
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, workout.getCategoryId());
-            ps.setString(2, workout.getWorkoutName());
+            ps.setString(1, workout.getWorkoutName());
+            ps.setInt(2, workout.getCategoryId());
             ps.setString(3, workout.getWorkoutStatus());
             return ps;
         }, keyHolder);

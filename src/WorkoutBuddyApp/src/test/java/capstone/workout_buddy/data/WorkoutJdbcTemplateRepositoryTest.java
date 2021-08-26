@@ -27,7 +27,7 @@ class WorkoutJdbcTemplateRepositoryTest {
 
     @Test
     void shouldAdd() {
-        Workout actual = new Workout(30, "upperBodyTest", 20,  "enable" );
+        Workout actual = new Workout(1,"upperBodyTest", 1,  "enable" );
         repository.add(actual);
 
         assertNotNull(actual);
@@ -38,4 +38,6 @@ class WorkoutJdbcTemplateRepositoryTest {
     void update() {
         assertTrue(true);
     }
+
+    
 }
