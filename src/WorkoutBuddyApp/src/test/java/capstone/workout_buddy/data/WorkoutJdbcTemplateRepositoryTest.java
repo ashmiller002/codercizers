@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -21,8 +23,9 @@ class WorkoutJdbcTemplateRepositoryTest {
     void setup() {knownGoodState.set();}
 
     @Test
-    void findByCategory() {
-        assertTrue(true);
+    void shouldFindWorkoutsByCategory() {
+        List<Workout> workouts = repository.findByCategory(1);
+        assertNotNull(workouts);
     }
 
     @Test
@@ -35,8 +38,15 @@ class WorkoutJdbcTemplateRepositoryTest {
 
 
     @Test
-    void update() {
-        assertTrue(true);
+    void shouldUpdateExistingWorkout() {
+        Workout actual = new Workout(2,"lowerBodyTest", 2,  "enable" );
+        assertTrue(repository.update(actual));
+    }
+
+    @Test
+    void shouldNotUpdateMissingWorkout() {
+        Workout actual = new Workout(300,"unrealisticWorkout", 200,  "enable" );
+        assertFalse(repository.update(actual));
     }
 
 

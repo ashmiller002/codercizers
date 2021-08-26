@@ -26,39 +26,29 @@ class WorkoutServiceTest {
 
     @Test
     void shouldAddWhenValid() {
-        Workout expected = makeWorkout();
-        Workout arg = makeWorkout();
-        arg.setWorkoutId(0);
+        Workout workout = new Workout(1, "TEST WORKOUT", 0,"enable");
+        Workout mockOut = new Workout(1, "TEST WORKOUT", 1,"enable" );
 
-        when(repository.add(arg)).thenReturn(expected);
-        Result<Workout> result = service.add(arg);
-        assertEquals(ResultType.SUCCESS, result.getType());
+        when(repository.add(workout)).thenReturn(mockOut);
+        Result<Workout> actual = service.add(workout);
+        assertEquals(ResultType.SUCCESS, actual.getType());
+        assertEquals(mockOut, actual.getPayload());
 
-        assertEquals(expected, result.getPayload());
     }
 
     @Test
     void shouldNotAddWhenInvalid() {
-        Workout workout = makeWorkout();
-        Result<Workout> result = service.add(workout);
-        assertEquals(ResultType.INVALID, result.getType());
-        workout.setWorkoutId(0);
-        workout.setWorkoutName(null);
-        result = service.add(workout);
-        assertEquals(ResultType.INVALID, result.getType());
+        Workout workout = new Workout(0, "TEST WORKOUT", 0,"enable");
+        Result<Workout> actual = service.add(workout);
+        assertEquals(ResultType.INVALID, actual.getType());
     }
 
     @Test
-    void update() {
-    }
-
-    Workout makeWorkout() {
-        Workout workout = new Workout();
-        makeWorkout().setWorkoutId(1);
-        makeWorkout().setWorkoutName("TestWorkout1");
-        makeWorkout().setCategoryId(1);
-        makeWorkout().setImageUrl("http://testpics.org/1");
-        return workout;
+    void shouldUpdateWhenValid() {
+        Workout workout = new Workout(2,"lowerBodyTest", 2,  "enable" );
+        when(repository.update(workout)).thenReturn(true);
+        Result<Workout> actual = service.update(workout);
+        assertEquals(ResultType.SUCCESS, actual.getType());
     }
 
 }

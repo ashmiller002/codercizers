@@ -24,12 +24,10 @@ public class WorkoutJdbcTemplateRepository implements WorkoutRepository {
     @Override
     public List<Workout> findByCategory(int categoryId){
 
-        final String sql = "select workout_id, workout_name, image_url" +
-                " from workout "
-                + "where category_id = ?;";
+        final String sql = "select category_id, workout_name, workout_id, image_url, workout_status from workout where category_id = ?;";
 
-        List<Workout> workouts = jdbcTemplate.query(sql, new WorkoutMapper());
-        return workouts;
+        return jdbcTemplate.query(sql, new WorkoutMapper(), categoryId);
+
 
     }
 
@@ -61,13 +59,16 @@ public class WorkoutJdbcTemplateRepository implements WorkoutRepository {
     public boolean update(Workout workout){
 
         final String sql = "update workout set "
+                + "category_id = ?, "
                 + "workout_name = ?, "
-                + "image_url = ?, "
+                + "workout_status = ?, "
+                + "image_url = ? "
                 + "where workout_id = ?;";
 
         return jdbcTemplate.update(sql,
-                workout.getWorkoutName(),
                 workout.getCategoryId(),
+                workout.getWorkoutName(),
+                workout.getWorkoutStatus(),
                 workout.getImageUrl(),
                 workout.getWorkoutId()) > 0;
     }
