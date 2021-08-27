@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -48,13 +49,20 @@ class UserJdbcTemplateRepositoryTest {
         user.setFirstName("Chad");
         user.setLastName("Ginsy");
         user.setEmail("chad@test.com");
-        user.setDob(LocalDate.of(1972, 4, 24));
+        user.setDateBirth(LocalDate.of(1972, 4, 24));
         user.setLoginId("login111");
         user.setProgramId(2);
 
         User actual = repository.add(user);
         assertNotNull(actual);
         assertEquals(7, actual.getUserId());
+    }
+
+    @Test
+    void shouldFindAll() {
+        List<User> actual = repository.findAll();
+        assertNotNull(actual);
+        assertEquals(6, actual.size());
 
     }
 }

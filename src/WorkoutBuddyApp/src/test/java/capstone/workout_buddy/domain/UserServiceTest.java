@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class UserServiceTest {
@@ -26,4 +27,22 @@ class UserServiceTest {
     @Test
     void findByLoginId() {
     }
+
+    @Test
+    void shouldAddNewUser() {
+        User user = new User();
+        user.setFirstName("Chad");
+        user.setLastName("Ginsy");
+        user.setEmail("chad@test.com");
+        user.setDateBirth(LocalDate.of(1972, 4, 24));
+        user.setLoginId("login111");
+        user.setProgramId(2);
+
+        Result<User> result = service.add(user);
+        assertTrue(result.isSuccess());
+        assertNotNull(result.getPayload());
+        assertEquals(user, result.getPayload());
+    }
+
+
 }

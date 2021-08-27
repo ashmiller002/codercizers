@@ -4,6 +4,8 @@ import capstone.workout_buddy.data.UserRepository;
 import capstone.workout_buddy.models.User;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -24,11 +26,11 @@ public class UserService {
     // date must be in the past for birthday
     //
 
-    public Result<User> add(User user, int goalId, int activityId){
+    public Result<User> add(User user){
         Result<User> result = validation(user);
 
         //setting the program ID using the activity/level goal from the ui....
-        user.setProgramId(generateProgramId(goalId, activityId));
+        //user.setProgramId(generateProgramId(goalId, activityId));
 
         if(!result.isSuccess()) {
             return result;
@@ -50,6 +52,8 @@ public class UserService {
             return result;
         }
 
+        result = validateDupEmails(result, user);
+
 
 
 
@@ -58,7 +62,14 @@ public class UserService {
     }
 
     private Result<User> validateDupEmails(Result<User> result, User user){
-        return null;
+        List<User> users = repository.findAll();
+        for (User u: users){
+            if (u.getEmail().equalsIgnoreCase(user.getEmail())){
+                result.addMessage("This email is already registered to an account", ResultType.INVALID);
+            }
+        }
+
+        return result;
     }
 
     private Result<User> validateDateBirth(Result<User> result, User user){
