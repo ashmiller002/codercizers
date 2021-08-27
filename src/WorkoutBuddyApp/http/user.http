@@ -15,3 +15,21 @@ Authorization: Bearer {{token}}
 ###
 GET {{url}}/login5 HTTP/1.1
 Authorization: Bearer {{token}}
+
+###
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "loginId": "login8",
+    "firstName": "Brixton",
+    "lastName": "James",
+    "dateBirth": "2000-11-28",
+    "email": "something@whatevs.com",
+    "goalId": 3,
+    "activityLevelId": 2
+}
+
+
+
+###

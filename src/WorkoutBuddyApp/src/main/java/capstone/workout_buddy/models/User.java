@@ -16,6 +16,22 @@ public class User {
 
     public User(){};
 
+    public int getGoalId() {
+        return goalId;
+    }
+
+    public void setGoalId(int goalId) {
+        this.goalId = goalId;
+    }
+
+    public int getActivityLevelId() {
+        return activityLevelId;
+    }
+
+    public void setActivityLevelId(int activityLevelId) {
+        this.activityLevelId = activityLevelId;
+    }
+
     public User(int userId, String firstName, String lastName, LocalDate dob, String email, String loginId, int programId) {
         this.userId = userId;
         this.firstName = firstName;

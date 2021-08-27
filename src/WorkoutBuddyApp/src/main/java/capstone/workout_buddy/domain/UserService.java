@@ -2,6 +2,7 @@ package capstone.workout_buddy.domain;
 
 import capstone.workout_buddy.data.ProgramRepository;
 import capstone.workout_buddy.data.UserRepository;
+import capstone.workout_buddy.models.Program;
 import capstone.workout_buddy.models.User;
 import org.springframework.stereotype.Service;
 
@@ -29,8 +30,10 @@ public class UserService {
     public Result<User> add(User user){
         Result<User> result = validation(user);
 
-        //setting the program ID using the activity/level goal from the ui....
-        //user.setProgramId(generateProgramId(goalId, activityId));
+        if (user.getProgram() == 0){
+            Program program = programRepository.findByGoalAndActivity(user.getGoalId(), user.getActivityLevelId());
+            user.setProgramId(program.getProgramId());
+        }
 
         if(!result.isSuccess()) {
             return result;
@@ -96,9 +99,6 @@ public class UserService {
         return result;
     }
 
-    private int generateProgramId(int goalId, int activityId){
-        return 0;
-    }
 
 
 

@@ -45,6 +45,24 @@ class UserServiceTest {
     }
 
     @Test
+    void shouldAddUpdateProgramId(){
+        User user = makeUser();
+        user.setGoalId(1);
+        user.setActivityLevelId(1);
+        User mock = makeUser();
+        mock.setUserId(7);
+        mock.setProgramId(1);
+
+        when(repository.add(user)).thenReturn(mock);
+        Result<User> result = service.add(user);
+        assertTrue(result.isSuccess());
+        assertNotNull(result.getPayload());
+        assertEquals(mock, result.getPayload());
+
+
+    }
+
+    @Test
     void shouldNotAddNullUser() {
         User user = null;
 
