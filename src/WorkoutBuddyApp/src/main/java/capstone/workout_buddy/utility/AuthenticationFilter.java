@@ -36,6 +36,11 @@ public class AuthenticationFilter extends HttpFilter {
             return;
         }
 
+        if (request.getServletPath().contains("admin") && !appUser.getRoles().contains("ADMIN")) {
+            response.setStatus(HttpStatus.FORBIDDEN.value());
+            return;
+        }
+
         super.doFilter(request, response, chain);
     }
 }

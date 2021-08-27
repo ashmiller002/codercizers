@@ -42,7 +42,8 @@ function Login() {
                     const { id, roles } = jwtDecode(jwt_token);
 
                     if (roles === "USER") {
-                        if (setUserInformation(id) === true) {
+                        console.log(jwt_token)
+                        if (setUserInformation(id, jwt_token) === true) {
                             auth.onAuthenticated(jwt_token);
                             history.push("/");
                         } else {
@@ -59,8 +60,8 @@ function Login() {
             })
     }
 
-    async function setUserInformation(id) {
-         getUserWithLoginId(id)
+    async function setUserInformation(id, jwt_token) {
+         getUserWithLoginId(id, jwt_token)
             .then((userInfo) => {
                 auth.setFullUserInformation(userInfo);
                 return true;

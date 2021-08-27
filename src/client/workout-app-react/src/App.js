@@ -18,6 +18,9 @@ import Register from './components/Register.js';
 import FullUserContext from './contexts/FullUserContext.js';
 import EditAccount from './components/EditAccount.js';
 import CurrentWorkout from './components/CurrentWorkout.js';
+import { refresh } from './services/auth.js';
+
+const wait = 1000 * 60 * 7;
 
 function App() {
 
@@ -48,12 +51,22 @@ function App() {
   }
   const [fullUser, setFullUser] = useState(blankUser);
   // on login get user info and setFullUser
-
+  const parseToken = (token) => {
+    const tokenTokens = token.split('.');
+    try {
+      const jwtBody = tokenTokens[1];
+      return JSON.parse(atob(jwtBody));
+    } catch (err) {
+      console.log(err)
+      console.log("Failed to parse token.")
+    }
+  }
+  
   const onAuthenticated = (token) => {
-    debugger;
-    const payload = jwtDecode(token);
+    const payload = parseToken(token);
     setUser([payload.sub, payload.roles]);
     localStorage.setItem('jwt_token', token);
+    setTimeout(refreshToken, wait);
   }
 
   useEffect(() => {
@@ -83,6 +96,15 @@ function App() {
     localStorage.removeItem('jwt_token');
     setFullUser(blankUser);
   }
+
+  const refreshToken = () => {
+    refresh()
+      .then(token => {
+        localStorage.setItem('jwt_token', token);
+        setTimeout(refreshToken, wait);
+      })
+      .catch(console.error);
+  };
 
   const auth = {
     user,

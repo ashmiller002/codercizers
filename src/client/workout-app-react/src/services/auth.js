@@ -40,3 +40,28 @@ export async function register(credentials) {
         return Promise.reject(messages);
       });
   }
+
+  export async function refresh() {
+    const token = localStorage.getItem('jwt_token');
+    if (!token) {
+      return Promise.reject("403 Forbidden");
+    }
+  
+    const init = {
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ jwt_token: token })
+    };
+  
+    return fetch(`${url}/refresh_token`, init)
+      .then(response => {
+        if (response.status === 200) {
+          return response.json();
+        }
+        return Promise.reject(["Nice try."]);
+      })
+      .then(token => token.jwt_token);
+  }

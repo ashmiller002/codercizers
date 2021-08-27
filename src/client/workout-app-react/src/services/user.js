@@ -1,13 +1,15 @@
 const url = "http://localhost:8080";
-const token = localStorage.getItem('jwt_token');
+//const token = localStorage.getItem('jwt_token');
 
-export async function getUserWithLoginId(id) {
+export async function getUserWithLoginId(id, jwt_token) {
+    console.log(jwt_token);
     const init = {
         headers: {
-            "Authorization": `Bearer ${token}`
+             "Authorization": `Bearer ${jwt_token}`
         }
     };
-    const response = await fetch(`${url}/api/user/userid/${id}`, init);
+    console.log(init);
+    const response = await fetch(`${url}/api/user/${id}`, init);
     if (response.status === 200) {
         return await response.json();
     }
