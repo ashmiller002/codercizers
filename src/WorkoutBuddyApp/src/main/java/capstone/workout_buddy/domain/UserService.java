@@ -24,14 +24,17 @@ public class UserService {
     // date must be in the past for birthday
     //
 
-    public Result<User> add(User user){
+    public Result<User> add(User user, int goalId, int activityId){
         Result<User> result = validation(user);
 
         //setting the program ID using the activity/level goal from the ui....
+        user.setProgramId(generateProgramId(goalId, activityId));
 
         if(!result.isSuccess()) {
             return result;
         }
+
+
 
         user = repository.add(user);
         result.setPayload(user);
@@ -40,8 +43,33 @@ public class UserService {
 
 
     private Result<User> validation(User user){
+        Result<User> result = new Result<>();
+
+        if (user == null){
+            result.addMessage("No user information provided.", ResultType.INVALID);
+            return result;
+        }
+
+
+
+
+
+        return result;
+    }
+
+    private Result<User> validateDupEmails(Result<User> result, User user){
         return null;
     }
+
+    private Result<User> validateDateBirth(Result<User> result, User user){
+        return null;
+    }
+
+    private int generateProgramId(int goalId, int activityId){
+        return 0;
+    }
+
+
 
 
 
