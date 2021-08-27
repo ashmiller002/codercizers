@@ -8,6 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
@@ -21,44 +24,87 @@ class WorkoutServiceTest {
     WorkoutRepository repository;
 
     @Test
-    void findByCategory() {
+    void shouldFindAllWorkouts(){
+        when(repository.findAll()).thenReturn(Arrays.asList(
+                new Workout(1,"TestWorkout", 1,  "enable" ),
+                new Workout(2,"TestWorkout", 2,  "enable" ),
+                new Workout(3,"TestWorkout", 3,  "enable" ),
+                new Workout(4,"TestWorkout", 4,  "enable" )
+        ));
+
+        List<Workout> actual = service.findAll();
+        assertEquals(4, actual.size());
+        assertEquals(2, actual.get(1).getWorkoutId());
     }
 
     @Test
-    void shouldAddWhenValid() {
-        Workout expected = makeWorkout();
-        Workout arg = makeWorkout();
-        arg.setWorkoutId(0);
+    void shouldFindByWorkoutCategory() {
 
-        when(repository.add(arg)).thenReturn(expected);
-        Result<Workout> result = service.add(arg);
-        assertEquals(ResultType.SUCCESS, result.getType());
+        when(repository.findByCategory(3)).thenReturn(Arrays.asList(
+                new Workout(1,"TestWorkout", 1,  "enable" ),
+                new Workout(2,"TestWorkout", 2,  "enable" ),
+                new Workout(3,"TestWorkout", 3,  "enable" ),
+                new Workout(4,"TestWorkout", 4,  "enable" )
+        ));
 
-        assertEquals(expected, result.getPayload());
+        List<Workout> actual = service.findByCategory(3);
+        assertEquals(4, actual.size());
+        assertEquals(3, actual.get(2).getCategoryId());
+    }
+
+    @Test
+    void shouldFindByWorkoutId() {
+        Workout actual = new Workout(1,"Test Workout", 12,  "enable" );
+        when(repository.findById(12)).thenReturn(actual);
+        assertNotNull(actual);
+        assertEquals(12, actual.getWorkoutId());
+        assertEquals("Test Workout", actual.getWorkoutName());
+    }
+
+    @Test
+    void shouldAddWorkoutWhenValid() {
+        Workout workout = new Workout(1,"upperBodyTest", 0,  "enable" );
+        Workout mockOut = new Workout(1,"upperBodyTest", 2,  "enable" );
+
+        when(repository.add(workout)).thenReturn(mockOut);
+
+        Result<Workout> actual = service.add(workout);
+        assertEquals(ResultType.SUCCESS, actual.getType());
+        assertEquals(mockOut, actual.getPayload());
     }
 
     @Test
     void shouldNotAddWhenInvalid() {
-        Workout workout = makeWorkout();
-        Result<Workout> result = service.add(workout);
-        assertEquals(ResultType.INVALID, result.getType());
+        Workout workout = new Workout(1,"upperBodyTest", 33,  "enable" );
+        Result<Workout> actual = service.add(workout);
+        assertEquals(ResultType.INVALID, actual.getType());
+
         workout.setWorkoutId(0);
         workout.setWorkoutName(null);
-        result = service.add(workout);
-        assertEquals(ResultType.INVALID, result.getType());
+        actual = service.add(workout);
+        assertEquals(ResultType.INVALID, actual.getType());
+
+        workout.setWorkoutName(" ");
+        actual = service.add(workout);
+        assertEquals(ResultType.INVALID, actual.getType());
     }
 
     @Test
-    void update() {
+    void shouldUpdateValidWorkout() {
+        Workout workout = new Workout(1,"Test Workout", 12,  "enable" );
+
+        when(repository.update(workout)).thenReturn(true);
+        Result<Workout> actual = service.update(workout);
+        assertEquals(ResultType.SUCCESS, actual.getType());
     }
 
-    Workout makeWorkout() {
-        Workout workout = new Workout();
-        makeWorkout().setWorkoutId(1);
-        makeWorkout().setWorkoutName("TestWorkout1");
-        makeWorkout().setCategoryId(1);
-        makeWorkout().setImageUrl("http://testpics.org/1");
-        return workout;
+    @Test
+    void shouldNotUpdateMissingWorkout() {
+        Workout workout = new Workout(1,"Test Workout", 62,  "enable" );
+
+        when(repository.update(workout)).thenReturn(false);
+        Result<Workout> actual = service.update(workout);
+        assertEquals(ResultType.NOT_FOUND, actual.getType());
     }
 
 }

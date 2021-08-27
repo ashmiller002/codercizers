@@ -1,0 +1,22 @@
+
+
+.card .sticky-action {
+    position: absolute;
+    bottom: 0;
+}
+
+.card .sticky-action .btn-small {
+    margin-right: 0px;
+    margin-bottom: .75rem;
+    margin-left: 1.5rem;
+}
+
+.card .btn-small {
+    margin-right: 0px;
+}
+
+.card .card-content {
+    padding-top: .75rem;
+}
+
+

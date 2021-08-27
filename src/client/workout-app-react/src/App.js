@@ -17,6 +17,7 @@ import LoginContext from './contexts/LoginContext.js';
 import Register from './components/Register.js';
 import FullUserContext from './contexts/FullUserContext.js';
 import EditAccount from './components/EditAccount.js';
+import CurrentWorkout from './components/CurrentWorkout.js';
 
 function App() {
 
@@ -24,27 +25,27 @@ function App() {
   const [initialized, setInitialized] = useState(false);
   const history = useHistory();
 
-  const blankUser = {
-    loginId: "1",
-    userId: "1",
-    firstName: "firstName",
-    lastName: "lastName",
-    dateBirth: "2000-03-12",
-    email: "email@email.com",
-    goal: "2",
-    activityLevel: "1"
-  }
-  //real blank user
   // const blankUser = {
-  //   loginId: null,
-  //   userId: 0,
-  //   firstName: null,
-  //   lastName: null,
-  //   dateBirth: null,
-  //   email: null,
-  //   goal: null, // strength = 1, mobility = 2, weight loss = 3 
-  //   activityLevel: null, // frequent = 2 or infrequent = 1 send just number
+  //   loginId: "1",
+  //   userId: "1",
+  //   firstName: "firstName",
+  //   lastName: "lastName",
+  //   dateBirth: "2000-03-12",
+  //   email: "email@email.com",
+  //   goal: "2",
+  //   activityLevel: "1"
   // }
+  //real blank user
+  const blankUser = {
+    loginId: null,
+    userId: 0,
+    firstName: null,
+    lastName: null,
+    dateBirth: null,
+    email: null,
+    goal: null, // strength = 1, mobility = 2, weight loss = 3 
+    activityLevel: null, // frequent = 2 or infrequent = 1 send just number
+  }
   const [fullUser, setFullUser] = useState(blankUser);
   // on login get user info and setFullUser
 
@@ -102,6 +103,14 @@ function App() {
           <Router>
             <Switch>
               {/* Do these routes if user role = user */}
+              <Route path="/home">
+                <UserNavBar/>
+                <Home />
+              </Route>
+              <Route path="/currentworkout/:workoutid">
+                <UserNavBar />
+                <CurrentWorkout />
+              </Route>
               <Route path="/workouthistory">
                 {auth.user !== null && auth.user[1] === "USER"
                   ? <div>
@@ -176,7 +185,7 @@ function App() {
                   </div>
                 }
               </Route>
-              <Route path="/editworkout:workoutid">
+              <Route path="/editworkout/:workoutid">
                 {auth.user !== null && auth.user[1] === "ADMIN"
                   ? <div>
                     <AdminNavBar />
@@ -246,6 +255,15 @@ function App() {
                 }
 
               </Route>
+              <Route path="/currentworkout/:workoutid">
+              {auth.user !== null && auth.user[1] === "USER"
+                ? <div>
+                  <UserNavBar />
+                <CurrentWorkout />
+                </div>
+                : <Redirect to="/login" />
+              }
+              </Route>
               <Route path="/workoutcatalog">
                 {auth.user !== null && auth.user[1] === "USER"
                   ? <div>
@@ -292,7 +310,7 @@ function App() {
                   : <Redirect to="/login" />
                 }
               </Route>
-              <Route path="/editworkout:workoutid">
+              <Route path="/editworkout/:workoutid">
                 {auth.user !== null && auth.user[1] === "ADMIN"
                   ? <div>
                     <AdminNavBar />
