@@ -15,6 +15,14 @@ public class WorkoutService {
         this.repository = repository;
     }
 
+    public List<Workout> findAll(){
+        return repository.findAll();
+    }
+
+    public Workout findById(int workoutId){
+        return repository.findById(workoutId);
+    }
+
     public List<Workout> findByCategory(int categoryId){
         return repository.findByCategory(categoryId);
     }
