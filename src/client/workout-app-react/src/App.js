@@ -25,27 +25,27 @@ function App() {
   const [initialized, setInitialized] = useState(false);
   const history = useHistory();
 
-  const blankUser = {
-    loginId: "1",
-    userId: "1",
-    firstName: "firstName",
-    lastName: "lastName",
-    dateBirth: "2000-03-12",
-    email: "email@email.com",
-    goal: "2",
-    activityLevel: "1"
-  }
-  //real blank user
   // const blankUser = {
-  //   loginId: null,
-  //   userId: 0,
-  //   firstName: null,
-  //   lastName: null,
-  //   dateBirth: null,
-  //   email: null,
-  //   goal: null, // strength = 1, mobility = 2, weight loss = 3 
-  //   activityLevel: null, // frequent = 2 or infrequent = 1 send just number
+  //   loginId: "1",
+  //   userId: "1",
+  //   firstName: "firstName",
+  //   lastName: "lastName",
+  //   dateBirth: "2000-03-12",
+  //   email: "email@email.com",
+  //   goal: "2",
+  //   activityLevel: "1"
   // }
+  //real blank user
+  const blankUser = {
+    loginId: null,
+    userId: 0,
+    firstName: null,
+    lastName: null,
+    dateBirth: null,
+    email: null,
+    goal: null, // strength = 1, mobility = 2, weight loss = 3 
+    activityLevel: null, // frequent = 2 or infrequent = 1 send just number
+  }
   const [fullUser, setFullUser] = useState(blankUser);
   // on login get user info and setFullUser
 
