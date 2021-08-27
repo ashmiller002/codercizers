@@ -54,10 +54,6 @@ public class UserService {
 
         result = validateDupEmails(result, user);
 
-
-
-
-
         return result;
     }
 
@@ -68,7 +64,6 @@ public class UserService {
                 result.addMessage("This email is already registered to an account", ResultType.INVALID);
             }
         }
-
         return result;
     }
 
