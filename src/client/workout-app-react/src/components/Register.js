@@ -123,25 +123,25 @@ function Register() {
                     <div className="activityLevelOrGoal">
 
                         <label><div className="radioPrompt">How often do you exercise?</div>
-                            <input className="with-gap" name="activityLevel" value="1" type="radio" required checked={fullUserInfo.activityLevel === "1"} onChange={onChangeActivityLevel}/>
+                            <input className="with-gap" name="activityLevel" value="1" type="radio" required checked={fullUserInfo.activityLevelId === "1"} onChange={onChangeActivityLevel}/>
                             <span>Less than 3 times per week</span>
                         </label><br />
                         <label>
-                            <input className="with-gap" name="activityLevel" value="2" type="radio" checked={fullUserInfo.activityLevel === "2"} onChange={onChangeActivityLevel}/>
+                            <input className="with-gap" name="activityLevel" value="2" type="radio" checked={fullUserInfo.activityLevelId === "2"} onChange={onChangeActivityLevel}/>
                             <span>3 times per week or more</span>
                         </label>
                     </div>
                     <div className="activityLevelOrGoal">
                         <label><div className="radioPrompt">What is your goal?</div>
-                            <input className="with-gap" name="goal" value="1" type="radio" required checked={fullUserInfo.goal === "1"} onChange={onChangeGoal}/>
+                            <input className="with-gap" name="goal" value="1" type="radio" required checked={fullUserInfo.goalId === "1"} onChange={onChangeGoal}/>
                             <span>Strength</span>
                         </label><br />
                         <label>
-                            <input className="with-gap" name="goal" value="2" type="radio" checked={fullUserInfo.goal === "2"} onChange={onChangeGoal}/>
+                            <input className="with-gap" name="goal" value="2" type="radio" checked={fullUserInfo.goalId === "2"} onChange={onChangeGoal}/>
                             <span>Mobility</span>
                         </label><br/>
                         <label>
-                            <input className="with-gap" name="goal" value="3" type="radio" checked={fullUserInfo.goal === "3"} onChange={onChangeGoal}/>
+                            <input className="with-gap" name="goal" value="3" type="radio" checked={fullUserInfo.goalId === "3"} onChange={onChangeGoal}/>
                             <span>Lose weight</span>
                         </label>
                     </div>
