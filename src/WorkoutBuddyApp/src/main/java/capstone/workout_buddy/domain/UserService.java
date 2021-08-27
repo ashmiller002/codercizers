@@ -1,17 +1,23 @@
 package capstone.workout_buddy.domain;
 
+import capstone.workout_buddy.data.ProgramRepository;
 import capstone.workout_buddy.data.UserRepository;
+import capstone.workout_buddy.models.Program;
 import capstone.workout_buddy.models.User;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class UserService {
 
     private final UserRepository repository;
+    private final ProgramRepository programRepository;
 
-    public UserService(UserRepository repository) {this.repository = repository; }
+    public UserService(UserRepository repository, ProgramRepository programRepository) {this.repository = repository;
+        this.programRepository = programRepository;
+    }
 
     public User findByUserId(int userId){
         return repository.findByUserId(userId);
@@ -21,22 +27,17 @@ public class UserService {
         return repository.findByLoginId(loginId);
     }
 
-    //validation for add user
-    // no duplicate emails
-    // date must be in the past for birthday
-    //
-
     public Result<User> add(User user){
         Result<User> result = validation(user);
 
-        //setting the program ID using the activity/level goal from the ui....
-        //user.setProgramId(generateProgramId(goalId, activityId));
+        if (user.getProgram() == 0){
+            Program program = programRepository.findByGoalAndActivity(user.getGoalId(), user.getActivityLevelId());
+            user.setProgramId(program.getProgramId());
+        }
 
         if(!result.isSuccess()) {
             return result;
         }
-
-
 
         user = repository.add(user);
         result.setPayload(user);
@@ -49,6 +50,26 @@ public class UserService {
 
         if (user == null){
             result.addMessage("No user information provided.", ResultType.INVALID);
+            return result;
+        }
+        if (Validations.isNullOrBlank(user.getEmail())){
+            result.addMessage("Cannot add user without valid email.", ResultType.INVALID);
+            return result;
+        }
+
+        if (Validations.isNullOrBlank(user.getFirstName())){
+            result.addMessage("First name required.", ResultType.INVALID);
+            return result;
+        }
+
+        if (Validations.isNullOrBlank(user.getLastName())){
+            result.addMessage("Last name required.", ResultType.INVALID);
+            return result;
+        }
+
+
+        result = validateDateBirth(result, user);
+        if (!result.isSuccess()){
             return result;
         }
 
@@ -68,12 +89,16 @@ public class UserService {
     }
 
     private Result<User> validateDateBirth(Result<User> result, User user){
-        return null;
+        if (user.getDateBirth() == null){
+            result.addMessage("Date of birth required.", ResultType.INVALID);
+            return result;
+        }
+        if (user.getDateBirth().isEqual(LocalDate.now()) || user.getDateBirth().isAfter(LocalDate.now())){
+            result.addMessage("Must provide valid date of birth.", ResultType.INVALID);
+        }
+        return result;
     }
 
-    private int generateProgramId(int goalId, int activityId){
-        return 0;
-    }
 
 
 

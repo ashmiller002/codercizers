@@ -1,6 +1,7 @@
 package capstone.workout_buddy.controllers;
 
 
+import capstone.workout_buddy.domain.Result;
 import capstone.workout_buddy.domain.UserService;
 import capstone.workout_buddy.models.User;
 import org.springframework.http.HttpStatus;
@@ -33,5 +34,15 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(user);
+    }
+
+    @PostMapping
+    public ResponseEntity<Object> add(@RequestBody User user){
+        Result<User> result = service.add(user);
+
+        if (result.isSuccess()){
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+        }
+        return ErrorResponse.build(result);
     }
 }
