@@ -11,7 +11,7 @@ export async function getWorkoutsByCategoryId(categoryId) {
     fetch(`${url}/workouts/category/${categoryId}`, init)
         .then(response => {
             if (response.status !== 200) {
-                return Promise.reject(["Suggested workout fetch failed"]);
+                return Promise.reject(["workouts fetch failed"]);
             }
             return response.json();
         })
@@ -34,7 +34,7 @@ export async function getSuggestedWorkout(user){
         return response.json();
     })
 }
-}
+
 
 export async function getWorkoutByWorkoutId(workoutId) {
     const init = {
