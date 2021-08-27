@@ -23,6 +23,10 @@ public class AuthenticationFilter extends HttpFilter {
     protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         String authorizationHeader = request.getHeader("Authorization");
 
+        if (request.getMethod().equalsIgnoreCase("OPTIONS")) {
+            super.doFilter(request, response, chain);
+            return;
+        }
         AppUser appUser = null;
 
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
