@@ -42,7 +42,6 @@ function Login() {
                     const { id, roles } = jwtDecode(jwt_token);
 
                     if (roles === "USER") {
-                        console.log(jwt_token);
                         setUserInformation(id, jwt_token, () => {
                             auth.onAuthenticated(jwt_token);
                             history.push("/");

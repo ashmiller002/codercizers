@@ -6,9 +6,8 @@ import { Link } from "react-router-dom";
 function Account() {
 
     const auth = useContext(LoginContext);
-    const fullUser = useContext(FullUserContext);
     function getGoal() {
-        switch (fullUser.goal) {
+        switch (auth.fullUser.goal) {
             case "1": return "Strength";
             case "2": return "Mobility";
             case "3": return "Weight Loss";
@@ -19,7 +18,7 @@ function Account() {
     const realGoal = getGoal();
 
     function getActivityLevel() {
-        switch (fullUser.activityLevel) {
+        switch (auth.fullUser.activityLevel) {
             case "1": return "Less than 3 times per week";
             case "2": return "3 times per week or more";
         }
@@ -33,10 +32,10 @@ function Account() {
         <div className="container">
             <h2>Account</h2>
             {/* Add username  */}
-            <p><b>First Name:</b> {fullUser.firstName}</p>
-            <p><b>Last Name:</b> {fullUser.lastName}</p>
-            <p><b>Date of Birth:</b> {fullUser.dateBirth}</p>
-            <p><b>Email:</b> {fullUser.email}</p>
+            <p><b>First Name:</b> {auth.fullUser.firstName}</p>
+            <p><b>Last Name:</b> {auth.fullUser.lastName}</p>
+            <p><b>Date of Birth:</b> {auth.fullUser.dateBirth}</p>
+            <p><b>Email:</b> {auth.fullUser.email}</p>
             <p><b>Goal:</b> {realGoal}</p>
             <p><b>How Often Do You Exercise?</b> {realActivityLevel}</p>
             <Link to="/editaccount" className="btn">Edit</Link>

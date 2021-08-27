@@ -6,7 +6,6 @@ import FullUserContext from "../contexts/FullUserContext";
 
 function UserNavBar() {
 
-    const fullUser = useContext(FullUserContext);
     const auth = useContext(LoginContext);
     const blank = ["", "", "", "", "", "", "",];
     let selected = [...blank];
@@ -48,7 +47,7 @@ function UserNavBar() {
         }
     }
 
-
+console.log(auth.fullUser);
 
 
     return (
@@ -63,7 +62,7 @@ function UserNavBar() {
                 <button type="button" className={"btn"} id="logout" onClick={auth.logout}>Logout</button>
             }
             {auth.user !== null &&
-                <span>Hello,&nbsp;{fullUser.firstName}</span>
+                <span>Hello,&nbsp;{auth.fullUser.firstName}</span>
             }
         </div>
     )
