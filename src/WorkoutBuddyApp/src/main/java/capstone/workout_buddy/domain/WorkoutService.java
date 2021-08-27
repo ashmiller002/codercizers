@@ -78,9 +78,9 @@ public class WorkoutService {
             result.addMessage("Workout status is required", ResultType.INVALID);
         }
 
-//        if (workout.getCategoryId() >= 0) {
-//            result.addMessage("CategoryId is required.", ResultType.INVALID);
-//        }
+        if (workout.getCategoryId() <= 0) {
+            result.addMessage("CategoryId is required.", ResultType.INVALID);
+        }
 
         return result;
 

@@ -30,17 +30,31 @@ public class WorkoutController {
         return service.findById(workoutId);
     }
 
-    @GetMapping("/{categoryId}")
+    @GetMapping("/category/{categoryId}")
     public List<Workout> findByCategory(@PathVariable int categoryId){
         return service.findByCategory(categoryId);
     }
 
-//    @PostMapping
-//    public ResponseEntity<Object> add(@RequestBody Workout workout){
-//        Result<Workout> result = service.add(workout);
-//        if(result.isSuccess()){
-//            return  new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED)
-//        }
-//        return ErrorResponse.build(result);
-//    }
+    @PostMapping
+    public ResponseEntity<Object> add(@RequestBody Workout workout){
+        Result<Workout> result = service.add(workout);
+        if(result.isSuccess()){
+            return  new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+        }
+        return ErrorResponse.build(result);
+    }
+
+    @PutMapping("/{workoutId}")
+    public ResponseEntity<Object> update(@PathVariable int workoutId, @RequestBody Workout workout){
+        if(workoutId != workout.getWorkoutId()){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        Result<Workout> result = service.update(workout);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return ErrorResponse.build(result);
+    }
 }
