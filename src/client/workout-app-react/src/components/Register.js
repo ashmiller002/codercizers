@@ -27,8 +27,9 @@ function Register() {
         lastName: "",
         dateBirth: "",
         email: "",
-        goal: "",
-        activityLevel: "",
+        goalId: "",
+        activityLevelId: "",
+        programId: 0
     }
 
     const [credentials, setCredentials] = useState(blankCredentials);
@@ -49,7 +50,7 @@ function Register() {
     function onChangeActivityLevel(evt) {
         const nextFullUserInfo = { ...fullUserInfo };
         if (evt.target.checked) {
-            nextFullUserInfo.activityLevel = evt.target.value;
+            nextFullUserInfo.activityLevelId = evt.target.value;
             setFullUserInfo(nextFullUserInfo);
         }
     }
@@ -57,7 +58,7 @@ function Register() {
     function onChangeGoal(evt) {
         const nextFullUserInfo = { ...fullUserInfo };
         if (evt.target.checked) {
-            nextFullUserInfo.goal = evt.target.value;
+            nextFullUserInfo.goalId = evt.target.value;
             setFullUserInfo(nextFullUserInfo);
         }
     }

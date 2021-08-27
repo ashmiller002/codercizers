@@ -1,1 +1,14 @@
-GET http://localhost:8080/api/agent
+@hostname = localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+@baseurl = http://{{host}}/api
+@url = {{baseurl}}/user
+
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkZXYxMC11c2Vycy1hcGkiLCJzdWIiOiJzYWxseUBqb25lcy5jb20iLCJpZCI6IjllNWQ5MjcyLWFmNGYtMTFlYi04MzY4LTAyNDJhYzExMDAwMiIsInJvbGVzIjoiVVNFUiIsImV4cCI6MTYzMDE3MTcwOX0.R4zr7xS1EQ7l1wckvqdW_PHQIep9nekIppKBKkHcItc
+
+
+###
+
+GET http://localhost:8080/api/user/9e5d9272-af4f-11eb-8368-0242ac110002 HTTP/1.1
+Authorization: Bearer {{token}}
+

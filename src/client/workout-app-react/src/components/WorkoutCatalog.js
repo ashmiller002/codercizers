@@ -10,7 +10,7 @@ function WorkoutCatalog() {
         workoutId: "",
         workoutName: "",
         imageUrl: "",
-        categoryId: "1",
+        categoryId: "0",
         workoutStatus: "enable"
     }
     //delete tempworkout
@@ -31,7 +31,7 @@ function WorkoutCatalog() {
                 setErrors(err))
     }
     const [errors, setErrors] = useState();
-    const [workouts, setWorkouts] = useState([tempworkout]);
+    const [workouts, setWorkouts] = useState([blankWorkout]);
 
     return (
         <div className="container">

@@ -1,13 +1,13 @@
 const url = "http://localhost:8080";
-const token = localStorage.getItem('jwt_token');
+//const token = localStorage.getItem('jwt_token');
 
-export async function getUserWithLoginId(id) {
+export async function getUserWithLoginId(id, jwt_token) {
     const init = {
         headers: {
-            "Authorization": `Bearer ${token}`
+             "Authorization": `Bearer ${jwt_token}`
         }
     };
-    const response = await fetch(`${url}/api/user/userid/${id}`, init);
+    const response = await fetch(`${url}/api/user/${id}`, init);
     if (response.status === 200) {
         return await response.json();
     }
@@ -16,30 +16,6 @@ export async function getUserWithLoginId(id) {
     }
     return Promise.reject(["login failed"]);
 }
-
-// export async function getUserWithLoginId(id) {
-//     const init = {
-//         headers: {
-//             "Authorization": `Bearer ${token}`
-//         },
-//         body: {"id":`"${id}"`}
-//     };
-//     debugger;
-//     return (fetch(`${url}/workouts/getuser`, init)
-//     // why is it skipping over this .then and .catch?
-//     .then(async response => {
-//         if (response.status === 404) {
-//             return Promise.reject(["No user found with those credentials."])
-//         }
-//         if (response.status === 200) {
-//             return response.json();
-//         }
-//         const messages = await response.json();
-//         return Promise.reject([messages]);
-//     })
-//     .catch(console.log)
-//     )
-// }
 
 export async function registerUser(user) {
     const init = {
