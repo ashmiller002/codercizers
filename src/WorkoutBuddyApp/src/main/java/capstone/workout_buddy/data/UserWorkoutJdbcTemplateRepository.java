@@ -1,6 +1,47 @@
 package capstone.workout_buddy.data;
 
-public class UserWorkoutJdbcTemplateRepository {
+import capstone.workout_buddy.models.UserWorkout;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
+
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+
+@Repository
+public class UserWorkoutJdbcTemplateRepository implements UserWorkoutRepository{
+
+    private final JdbcTemplate jdbcTemplate;
+
+    public UserWorkoutJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
      //for findWorkOutsById pass the user specific workouts with ALL workout details for each individual workout
+
+    //find workouts by user
+
+    @Override
+    public UserWorkout add(UserWorkout userWorkout){
+
+        final String sql = "insert into user_workout " +
+                "(user_id, workout_id, workout_date) values (?,?,?);";
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        int rowsAffected = jdbcTemplate.update(connection ->{
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, userWorkout.getUserId());
+            ps.setInt(2, userWorkout.getUserWorkoutId());
+            ps.setDate(3,userWorkout.getWorkoutDate());
+            return ps;
+        }, keyHolder);
+
+        if (rowsAffected <= 0) {
+            return null;
+        }
+        userWorkout.setUserWorkoutId(keyHolder.getKey().intValue());
+        return userWorkout;
+    }
+
 }
