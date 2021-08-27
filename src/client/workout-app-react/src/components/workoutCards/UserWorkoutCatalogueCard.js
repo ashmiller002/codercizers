@@ -5,7 +5,6 @@ import './Cards.css'
 // used in workout catalogue. Also used on User Home page. has select button that lists as current workout.
 
 function UserWorkoutCatalogueCard({ workout }) {
-
     function getCategory() {
         if (workout === undefined) {
             return "Unknown";
