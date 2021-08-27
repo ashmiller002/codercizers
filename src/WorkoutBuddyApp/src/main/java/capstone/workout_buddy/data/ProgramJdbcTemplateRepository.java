@@ -19,7 +19,7 @@ public class ProgramJdbcTemplateRepository implements ProgramRepository{
     @Override
     public List<Program> findAll(){
         final String sql = "select program_id, activity_level_id, goal_id " +
-                "from program" +
+                "from program " +
                 "where program = ?;";
 
         return jdbcTemplate.query(sql, new ProgramMapper());
@@ -30,7 +30,7 @@ public class ProgramJdbcTemplateRepository implements ProgramRepository{
     public Program findByGoalAndActivity(int goalId, int activityId){
 
         final String sql = "select activity_level_id, goal_id " +
-                "from program" +
+                "from program " +
                 "where activity_level_id = ? and goal_id = ?;";
 
         return jdbcTemplate.query(sql, new ProgramMapper(), activityId, goalId)

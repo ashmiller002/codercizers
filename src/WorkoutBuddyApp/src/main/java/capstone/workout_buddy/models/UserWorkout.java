@@ -9,6 +9,7 @@ public class UserWorkout {
     private int activityId;
     private LocalDate workoutDate;
 
+
     public UserWorkout() {
     }
 
