@@ -122,7 +122,7 @@ insert into `user` (user_id, first_name, last_name, date_birth, email, program_i
 		(2, 'Testy', 'McTesterston', '1972-04-24', 'tester@test.com', 1, 'login2'),
         (3, 'Bob', 'Bobberson', '2000-10-12', 'bob@bob.com', 3, 'login3'),
         (4, 'Keaton', 'Mollusk', '1991-08-16', 'keaton@test.com', 2, 'login4'),
-        (5, 'Fantasia', 'Captain', '1967-06-20', 'capn@test.com', 5, 'login5'),
+        (5, 'Fantasia', 'Captain', '1967-06-20', 'capn@test.com', 5, '9e5d9272-af4f-11eb-8368-0242ac110002'),
         (6, 'Another', 'Dude', '1988-10-08', 'dude@test.com', 6, 'login6');
         
 insert into user_workout (user_workout_id, user_id, workout_id, workout_date)
