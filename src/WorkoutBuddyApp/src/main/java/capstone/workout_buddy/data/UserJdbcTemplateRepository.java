@@ -70,6 +70,15 @@ public class UserJdbcTemplateRepository implements UserRepository {
 
     @Override
     public boolean update(User user) {
+
+        final String sql = "update `user` set "
+                + "first_name = ? "
+                + "last_name = ? "
+                + "date_birth = ? "
+                + "email = ? "
+                + "program_id = ? "
+                + "login_id = ?; ";
+
         return false;
     }
 

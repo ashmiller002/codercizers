@@ -24,10 +24,26 @@ public class UserService {
     // date must be in the past for birthday
     //
 
-    public User add(User user){
+    public Result<User> add(User user){
+        Result<User> result = validation(user);
 
+        //setting the program ID using the activity/level goal from the ui....
+
+        if(!result.isSuccess()) {
+            return result;
+        }
+
+        user = repository.add(user);
+        result.setPayload(user);
+        return result;
+    }
+
+
+    private Result<User> validation(User user){
         return null;
     }
+
+
 
 
 }
