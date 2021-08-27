@@ -35,7 +35,7 @@ public class WorkoutController {
         return service.findByCategory(categoryId);
     }
 
-    @PostMapping
+    @PostMapping("/admin")
     public ResponseEntity<Object> add(@RequestBody Workout workout){
         Result<Workout> result = service.add(workout);
         if(result.isSuccess()){
@@ -44,7 +44,7 @@ public class WorkoutController {
         return ErrorResponse.build(result);
     }
 
-    @PutMapping("/{workoutId}")
+    @PutMapping("/admin/{workoutId}")
     public ResponseEntity<Object> update(@PathVariable int workoutId, @RequestBody Workout workout){
         if(workoutId != workout.getWorkoutId()){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
