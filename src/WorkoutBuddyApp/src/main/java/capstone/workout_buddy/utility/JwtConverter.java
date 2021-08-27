@@ -17,7 +17,7 @@ public class JwtConverter {
     SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), HS256.getJcaName());
 
     private final String ISSUER = "dev10-users-api";
-    private final int EXPIRATION_MINUTES = 15;
+    private final int EXPIRATION_MINUTES = 1440;
     private final int EXPIRATION_MILLIS = EXPIRATION_MINUTES * 60 * 1000;
 
     public AppUser getUserFromToken(String token) {
