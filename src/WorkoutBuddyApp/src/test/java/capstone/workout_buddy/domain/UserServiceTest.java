@@ -65,6 +65,71 @@ class UserServiceTest {
         assertEquals("This email is already registered to an account", result.getMessages().get(0));
     }
 
+    @Test
+    void shouldNotAddNullBlankEmail(){
+        User user = makeUser();
+        user.setEmail("");
+        Result<User> result = service.add(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Cannot add user without valid email.", result.getMessages().get(0));
+
+        user.setEmail(null);
+        result = service.add(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Cannot add user without valid email.", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotAddNullBlankFirstName(){
+        User user = makeUser();
+        user.setFirstName("");
+        Result<User> result = service.add(user);
+        assertFalse(result.isSuccess());
+        assertEquals("First name required.", result.getMessages().get(0));
+
+        user.setFirstName(null);
+        result = service.add(user);
+        assertFalse(result.isSuccess());
+        assertEquals("First name required.", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotAddNullBlankLastName(){
+        User user = makeUser();
+        user.setLastName("");
+        Result<User> result = service.add(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Last name required.", result.getMessages().get(0));
+
+        user.setLastName(null);
+        result = service.add(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Last name required.", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotAddInvalidDateBirth(){
+        User user = makeUser();
+        user.setDateBirth(LocalDate.now());
+        Result<User> result = service.add(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Must provide valid date of birth.", result.getMessages().get(0));
+
+        user.setDateBirth(LocalDate.of(2021, 10, 8));
+        result = service.add(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Must provide valid date of birth.", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotAddNullDateBirth(){
+        User user = makeUser();
+        user.setDateBirth(null);
+        Result<User> result = service.add(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Date of birth required.", result.getMessages().get(0));
+    }
+
 
 
     User makeUser(){
