@@ -1,19 +1,20 @@
 package capstone.workout_buddy.models;
 
-import java.time.LocalDate;
+
+import java.sql.Date;
 
 public class UserWorkout {
 
     private int userWorkoutId;
     private int userId;
     private int activityId;
-    private LocalDate workoutDate;
+    private Date workoutDate;
 
 
     public UserWorkout() {
     }
 
-    public UserWorkout(int userWorkoutId, int userId, int activityId, LocalDate workoutDate) {
+    public UserWorkout(int userWorkoutId, int userId, int activityId, Date workoutDate) {
         this.userWorkoutId = userWorkoutId;
         this.userId = userId;
         this.activityId = activityId;
@@ -44,11 +45,11 @@ public class UserWorkout {
         this.activityId = activityId;
     }
 
-    public LocalDate getWorkoutDate() {
+    public Date getWorkoutDate() {
         return workoutDate;
     }
 
-    public void setWorkoutDate(LocalDate workoutDate) {
+    public void setWorkoutDate(Date workoutDate) {
         this.workoutDate = workoutDate;
     }
 }
