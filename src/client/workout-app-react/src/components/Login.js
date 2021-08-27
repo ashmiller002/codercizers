@@ -27,7 +27,7 @@ function Login() {
         setCredentials(nextCredentials);
     };
 
-    const [credentials, setCredentials] = useState(blankCredentials)
+    const [credentials, setCredentials] = useState(blankCredentials);
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
@@ -42,13 +42,12 @@ function Login() {
                     const { id, roles } = jwtDecode(jwt_token);
 
                     if (roles === "USER") {
-                        console.log(jwt_token)
-                        if (setUserInformation(id, jwt_token) === true) {
+                        console.log(jwt_token);
+                        setUserInformation(id, jwt_token, () => {
                             auth.onAuthenticated(jwt_token);
                             history.push("/");
-                        } else {
-                            auth.logout();
-                        }
+                        });
+
                     } else {
                         auth.onAuthenticated(jwt_token);
                         history.push("/");
@@ -60,17 +59,18 @@ function Login() {
             })
     }
 
-    async function setUserInformation(id, jwt_token) {
-         getUserWithLoginId(id, jwt_token)
+    function setUserInformation(id, jwt_token, onSuccess) {
+        getUserWithLoginId(id, jwt_token)
             .then((userInfo) => {
                 auth.setFullUserInformation(userInfo);
-                return true;
+                onSuccess();
             }
             )
             .catch((err) => {
                 console.log(err);
-                    //setErrors(err);
-                return false;
+                auth.logout();
+                //setErrors(err);
+
             }
             )
     }
@@ -82,7 +82,7 @@ function Login() {
                 <Error errorMessages={errors} />
                 <form className="login" onSubmit={handleSubmit}>
                     <div className="input-field">
-                        <input placeholder="Username" type="text" id="username" name="username" class="validate" value={credentials.username} onChange={onChange} />
+                        <input placeholder="Username" type="text" id="username" name="username" className="validate" value={credentials.username} onChange={onChange} />
                     </div>
                     <div className="input-field">
                         <input placeholder="Password" type="password" id="password" name="password" value={credentials.password} onChange={onChange} />

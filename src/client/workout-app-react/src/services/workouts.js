@@ -1,14 +1,15 @@
 const url="http://localhost:8080";
-const token = localStorage.getItem('jwt_token');
+
 
 export async function getWorkoutsByCategoryId(categoryId) {
+    const token = localStorage.getItem('jwt_token');
     const init = {
         headers: {
             "Authorization":  `Bearer ${token}`
         }
     };
 
-    fetch(`${url}/workouts/category/${categoryId}`, init)
+    fetch(`${url}/api/workout/category/${categoryId}`, init)
         .then(response => {
             if (response.status !== 200) {
                 return Promise.reject(["workouts fetch failed"]);
@@ -21,12 +22,13 @@ export async function getWorkoutsByCategoryId(categoryId) {
 }
 
 export async function getSuggestedWorkout(user){
+    const token = localStorage.getItem('jwt_token');
     const init = {
         headers: {
             "Authorization":  `Bearer ${token}`
         }
     };
-    fetch(`${url}/workouts/suggestedworkout/${user.loginId}`, init)
+    fetch(`${url}/workout/suggestedworkout/${user.loginId}`, init)
     .then(response => {
         if (response.status !== 200) {
             return Promise.reject(["Suggested workout fetch failed"]);
@@ -37,6 +39,7 @@ export async function getSuggestedWorkout(user){
 
 
 export async function getWorkoutByWorkoutId(workoutId) {
+    const token = localStorage.getItem('jwt_token');
     const init = {
         headers: {
             "Authorization":  `Bearer ${token}`
@@ -52,6 +55,7 @@ export async function getWorkoutByWorkoutId(workoutId) {
 }
 
 export async function addWorkoutToUserHistory(workoutId, userId) {
+    const token = localStorage.getItem('jwt_token');
     const init = {
         method: "PUT",
         headers: {
@@ -61,7 +65,7 @@ export async function addWorkoutToUserHistory(workoutId, userId) {
             workoutId: "1"
         })
     };
-    fetch(`${url}/workouts/${userId}`, init)
+    fetch(`${url}/workout/${userId}`, init)
     .then(response => {
         if (response.status !== 201) {
             return Promise.reject(["Could not add workout to user history"]);
