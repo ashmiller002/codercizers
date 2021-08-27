@@ -7,7 +7,7 @@ export async function getUserWithLoginId(id) {
             "Authorization": `Bearer ${token}`
         }
     };
-    const response = await fetch(`${url}/workouts/getuser/${id}`, init);
+    const response = await fetch(`${url}/api/user/userid/${id}`, init);
     if (response.status === 200) {
         return await response.json();
     }

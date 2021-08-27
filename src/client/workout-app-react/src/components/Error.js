@@ -1,6 +1,6 @@
 
 
-function Error({ errorMessages, handleCloseError }) {
+function Error({ errorMessages }) {
     if (errorMessages !== undefined) {
         return (
             <div className="alert alert-danger col-5" role="alert">

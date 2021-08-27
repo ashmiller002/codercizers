@@ -227,6 +227,7 @@ response:
         "workoutId": 01,
         "workoutName": "Push Ups" ,
         "imageUrl": "path/directory/hereitis"
+        "workoutStatus: "enable" or "disable"
     ]}
 * POST user - need to look into more with "register" and user api
 
