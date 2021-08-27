@@ -35,12 +35,12 @@ public class WorkoutController {
         return service.findByCategory(categoryId);
     }
 
-//    @PostMapping
-//    public ResponseEntity<Object> add(@RequestBody Workout workout){
-//        Result<Workout> result = service.add(workout);
-//        if(result.isSuccess()){
-//            return  new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED)
-//        }
-//        return ErrorResponse.build(result);
-//    }
+    @PostMapping
+    public ResponseEntity<Object> add(@RequestBody Workout workout){
+        Result<Workout> result = service.add(workout);
+        if(result.isSuccess()){
+            return  new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED)
+        }
+        return ErrorResponse.build(result);
+    }
 }
