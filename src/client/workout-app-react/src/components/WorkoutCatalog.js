@@ -22,16 +22,21 @@ function WorkoutCatalog() {
         workoutStatus: "enable"
     }
 
+    const [errors, setErrors] = useState();
+    const [workouts, setWorkouts] = useState([blankWorkout]);
+
     function handleSelectCategory(evt) {
-        getWorkoutsByCategoryId(evt.target.value)
-            .then(json =>
-                setWorkouts(json)
+        const categoryId = parseInt(evt.target.value, 10);
+        getWorkoutsByCategoryId(categoryId)
+            .then((json) => {
+                console.log(json);
+                setWorkouts(json);
+            }
             )
             .catch(err =>
                 setErrors(err))
     }
-    const [errors, setErrors] = useState();
-    const [workouts, setWorkouts] = useState([blankWorkout]);
+
 
     return (
         <div className="container">
