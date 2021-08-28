@@ -1,24 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getWorkoutByWorkoutId } from "../services/workouts";
 
-function AddEditWorkout({method}) {
+function AddEditWorkout() {
     const blankWorkout = {
-
+        workoutId: "",
+        workoutName: "",
+        imageUrl: "",
+        categoryId: "0",
+        workoutStatus: "disable"
     }
 
-    let currentWorkout; 
+    const { id } = useParams();
 
     const pathname = window.location.pathname;
-    if (pathname.contains("add")) {
-        currentWorkout = blankWorkout;
-    } else {
-        //current workout equals workout fetch from workout id which you get from useParams.
-    }
 
+    useEffect(() => {
+        if (pathname.includes("edit")) {
+            getWorkoutByWorkoutId(id)
+            .then(data => {
+                setWorkout(data);
+            })
+            .catch(console.log);
+        }
+    }, [])
+
+
+    const [workout, setWorkout] = useState(blankWorkout);
     //currentworkout 
-    [ workout, setWorkout ] = useState(currentWorkout);
+
     // for add workout receives blank workout as current workout. for edit, useParams to get current workout.
     return (
-        <div> add workout</div>
+        <div> {workout.workoutId}</div>
     )
 }
 

@@ -40,7 +40,7 @@ export async function getWorkoutByWorkoutId(workoutId) {
             "Authorization": `Bearer ${token}`
         }
     };
-    const response = await fetch(`${url}/workouts/${workoutId}`, init);
+    const response = await fetch(`${url}/api/workout/${workoutId}`, init);
 
     if (response.status !== 200) {
         return Promise.reject(["Current workout fetch failed"]);

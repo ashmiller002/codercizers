@@ -219,7 +219,7 @@ function App() {
                 : <Redirect to="/login" />
               }
             </Route>
-            <Route path="/editworkout/:workoutid">
+            <Route path="/editworkout/:id">
               {auth.user !== null && auth.user[1] === "ADMIN"
                 ? <div>
                   <AdminNavBar />

@@ -11,7 +11,7 @@ function WorkoutCatalog() {
         workoutName: "",
         imageUrl: "",
         categoryId: "0",
-        workoutStatus: "enable"
+        workoutStatus: "disable"
     }
     //delete tempworkout
     const tempworkout = {
@@ -28,12 +28,17 @@ function WorkoutCatalog() {
     function handleSelectCategory(evt) {
         const categoryId = parseInt(evt.target.value, 10);
         getWorkoutsByCategoryId(categoryId)
-            .then((json) => {
-                setWorkouts(json);
+            .then((data) => {
+                const enabledWorkouts = filterDisabledWorkouts(data)
+                setWorkouts(enabledWorkouts);
             }
             )
             .catch(err =>
                 setErrors(err))
+    }
+
+    function filterDisabledWorkouts(allWorkouts) {
+        return allWorkouts.filter(w => w.workoutStatus === "enable");
     }
 
 
