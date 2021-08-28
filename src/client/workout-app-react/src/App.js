@@ -182,15 +182,6 @@ function App() {
                 : <Redirect to="/login" />
               }
             </Route>
-            <Route path="/addexternalworkout">
-              {auth.user !== null && auth.user[1] === "USER"
-                ? <div>
-                  <UserNavBar />
-                  <AddExternalWorkout />
-                </div>
-                : <Redirect to="/login" />
-              }
-            </Route>
             <Route path="/account">
               {auth.user !== null && auth.user[1] === "USER"
                 ? <div>
@@ -261,8 +252,9 @@ function App() {
                   <AdminHome />
                 </div>
               }
-
-
+            </Route>
+            <Route>
+              <NotFound />
             </Route>
           </Switch>
         </Router>
