@@ -41,7 +41,9 @@ export async function getWorkoutByWorkoutId(workoutId) {
         }
     };
     const response = await fetch(`${url}/api/workout/${workoutId}`, init);
-
+    if (response.status === 404) {
+        return Promise.reject(["No workout with this id found"]);
+    }
     if (response.status !== 200) {
         return Promise.reject(["Current workout fetch failed"]);
     }

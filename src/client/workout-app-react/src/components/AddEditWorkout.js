@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { getWorkoutByWorkoutId } from "../services/workouts";
+import Error from "./Error";
+import "./AddEditWorkout.css";
 
 function AddEditWorkout() {
     const blankWorkout = {
-        workoutId: "",
+        workoutId: "0",
         workoutName: "",
         imageUrl: "",
         categoryId: "0",
@@ -12,26 +14,93 @@ function AddEditWorkout() {
     }
 
     const { id } = useParams();
+    const [errors, setErrors] = useState();
+    let ableToSubmit = true;
+    const [method, setMethod] = useState("Add");
+    const history = useHistory();
 
-    const pathname = window.location.pathname;
+
 
     useEffect(() => {
+        const pathname = window.location.pathname;
         if (pathname.includes("edit")) {
+            setMethod("Edit");
             getWorkoutByWorkoutId(id)
-            .then(data => {
-                setWorkout(data);
-            })
-            .catch(console.log);
+                .then(data => {
+                    setWorkout(data);
+                    ableToSubmit = true;
+                })
+                .catch(err => {
+                    setErrors(err);
+                    ableToSubmit = false;
+                });
         }
-    }, [])
+        if (pathname.includes("add")) {
+            setMethod("Add");
+        }
+    }, [history])
+
+    function handleChange() {
+        const nextFullUserInfo = { ...fullUserInfo };
+        nextFullUserInfo[evt.target.name] = evt.target.value;
+        setFullUserInfo(nextFullUserInfo);
+    }
+
+    function handleChangeCategory() {
+
+    }
+
+    function handleClick() {
+        if (!ableToSubmit) {
+            return;
+        }
+
+    }
 
 
     const [workout, setWorkout] = useState(blankWorkout);
-    //currentworkout 
 
-    // for add workout receives blank workout as current workout. for edit, useParams to get current workout.
     return (
-        <div> {workout.workoutId}</div>
+        <div className="container">
+            <h2>{method} Workout</h2>
+            <Error errorMessages={errors} />
+            <form class="addEditWorkout" onSubmit={handleClick}>
+                <div className="row">
+                    <label htmlFor="workoutName">WorkoutName</label>
+                    <input type="text" id="workoutName" name="workoutName" value={workout.workoutName} onChange={handleChange} />
+                </div>
+                <div className="row">
+                    <label htmlFor="imageUrl">Workout Image Url</label>
+                    <input type="text" id="imageUrl" name="imageUrl" value={workout.imageUrl} onChange={handleChange} />
+                </div>
+                <div className="category">
+                    <label><div className="radioPrompt">Category</div>
+                        <input className="with-gap" name="category" value="1" type="radio" required checked={workout.categoryId === 1} onChange={handleChangeCategory} />
+                        <span>Upper Body Strength</span>
+                    </label><br />
+                    <label>
+                        <input className="with-gap" name="category" value="2" type="radio" checked={workout.categoryId === 2} onChange={handleChangeCategory} />
+                        <span>Lower Body Strength</span>
+                    </label><br />
+                    <label>
+                        <input className="with-gap" name="category" value="3" type="radio" checked={workout.categoryId === 3} onChange={handleChangeCategory} />
+                        <span>Cardio</span>
+                    </label><br />
+                    <label>
+                        <input className="with-gap" name="category" value="4" type="radio" checked={workout.categoryId === 4} onChange={handleChangeCategory} />
+                        <span>Mobility</span>
+                    </label><br />
+                    <label>
+                        <input className="with-gap" name="category" value="5" type="radio" checked={workout.categoryId === 5} onChange={handleChangeCategory} />
+                        <span>Rest Day</span>
+                    </label>
+                </div >
+                <div>
+                    <button type="submit" className="btn">{method}</button>
+                    <Link to="/adminworkoutcatalog" type="button" className="btn cancel">Cancel</Link>
+                </div>
+            </form >
+        </div >
     )
 }
 
