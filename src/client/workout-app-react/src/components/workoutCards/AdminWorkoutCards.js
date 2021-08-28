@@ -31,7 +31,7 @@ function AdminWorkoutCards( {workout} ) {
                     <p><b>Category: </b>{realCategory}</p>
                 </div>
                 <div className="sticky-action">
-                    <Link to={`/currentworkout/${workout.workoutId}`} className="btn-small">Select</Link>
+                    <Link to={`/editworkout/${workout.workoutId}`} className="btn-small">Select</Link>
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@ function AdminWorkoutCards( {workout} ) {
                     <p><b>Category: </b>{realCategory}</p>
                 </div>
                 <div className="sticky-action">
-                    <Link to={`/currentworkout/${workout.workoutId}`} className="btn-small">Select</Link>
+                    <Link to={`/editworkout/${workout.workoutId}`} className="btn-small">Select</Link>
                 </div>
             </div>
         </div>

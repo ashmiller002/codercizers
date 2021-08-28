@@ -61,9 +61,12 @@ function AddEditWorkout() {
         }
         if (method === "Edit") {
             editWorkoutById(workout)
-            .then(history.push("/adminworkoutcatalog"))
+            .then(data => {
+                history.push("/adminworkoutcatalog")
+            })
             .catch(err => {
-                setErrors(err);
+                //setErrors(err);
+                console.log(err);
             })
         } else if (method === "Add") {
 

@@ -48,6 +48,7 @@ export async function register(credentials) {
     }
   
     const init = {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",

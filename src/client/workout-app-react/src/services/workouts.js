@@ -94,9 +94,9 @@ export async function editWorkoutById(workout) {
         body: JSON.stringify(workout)
     };
     const response = await fetch(`${url}/api/workout/admin/${workout.workoutId}`, init);
-    if (response.status !== 200) {
+    if (response.status !== 204) {
         const messages = await response.json();
         return Promise.reject(messages);
     }
-    return await response.json();
+    return;
 }

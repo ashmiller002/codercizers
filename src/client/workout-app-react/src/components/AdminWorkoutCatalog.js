@@ -25,22 +25,14 @@ function AdminWorkoutCatalogue() {
     const [errors, setErrors] = useState();
     const [workouts, setWorkouts] = useState([tempworkout]);
 
+
     useEffect(() => {
         getAllWorkouts()
             .then(json => {
                 setWorkouts(json);
             })
             .catch(err => { console.log(err) })
-    }, [history])
-
-    // useEffect(async () => {
-    //     try {
-    //     const data = await getAllWorkouts();
-    //     setWorkouts(data);
-    //     } catch(err) {
-    //         console.log(err)
-    //     }
-    // }, [])
+    }, [])
 
     return (
         // Within this WorkoutCatalogue, admins can enable/disable a WorkoutCatalogue, or select to edit it.  
