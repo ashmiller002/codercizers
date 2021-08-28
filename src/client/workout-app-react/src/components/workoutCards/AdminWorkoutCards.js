@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { editWorkoutById } from '../../services/workouts';
 
 //these workout cards will have an edit button as well as an enable/disable button
-function AdminWorkoutCards( {workout} ) {
-
+function AdminWorkoutCards( {currentworkout} ) {
+    
+    const [workout, setWorkout] = useState(currentworkout);
     function getCategory() {
         if (workout === undefined) {
             return "Unknown";
@@ -18,7 +21,25 @@ function AdminWorkoutCards( {workout} ) {
     }
 
     const realCategory = getCategory();
+
+    function disableWorkout() {
+        const newWorkout = {...workout};
+        newWorkout.workoutStatus = "disable";
+
+        editWorkoutById(newWorkout)
+        .then(() => {
+            setWorkout(newWorkout);
+        })
+        .catch(console.log);
+
+    }
     
+    function enableWorkout() {
+        const newWorkout = {...workout};
+        newWorkout.workoutStatus = "enable";
+        setWorkout(newWorkout);
+    }
+
     if (workout.workoutStatus === "disable") {
         return (
             <div className="col s12 m6 l4 xl4">
@@ -31,7 +52,8 @@ function AdminWorkoutCards( {workout} ) {
                     <p><b>Category: </b>{realCategory}</p>
                 </div>
                 <div className="sticky-action">
-                    <Link to={`/editworkout/${workout.workoutId}`} className="btn-small">Select</Link>
+                    <Link to={`/editworkout/${workout.workoutId}`} className="btn-small">Edit</Link>
+                    <button class="btn-small cancel" onClick={enableWorkout}>Enable</button>
                 </div>
             </div>
         </div>
@@ -49,7 +71,8 @@ function AdminWorkoutCards( {workout} ) {
                     <p><b>Category: </b>{realCategory}</p>
                 </div>
                 <div className="sticky-action">
-                    <Link to={`/editworkout/${workout.workoutId}`} className="btn-small">Select</Link>
+                    <Link to={`/editworkout/${workout.workoutId}`} className="btn-small">Edit</Link>
+                    <button class="btn-small red darken-4 disable" onClick={disableWorkout}>Disable</button>
                 </div>
             </div>
         </div>
