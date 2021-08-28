@@ -2,6 +2,8 @@ package capstone.workout_buddy.models;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserWorkout {
 
@@ -9,7 +11,7 @@ public class UserWorkout {
     private int userId;
     private int activityId;
     private Date workoutDate;
-
+    private List<Workout> workouts = new ArrayList<>();
 
     public UserWorkout() {
     }
