@@ -40,7 +40,7 @@ function Login() {
                     const { jwt_token } = body;
                     localStorage.setItem('jwt_token', jwt_token);
                     const { id, roles } = jwtDecode(jwt_token);
-
+                    console.log(roles);
                     if (roles === "USER") {
                         setUserInformation(id, jwt_token, () => {
                             auth.onAuthenticated(jwt_token);

@@ -29,7 +29,6 @@ function WorkoutCatalog() {
         const categoryId = parseInt(evt.target.value, 10);
         getWorkoutsByCategoryId(categoryId)
             .then((json) => {
-                console.log(json);
                 setWorkouts(json);
             }
             )
@@ -49,7 +48,6 @@ function WorkoutCatalog() {
                 <button type="button" onClick={handleSelectCategory} value="4" className="btn-large">Mobility</button>
                 <button type="button" onClick={handleSelectCategory} value="5" className="btn-large">Rest Day</button>
             </div>
-            <div className="divider"></div>
             <Error errorMessages={errors} />
             <div className="row">
                 {workouts !== undefined && workouts.map(w => {
