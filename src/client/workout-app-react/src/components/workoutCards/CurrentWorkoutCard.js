@@ -9,11 +9,11 @@ function CurrentWorkoutCard({ workout, handleSubmit }) {
             return "Unknown";
         }
         switch (workout.categoryId) {
-            case "1": return "Upper Body Strength"
-            case "2": return "Lower Body Strength"
-            case "3": return "Cardio"
-            case "4": return "Mobility"
-            case "5": return "Rest Day"
+            case 1: return "Upper Body Strength"
+            case 2: return "Lower Body Strength"
+            case 3: return "Cardio"
+            case 4: return "Mobility"
+            case 5: return "Rest Day"
             default: return "Unknown"
         }
     }

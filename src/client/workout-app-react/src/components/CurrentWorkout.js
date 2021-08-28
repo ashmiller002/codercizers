@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import FullUserContext from '../contexts/FullUserContext';
-import { addWorkoutToUserHistory } from '../services/workouts';
+import { addWorkoutToUserHistory, getWorkoutByWorkoutId } from '../services/workouts';
 import Error from './Error';
 import CurrentWorkoutCard from './workoutCards/CurrentWorkoutCard';
 
@@ -23,14 +23,19 @@ function CurrentWorkout() {
     const [errors, setErrors] = useState();
     const [workout, setWorkout] = useState(blankWorkout);
 
-    // use http request getworkout by workout id
     useEffect(() => {
-        
+        getWorkoutByWorkoutId(workoutid)
+            .then(data => {
+                setWorkout(data);
+            })
+            .catch(err => {
+                console.log(err);
+                //setErrors(err);
+            })
     })
 
-    //function to add to user workout history
-    function handleSubmit(submittedWorkoutId,) {
-        addWorkoutToUserHistory("1", "2")
+    function handleSubmit(workoutId, userId) {
+        addWorkoutToUserHistory(workoutId, userId)
             .then(() => {
                 history.push("/workouthistory")
             })

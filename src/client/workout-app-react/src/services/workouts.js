@@ -58,12 +58,26 @@ export async function addWorkoutToUserHistory(workoutId, userId) {
             "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
-            workoutId: "1"
+            "workoutId": workoutId
         })
     };
     const response = await fetch(`${url}/workout/${userId}`, init);
     if (response.status !== 201) {
         return Promise.reject(["Could not add workout to user history"]);
+    }
+    return await response.json();
+}
+
+export async function getWorkoutHistory(userId) {
+    const token = localStorage.getItem('jwt_token');
+    const init = {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    };
+    const response = await fetch(`${url}/workout/${userId}`, init);
+    if (response.status !== 200) {
+        return Promise.reject(["Could not get workout history"]);
     }
     return await response.json();
 }
