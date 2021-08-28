@@ -79,12 +79,14 @@ public class WorkoutJdbcTemplateRepository implements WorkoutRepository {
         final String sql = "update workout set "
                 + "workout_name = ?, "
                 + "category_id = ?, "
+                + "workout_status = ?, "
                 + "image_url = ? "
                 + "where workout_id = ?;";
 
         return jdbcTemplate.update(sql,
                 workout.getWorkoutName(),
                 workout.getCategoryId(),
+                workout.getWorkoutStatus(),
                 workout.getImageUrl(),
                 workout.getWorkoutId()) > 0;
     }
