@@ -8,8 +8,7 @@ import WorkoutHistory from './components/WorkoutHistory.js';
 import AddExternalWorkout from './components/AddExternalWorkout.js';
 import './App.css';
 import Account from './components/Account.js';
-import AddWorkout from './components/AddWorkout.js';
-import EditWorkout from './components/EditWorkout.js';
+import AddEditWorkout from './components/AddEditWorkout.js';
 import Home from './components/Home.js';
 import AdminWorkoutCatalog from './components/AdminWorkoutCatalog.js';
 import Login from './components/Login.js';
@@ -51,6 +50,8 @@ function App() {
     goal: null, // strength = 1, mobility = 2, weight loss = 3 
     activityLevel: null, // frequent = 2 or infrequent = 1 send just number
   }
+
+ 
   const [fullUser, setFullUser] = useState(blankUser);
   // on login get user info and setFullUser
   const parseToken = (token) => {
@@ -84,14 +85,6 @@ function App() {
     setInitialized(true);
   }, [history])
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('jwt_token');
-  //   if (token) {
-  //     onAuthenticated(token);
-  //   }
-
-  //   setInitialized(true);
-  // }, [])
 
   function setFullUserInformation(userInfo) {
     const { loginId, userId, firstName, lastName, dateBirth, email, goalId, activityLevelId } = userInfo;
@@ -189,15 +182,6 @@ function App() {
                 : <Redirect to="/login" />
               }
             </Route>
-            <Route path="/addexternalworkout">
-              {auth.user !== null && auth.user[1] === "USER"
-                ? <div>
-                  <UserNavBar />
-                  <AddExternalWorkout />
-                </div>
-                : <Redirect to="/login" />
-              }
-            </Route>
             <Route path="/account">
               {auth.user !== null && auth.user[1] === "USER"
                 ? <div>
@@ -221,16 +205,16 @@ function App() {
               {auth.user !== null && auth.user[1] === "ADMIN"
                 ? <div>
                   <AdminNavBar />
-                  <AddWorkout />
+                  <AddEditWorkout/>
                 </div>
                 : <Redirect to="/login" />
               }
             </Route>
-            <Route path="/editworkout/:workoutid">
+            <Route path="/editworkout/:id">
               {auth.user !== null && auth.user[1] === "ADMIN"
                 ? <div>
                   <AdminNavBar />
-                  <EditWorkout />
+                  <AddEditWorkout/>
                 </div>
                 : <Redirect to="/login" />
               }
@@ -268,8 +252,9 @@ function App() {
                   <AdminHome />
                 </div>
               }
-
-
+            </Route>
+            <Route>
+              <NotFound />
             </Route>
           </Switch>
         </Router>

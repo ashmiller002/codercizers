@@ -55,7 +55,6 @@ console.log(auth.fullUser);
             <Link to="/" className={"btn " + selected[4]} id="home">Home</Link>
             <Link to="/workoutcatalog" className={"btn " + selected[0]} id="workoutCatalog">Workout Catalog</Link>
             <Link to="workouthistory" className={"btn " + selected[1]} id="workoutHistory" >Workout History</Link>
-            <Link to="addexternalworkout" className={"btn " + selected[2]} id="addExternalWorkout">Add External Workout</Link>
             <Link to="account" className={"btn " + selected[3]} id="account" >Account</Link>
 
             {auth.user !== null &&
