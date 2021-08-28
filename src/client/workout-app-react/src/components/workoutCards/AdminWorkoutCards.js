@@ -25,7 +25,6 @@ function AdminWorkoutCards( {currentworkout} ) {
     function disableWorkout() {
         const newWorkout = {...workout};
         newWorkout.workoutStatus = "disable";
-
         editWorkoutById(newWorkout)
         .then(() => {
             setWorkout(newWorkout);
@@ -38,6 +37,11 @@ function AdminWorkoutCards( {currentworkout} ) {
         const newWorkout = {...workout};
         newWorkout.workoutStatus = "enable";
         setWorkout(newWorkout);
+        editWorkoutById(newWorkout)
+        .then(() => {
+            setWorkout(newWorkout);
+        })
+        .catch(console.log);
     }
 
     if (workout.workoutStatus === "disable") {

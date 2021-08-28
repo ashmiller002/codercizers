@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { editWorkoutById, getWorkoutByWorkoutId } from "../services/workouts";
+import { addWorkout, editWorkoutById, getWorkoutByWorkoutId } from "../services/workouts";
 import Error from "./Error";
 import "./AddEditWorkout.css";
 
@@ -62,14 +62,21 @@ function AddEditWorkout() {
         if (method === "Edit") {
             editWorkoutById(workout)
             .then(data => {
-                history.push("/adminworkoutcatalog")
+                history.push("/adminworkoutcatalog");
             })
             .catch(err => {
                 //setErrors(err);
                 console.log(err);
             })
         } else if (method === "Add") {
-
+            addWorkout(workout)
+            .then(data => {
+                history.push("/adminworkoutcatalog");
+            })
+            .catch(err => {
+                //setErrors(err);
+                console.log(err);
+            })
         }
 
 
