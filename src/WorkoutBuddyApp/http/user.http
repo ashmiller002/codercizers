@@ -19,7 +19,6 @@ Authorization: Bearer {{token}}
 ###
 POST {{url}} HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer {{token}}
 
 {
     "loginId": "login8",
