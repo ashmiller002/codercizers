@@ -81,3 +81,22 @@ export async function getAllWorkouts() {
     }
     return await response.json();
 }
+
+export async function editWorkoutById(workout) {
+    const token = localStorage.getItem('jwt_token');
+    const init = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(workout)
+    };
+    const response = await fetch(`${url}/api/workout/admin/${workout.workoutId}`, init);
+    if (response.status !== 200) {
+        const messages = await response.json();
+        return Promise.reject(messages);
+    }
+    return await response.json();
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { getWorkoutByWorkoutId } from "../services/workouts";
+import { editWorkoutById, getWorkoutByWorkoutId } from "../services/workouts";
 import Error from "./Error";
 import "./AddEditWorkout.css";
 
@@ -40,20 +40,35 @@ function AddEditWorkout() {
         }
     }, [history])
 
-    function handleChange() {
-        const nextFullUserInfo = { ...fullUserInfo };
-        nextFullUserInfo[evt.target.name] = evt.target.value;
-        setFullUserInfo(nextFullUserInfo);
+    function handleChange(evt) {
+        const nextWorkout = { ...workout };
+        nextWorkout[evt.target.name] = evt.target.value;
+        setWorkout(nextWorkout);
     }
 
-    function handleChangeCategory() {
-
+    function handleChangeCategory(evt) {
+        const nextWorkout = { ...workout };
+        if (evt.target.checked) {
+            nextWorkout.categoryId = parseInt(evt.target.value);
+            setWorkout(nextWorkout);
+        }
     }
 
-    function handleClick() {
+    function handleClick(evt) {
+        evt.preventDefault();
         if (!ableToSubmit) {
             return;
         }
+        if (method === "Edit") {
+            editWorkoutById(workout)
+            .then(history.push("/adminworkoutcatalog"))
+            .catch(err => {
+                setErrors(err);
+            })
+        } else if (method === "Add") {
+
+        }
+
 
     }
 
