@@ -20,6 +20,7 @@ import EditAccount from './components/EditAccount.js';
 import CurrentWorkout from './components/CurrentWorkout.js';
 import { refresh } from './services/auth.js';
 import { getUserWithLoginId } from './services/user.js';
+import AdminHome from './components/AdminHome.js';
 
 const wait = 1000 * 60 * 7;
 
@@ -67,7 +68,9 @@ function App() {
     const payload = parseToken(token);
     setUser([payload.sub, payload.roles, payload.id]);
     localStorage.setItem('jwt_token', token);
-    setUserInformation(token);
+    if (payload.roles === "USER") {
+      setUserInformation(token);
+    }
     setTimeout(refreshToken, wait);
 
   }
@@ -252,15 +255,21 @@ function App() {
               {auth.user === null &&
                 <Redirect to="/login" />}
               {auth.user !== null && auth.user[1] === "USER" &&
-                <UserNavBar />
+                <div>
+                  <UserNavBar />
+                  <Home />
+                </div>
               }
 
               {/* if admin: */}
               {auth.user !== null && auth.user[1] === "ADMIN" &&
-                <AdminNavBar />
+                <div>
+                  <AdminNavBar />
+                  <AdminHome />
+                </div>
               }
 
-              <Home />
+
             </Route>
           </Switch>
         </Router>

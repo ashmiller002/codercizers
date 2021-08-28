@@ -22,16 +22,20 @@ function WorkoutCatalog() {
         workoutStatus: "enable"
     }
 
+    const [errors, setErrors] = useState();
+    const [workouts, setWorkouts] = useState([blankWorkout]);
+
     function handleSelectCategory(evt) {
-        getWorkoutsByCategoryId(evt.target.value)
-            .then(json =>
-                setWorkouts(json)
+        const categoryId = parseInt(evt.target.value, 10);
+        getWorkoutsByCategoryId(categoryId)
+            .then((json) => {
+                setWorkouts(json);
+            }
             )
             .catch(err =>
                 setErrors(err))
     }
-    const [errors, setErrors] = useState();
-    const [workouts, setWorkouts] = useState([blankWorkout]);
+
 
     return (
         <div className="container">
@@ -44,7 +48,6 @@ function WorkoutCatalog() {
                 <button type="button" onClick={handleSelectCategory} value="4" className="btn-large">Mobility</button>
                 <button type="button" onClick={handleSelectCategory} value="5" className="btn-large">Rest Day</button>
             </div>
-            <div className="divider"></div>
             <Error errorMessages={errors} />
             <div className="row">
                 {workouts !== undefined && workouts.map(w => {
