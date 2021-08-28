@@ -6,18 +6,18 @@ import AdminWorkoutCards from "./workoutCards/AdminWorkoutCards.js"
 function AdminWorkoutCatalogue() {
 
     const blankWorkout = {
-        workoutId: "",
+        workoutId: 0,
         workoutName: "",
         imageUrl: "",
-        categoryId: "0",
+        categoryId: 0,
         workoutStatus: "enable"
     }
     //delete tempworkout
     const tempworkout = {
-        workoutId: "1",
+        workoutId: 1,
         workoutName: "Dance!",
         imageUrl: "https://media1.popsugar-assets.com/files/thumbor/3ZSWfYrYxA4Fg6R1KRIuRqqQd4Q/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2019/07/16/731/n/1922729/85d1ce265d2dfc639070a3.22857928_/i/25-Minute-Total-Body-Strength-Workout.jpg",
-        categoryId: "3",
+        categoryId: 3,
         workoutStatus: "enable"
     }
 
@@ -32,6 +32,15 @@ function AdminWorkoutCatalogue() {
             .catch(err => { console.log(err) })
     }, [])
 
+    // useEffect(async () => {
+    //     try {
+    //     const data = await getAllWorkouts();
+    //     setWorkouts(data);
+    //     } catch(err) {
+    //         console.log(err)
+    //     }
+    // }, [])
+
     return (
         // Within this WorkoutCatalogue, admins can enable/disable a WorkoutCatalogue, or select to edit it.  
         <div className="container">
@@ -39,7 +48,7 @@ function AdminWorkoutCatalogue() {
             <Error errorMessages={errors} />
             <div className="row">
                 {workouts.map(w => {
-                    return <AdminWorkoutCards workout={w} />
+                    return <AdminWorkoutCards key={w.workoutId} workout={w} />
                 })}
             </div>
         </div>
