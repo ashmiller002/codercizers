@@ -26,13 +26,21 @@ public class WorkoutController {
     }
 
     @GetMapping("/{workoutId}")
-    public Workout findById(@PathVariable int workoutId){
-        return service.findById(workoutId);
+    public ResponseEntity<Workout> findById(@PathVariable int workoutId){
+        Workout workout = service.findById(workoutId);
+        if(workout == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(workout);
     }
 
     @GetMapping("/category/{categoryId}")
-    public List<Workout> findByCategory(@PathVariable int categoryId){
-        return service.findByCategory(categoryId);
+    public ResponseEntity<List<Workout>> findByCategory(@PathVariable int categoryId){
+        List<Workout> workouts = service.findByCategory(categoryId);
+        if(workouts == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(workouts);
     }
 
     @PostMapping("/admin")

@@ -29,7 +29,7 @@ public class ProgramJdbcTemplateRepository implements ProgramRepository{
     @Override
     public Program findByGoalAndActivity(int goalId, int activityId){
 
-        final String sql = "select activity_level_id, goal_id " +
+        final String sql = "select program_id, activity_level_id, goal_id " +
                 "from program " +
                 "where activity_level_id = ? and goal_id = ?;";
 
