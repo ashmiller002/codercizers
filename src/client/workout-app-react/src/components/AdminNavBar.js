@@ -85,7 +85,7 @@ function AdminNavBar() {
                 <li><Link to="/adminworkoutcatalog" className={"btn " + selected[1]} id="adminWorkoutCatalog" onClick={handleClick}>Workout Catalog</Link></li>
                 <li><Link to="/addworkout" className={"btn " + selected[2]} id="addWorkout" onClick={handleClick}>Add Workout</Link></li>
                 {auth.user !== null &&
-                    <li> <Link className={"btn"} id="logout" onClick={auth.logout}>Logout</Link></li>
+                    <li> <a className={"btn"} id="logout" onClick={auth.logout}>Logout</a></li>
                 }
             </ul>
         </div>

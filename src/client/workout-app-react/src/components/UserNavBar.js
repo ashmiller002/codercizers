@@ -81,7 +81,7 @@ function UserNavBar() {
                 <li><Link to="account" className={"btn " + selected[3]} id="account" >Account</Link></li>
 
                 {auth.user !== null &&
-                    <li><Link className="btn" id="logout" onClick={auth.logout}>Logout</Link></li>
+                    <li><a className="btn" id="logout" onClick={auth.logout}>Logout</a></li>
                 }
             </ul>
 
