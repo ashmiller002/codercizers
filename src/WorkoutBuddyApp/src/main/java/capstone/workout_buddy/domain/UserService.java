@@ -64,7 +64,6 @@ public class UserService {
             result.addMessage(msg, ResultType.NOT_FOUND);
             return result;
         }
-
         result.setPayload(user);
         return result;
     }

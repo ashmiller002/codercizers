@@ -96,4 +96,12 @@ class UserJdbcTemplateRepositoryTest {
         assertEquals(LocalDate.of(1988, 2, 14), actual.getDateBirth());
     }
 
+    @Test
+    void shouldNotUpdateInvalidUser(){
+        User actual = repository.findByUserId(6);
+        actual.setUserId(100);
+        boolean result = repository.update(actual);
+        assertFalse(result);
+    }
+
 }

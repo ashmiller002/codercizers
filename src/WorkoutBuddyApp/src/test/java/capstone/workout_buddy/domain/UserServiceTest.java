@@ -152,18 +152,40 @@ class UserServiceTest {
 
     @Test
     void shouldUpdateUser() {
+        User actual = makeUser();
+        actual.setUserId(2);
+        when(repository.update(actual)).thenReturn(true);
+        Result<User> result = service.update(actual);
+
+        assertTrue(result.isSuccess());
+        assertEquals(ResultType.SUCCESS, result.getType());
+    }
+
+    @Test
+    void shouldNotUpdateDupEmail(){
+        User actual = makeUser();
         User user1 = makeUser();
-        user1.setUserId(2);
+        user1.setUserId(7);
         ArrayList<User> list = new ArrayList<>();
         list.add(user1);
         when(repository.findAll()).thenReturn(list);
 
-        User actual = makeUser();
-        actual.setUserId(2);
         Result<User> result = service.update(actual);
-        assertTrue(result.isSuccess());
+        assertFalse(result.isSuccess());
+        assertEquals("This email is already registered to an account", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotUpdateEmptyFields(){
 
     }
+
+    @Test
+    void shouldNotUpdateInvalidDateBirth(){
+        
+    }
+
+
 
 
 
