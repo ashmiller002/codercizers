@@ -177,12 +177,47 @@ class UserServiceTest {
 
     @Test
     void shouldNotUpdateEmptyFields(){
+        User user = makeUser();
+        user.setUserId(2);
+        user.setEmail("");
+        Result<User> result = service.update(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Cannot add user without valid email.", result.getMessages().get(0));
+
+        user.setEmail("chad@test.com");
+        user.setFirstName("");
+        result = service.update(user);
+        assertFalse(result.isSuccess());
+        assertEquals("First name required.", result.getMessages().get(0));
+
+        user.setFirstName("Chad");
+        user.setLastName("");
+        result = service.update(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Last name required.", result.getMessages().get(0));
 
     }
 
     @Test
     void shouldNotUpdateInvalidDateBirth(){
-        
+        User user = makeUser();
+        user.setUserId(2);
+        user.setDateBirth(null);
+
+        Result<User> result = service.update(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Date of birth required.", result.getMessages().get(0));
+
+        user.setDateBirth(LocalDate.of(2021, 8, 29));
+        result = service.update(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Must provide valid date of birth.", result.getMessages().get(0));
+
+        user.setDateBirth(LocalDate.of(2021, 9, 4));
+        result = service.update(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Must provide valid date of birth.", result.getMessages().get(0));
+
     }
 
 
