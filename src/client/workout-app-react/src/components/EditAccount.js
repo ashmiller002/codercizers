@@ -8,14 +8,13 @@ import Error from './Error';
 import './Register.css';
 
 
-function Register() {
+function EditAccount() {
 
     const [errors, setErrors] = useState();
     const auth = useContext(LoginContext);
-    const fullUser = useContext(FullUserContext);
     const history = useHistory();
-
-
+    console.log("hello");
+    console.log(auth.fullUser);
     const blankCredentials = {
         username: "",
         password: ""
@@ -31,7 +30,7 @@ function Register() {
         activityLevel: "",
     }
 
-    const [fullUserInfo, setFullUserInfo] = useState(fullUser);
+    const [fullUserInfo, setFullUserInfo] = useState(auth.fullUser);
 
     function onChangeFullUser(evt) {
         const nextFullUserInfo = { ...fullUserInfo };
@@ -133,4 +132,4 @@ function Register() {
     )
 }
 
-export default Register;
+export default EditAccount;

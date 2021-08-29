@@ -20,6 +20,7 @@ import CurrentWorkout from './components/CurrentWorkout.js';
 import { refresh } from './services/auth.js';
 import { getUserWithLoginId } from './services/user.js';
 import AdminHome from './components/AdminHome.js';
+import NotFound from './components/NotFound.js';
 
 const wait = 1000 * 60 * 7;
 
@@ -254,6 +255,14 @@ function App() {
               }
             </Route>
             <Route>
+            {auth.user !== null && auth.user[1] === "USER" &&
+                  <UserNavBar />
+              }
+
+              {/* if admin: */}
+              {auth.user !== null && auth.user[1] === "ADMIN" &&
+                  <AdminNavBar />
+              }
               <NotFound />
             </Route>
           </Switch>

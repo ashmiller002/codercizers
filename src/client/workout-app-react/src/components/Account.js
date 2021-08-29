@@ -7,10 +7,10 @@ function Account() {
 
     const auth = useContext(LoginContext);
     function getGoal() {
-        switch (auth.fullUser.goal) {
-            case "1": return "Strength";
-            case "2": return "Mobility";
-            case "3": return "Weight Loss";
+        switch (auth.fullUser.goalId) {
+            case 1: return "Strength";
+            case 2: return "Mobility";
+            case 3: return "Weight Loss";
             default: return "Unknown";
         }
     }
@@ -18,14 +18,14 @@ function Account() {
     const realGoal = getGoal();
 
     function getActivityLevel() {
-        switch (auth.fullUser.activityLevel) {
-            case "1": return "Less than 3 times per week";
-            case "2": return "3 times per week or more";
+        switch (auth.fullUser.activityLevelId) {
+            case 1: return "Less than 3 times per week";
+            case 2: return "3 times per week or more";
         }
     }
 
     const realActivityLevel = getActivityLevel();
-
+console.log(auth.fullUser);
 
 
     return (
