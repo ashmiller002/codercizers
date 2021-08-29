@@ -62,7 +62,46 @@ class UserJdbcTemplateRepositoryTest {
     void shouldFindAll() {
         List<User> actual = repository.findAll();
         assertNotNull(actual);
-        assertEquals(6, actual.size());
+        assertEquals(7, actual.size());
 
     }
+
+    @Test
+    void shouldUpdateFirstName() {
+        User actual = repository.findByUserId(6);
+        actual.setFirstName("Chad");
+        boolean result = repository.update(actual);
+        assertTrue(result);
+        actual = repository.findByUserId(6);
+        assertEquals("Chad", actual.getFirstName());
+    }
+
+    @Test
+    void shouldUpdateLastName(){
+        User actual = repository.findByUserId(6);
+        actual.setLastName("Ginsy");
+        boolean result = repository.update(actual);
+        assertTrue(result);
+        actual = repository.findByUserId(6);
+        assertEquals("Ginsy", actual.getLastName());
+    }
+
+    @Test
+    void shouldUpdateBirthDate(){
+        User actual = repository.findByUserId(6);
+        actual.setDateBirth(LocalDate.of(1988, 2, 14));
+        boolean result = repository.update(actual);
+        assertTrue(result);
+        actual = repository.findByUserId(6);
+        assertEquals(LocalDate.of(1988, 2, 14), actual.getDateBirth());
+    }
+
+    @Test
+    void shouldNotUpdateInvalidUser(){
+        User actual = repository.findByUserId(6);
+        actual.setUserId(100);
+        boolean result = repository.update(actual);
+        assertFalse(result);
+    }
+
 }
