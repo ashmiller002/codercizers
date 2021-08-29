@@ -79,14 +79,22 @@ public class UserJdbcTemplateRepository implements UserRepository {
     public boolean update(User user) {
 
         final String sql = "update `user` set "
-                + "first_name = ? "
-                + "last_name = ? "
-                + "date_birth = ? "
-                + "email = ? "
-                + "program_id = ? "
-                + "login_id = ?; ";
+                + "first_name = ?, "
+                + "last_name = ?, "
+                + "date_birth = ?, "
+                + "email = ?, "
+                + "program_id = ?, "
+                + "login_id = ? " +
+                "where user_id = ?;";
 
-        return false;
+        return jdbcTemplate.update(sql,
+                user.getFirstName(),
+                user.getLastName(),
+                user.getDateBirth(),
+                user.getEmail(),
+                user.getProgram(),
+                user.getLoginId(),
+                user.getUserId()) > 0;
     }
 
 }

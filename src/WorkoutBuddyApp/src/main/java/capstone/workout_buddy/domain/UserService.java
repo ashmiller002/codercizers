@@ -28,15 +28,15 @@ public class UserService {
     }
 
     public Result<User> add(User user){
-        Result<User> result = validation(user);
+        Result<User> result = validationAdd(user);
+
+        if(!result.isSuccess()) {
+            return result;
+        }
 
         if (user.getProgram() == 0){
             Program program = programRepository.findByGoalAndActivity(user.getGoalId(), user.getActivityLevelId());
             user.setProgramId(program.getProgramId());
-        }
-
-        if(!result.isSuccess()) {
-            return result;
         }
 
         user = repository.add(user);
@@ -45,7 +45,7 @@ public class UserService {
     }
 
 
-    private Result<User> validation(User user){
+    private Result<User> validationAdd(User user){
         Result<User> result = new Result<>();
 
         if (user == null){
@@ -81,8 +81,11 @@ public class UserService {
     private Result<User> validateDupEmails(Result<User> result, User user){
         List<User> users = repository.findAll();
         for (User u: users){
-            if (u.getEmail().equalsIgnoreCase(user.getEmail())){
-                result.addMessage("This email is already registered to an account", ResultType.INVALID);
+            if (u.getUserId() != user.getUserId()){
+                if (u.getEmail().equalsIgnoreCase(user.getEmail())){
+                    result.addMessage("This email is already registered to an account", ResultType.INVALID);
+                    return result;
+                }
             }
         }
         return result;

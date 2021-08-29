@@ -73,12 +73,14 @@ class UserServiceTest {
 
     @Test
     void shouldNotAddDuplicateEmail(){
-        User user = makeUser();
+        User user1 = makeUser();
+        user1.setUserId(7);
         ArrayList<User> list = new ArrayList<>();
-        list.add(user);
+        list.add(user1);
         when(repository.findAll()).thenReturn(list);
 
-        Result<User> result = service.add(user);
+        User actual = makeUser();
+        Result<User> result = service.add(actual);
         assertFalse(result.isSuccess());
         assertEquals("This email is already registered to an account", result.getMessages().get(0));
     }
