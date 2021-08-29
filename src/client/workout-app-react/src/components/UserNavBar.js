@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./UserNavBar.css";
 import LoginContext from "../contexts/LoginContext";
 import FullUserContext from "../contexts/FullUserContext";
-import M from  'materialize-css/dist/js/materialize.min.js';
+import M from 'materialize-css/dist/js/materialize.min.js';
 
 function UserNavBar() {
 
@@ -47,45 +47,42 @@ function UserNavBar() {
             selected = selectedCopy;
         }
     }
-        useEffect(() => {
-            let sidenav = document.querySelector('#mobile-demo');
-            M.Sidenav.init(sidenav, {});
-        }, [])
+    useEffect(() => {
+        let sidenav = document.querySelector('#mobile-demo');
+        M.Sidenav.init(sidenav, {});
+    }, [])
 
-      
+
 
     return (
         <div>
             <nav id="navbar" >
                 <div className="nav-wrapper">
-                <Link className="sidenav-trigger" data-target="mobile-demo"><i className="material-icons">menu</i></Link>
-                <ul className="hide-on-med-and-down">
-                    <li><Link to="/" className={"btn " + selected[4]} id="home">Home</Link></li>
-                    <li><Link to="/workoutcatalog" className={"btn " + selected[0]} id="workoutCatalog">Workout Catalog</Link></li>
-                    <li><Link to="workouthistory" className={"btn " + selected[1]} id="workoutHistory" >Workout History</Link></li>
-                    <li><Link to="account" className={"btn " + selected[3]} id="account" >Account</Link></li>
+                    <Link className="sidenav-trigger" data-target="mobile-demo"><i className="material-icons">menu</i></Link>
+                    <ul className="hide-on-med-and-down">
+                        <li><Link to="/" className={"btn " + selected[4]} id="home">Home</Link></li>
+                        <li><Link to="/workoutcatalog" className={"btn " + selected[0]} id="workoutCatalog">Workout Catalog</Link></li>
+                        <li><Link to="workouthistory" className={"btn " + selected[1]} id="workoutHistory" >Workout History</Link></li>
+                        <li><Link to="account" className={"btn " + selected[3]} id="account" >Account</Link></li>
 
-                    {auth.user !== null &&
-                        <li><button type="button" className="btn" id="logout" onClick={auth.logout}>Logout</button></li>
-                    }
-                    {auth.user !== null &&
-                        <li><span>Hello,&nbsp;{auth.fullUser.firstName}</span></li>
-                    }
-                </ul>
+                        {auth.user !== null &&
+                            <li><button type="button" className="btn" id="logout" onClick={auth.logout}>Logout</button></li>
+                        }
+                        {auth.user !== null &&
+                            <li><span>Hello,&nbsp;{auth.fullUser.firstName}</span></li>
+                        }
+                    </ul>
                 </div>
             </nav>
             <ul className="sidenav" id="mobile-demo">
-            <li><Link to="/" className={"btn " + selected[4]} id="home">Home</Link></li>
-                    <li><Link to="/workoutcatalog" className={"btn " + selected[0]} id="workoutCatalog">Workout Catalog</Link></li>
-                    <li><Link to="workouthistory" className={"btn " + selected[1]} id="workoutHistory" >Workout History</Link></li>
-                    <li><Link to="account" className={"btn " + selected[3]} id="account" >Account</Link></li>
+                <li><Link to="/" className={"btn " + selected[4]} id="home">Home</Link></li>
+                <li><Link to="/workoutcatalog" className={"btn " + selected[0]} id="workoutCatalog">Workout Catalog</Link></li>
+                <li><Link to="workouthistory" className={"btn " + selected[1]} id="workoutHistory" >Workout History</Link></li>
+                <li><Link to="account" className={"btn " + selected[3]} id="account" >Account</Link></li>
 
-                    {auth.user !== null &&
-                        <li><Link type="button" className="btn" id="logout" onClick={auth.logout}>Logout</Link></li>
-                    }
-                    {auth.user !== null &&
-                        <li><span>Hello,&nbsp;{auth.fullUser.firstName}</span></li>
-                    }
+                {auth.user !== null &&
+                    <li><Link className="btn" id="logout" onClick={auth.logout}>Logout</Link></li>
+                }
             </ul>
 
         </div>
