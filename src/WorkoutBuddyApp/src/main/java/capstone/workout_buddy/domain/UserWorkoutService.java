@@ -43,20 +43,16 @@ public class UserWorkoutService {
             return result;
         }
 
-        if (userWorkout.getWorkout().equals(null)) {
+        if (userWorkout.getWorkout()==null) {
             result.addMessage("User workout is required", ResultType.INVALID);
         }
 
-        if (userWorkout.getWorkoutDate().equals(null)) {
+        if (userWorkout.getWorkoutDate()==null) {
             result.addMessage("Workout Date is required", ResultType.INVALID);
         }
 
         if (userWorkout.getUserId() <= 0) {
             result.addMessage("UserId is required.", ResultType.INVALID);
-        }
-
-        if(userWorkout.getUserWorkoutId() <= 0){
-            result.addMessage("User Workout Id required.", ResultType.INVALID);
         }
 
         return result;
