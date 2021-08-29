@@ -1,17 +1,20 @@
 #navbar {
     background-color: black;
-    ;
+    height: 50px;
+    line-height: 48px;
 }
 
-#navbar > .btn {
+#navbar .btn {
     color:rgb(255, 255, 255);
     background-color: black;
     box-shadow: none;
+    margin-top: 0px;
 }
 
-#navbar > .btn:hover {
+#navbar .btn:hover {
     color:rgb(182, 182, 182)
 }
+
 
 .btn.selected {
     font-weight: 700;
@@ -26,4 +29,5 @@
 span {
     color:rgb(192, 192, 192);
     vertical-align: middle;
+    margin-top: -2px;
 }

@@ -59,7 +59,7 @@ function handleClick(evt) {
 
 
     return (
-        <div id="navbar" >
+        <nav id="navbar" >
             <Link to="/" className={"btn " + selected[0]} id="home" onClick={handleClick}>Home</Link>
             <Link  to="/adminworkoutcatalog" className={"btn " + selected[1]} id="adminWorkoutCatalog" onClick={handleClick}>Workout Catalog</Link>
             <Link to="/addworkout" className={"btn " + selected[2]} id="addWorkout" onClick={handleClick}>Add Workout</Link>
@@ -75,7 +75,7 @@ function handleClick(evt) {
             {auth.user !== null &&
                 <span>Hello,&nbsp;{auth.user[0]}</span>
             }
-        </div>
+        </nav>
     )
 }
 
