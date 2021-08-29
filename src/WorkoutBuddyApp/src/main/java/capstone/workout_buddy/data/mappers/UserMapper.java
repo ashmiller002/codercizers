@@ -20,6 +20,7 @@ public class UserMapper implements RowMapper<User> {
         user.setProgramId(resultSet.getInt("program_id"));
         user.setLoginId(resultSet.getString("login_id"));
 
+
         return user;
     }
 }

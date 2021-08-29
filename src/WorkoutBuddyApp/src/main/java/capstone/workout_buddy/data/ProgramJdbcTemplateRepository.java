@@ -19,11 +19,20 @@ public class ProgramJdbcTemplateRepository implements ProgramRepository{
     @Override
     public List<Program> findAll(){
         final String sql = "select program_id, activity_level_id, goal_id " +
-                "from program " +
-                "where program = ?;";
+                "from program; ";
 
         return jdbcTemplate.query(sql, new ProgramMapper());
 
+    }
+
+    @Override
+    public Program findById(int programId){
+        final String sql = "select program_id, activity_level_id, goal_id " +
+                "from program " +
+                "where program_id = ?;";
+
+        return jdbcTemplate.query(sql, new ProgramMapper(), programId)
+                .stream().findFirst().orElse(null);
     }
 
     @Override

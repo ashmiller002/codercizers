@@ -24,7 +24,12 @@ public class UserService {
     }
 
     public User findByLoginId(String loginId){
-        return repository.findByLoginId(loginId);
+        User user = repository.findByLoginId(loginId);
+        Program program = programRepository.findById(user.getProgram());
+        user.setActivityLevelId(program.getActivityLevelId());
+        user.setGoalId(program.getGoalId());
+        
+        return user;
     }
 
     public Result<User> add(User user){
