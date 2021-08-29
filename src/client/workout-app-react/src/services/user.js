@@ -48,7 +48,7 @@ export async function editUser(user) {
         },
         body: JSON.stringify(user)
     };
-    return fetch(`${url}/workouts/${user.loginId}`, init)
+    return fetch(`${url}/api/user/${user.loginId}`, init)
     .then(async response => {
         if (response.status === 204) {
             return response.json();
