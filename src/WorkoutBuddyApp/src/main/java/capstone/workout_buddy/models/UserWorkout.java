@@ -17,11 +17,12 @@ public class UserWorkout {
     public UserWorkout() {
     }
 
-    public UserWorkout(int userWorkoutId, int userId, int activityId, Date workoutDate) {
+    public UserWorkout(int userWorkoutId, int userId, int activityId, Date workoutDate, Workout workout) {
         this.userWorkoutId = userWorkoutId;
         this.userId = userId;
         this.activityId = activityId;
         this.workoutDate = workoutDate;
+        this.workout = workout;
     }
 
     public int getUserWorkoutId() {
