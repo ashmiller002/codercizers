@@ -79,20 +79,20 @@ insert into goal (goal_id, goal_name)
 		(2, 'Mobility'),
         (3, 'Weight Loss');
         
-insert into workout (workout_id, workout_name, category_id, workout_status)
-	values (1, 'Upper Body 1', 1, 'enable'),
-			(2, 'Upper Body 2', 1, 'enable'),
-            (3, 'Upper Body External', 1, 'enable'),
-            (4, 'Lower Body 1', 2, 'enable'),
-            (5, 'Lower Body 2', 2, 'enable'),
-            (6, 'Lower Body External', 2, 'enable'),
-            (7, 'Running', 3, 'enable'),
-            (8, 'Dance Cardio', 3, 'enable'),
-            (9, 'Cardio External', 3, 'enable'),
-            (10, 'Stretching', 4, 'enable'),
-            (11, 'Yoga', 4, 'enable'),
-            (12, 'Stretching External', 4, 'enable'),
-            (13, 'Rest Day', 5, 'enable');
+insert into workout (workout_id, workout_name, category_id, workout_status, image_url)
+	values (1, 'Upper Body 1', 1, 'enable', 'https://imgur.com/dF3blwI.png'),
+			(2, 'Upper Body 2', 1, 'enable', 'https://i.imgur.com/uaaRNu0.png'),
+            (3, 'Upper Body External', 1, 'enable', 'https://i.imgur.com/zq8Hlu3.png'),
+            (4, 'Lower Body 1', 2, 'enable', 'https://i.imgur.com/42WAYxg.png'),
+            (5, 'Lower Body 2', 2, 'enable', 'https://i.imgur.com/sGKgalv.png'),
+            (6, 'Lower Body External', 2, 'enable', 'https://i.imgur.com/zq8Hlu3.png'),
+            (7, 'Running', 3, 'enable', 'https://i.imgur.com/0DvcuB1.png'),
+            (8, 'Dance Cardio', 3, 'enable', 'https://i.imgur.com/bQT9uvc.png'),
+            (9, 'Cardio External', 3, 'enable', 'https://i.imgur.com/zq8Hlu3.png'),
+            (10, 'Stretching', 4, 'enable', 'https://i.imgur.com/BeNobbF.png'),
+            (11, 'Yoga', 4, 'enable', 'https://i.imgur.com/xBOZab1.png'),
+            (12, 'Stretching External', 4, 'enable', 'https://i.imgur.com/zq8Hlu3.png'),
+            (13, 'Rest Day', 5, 'enable', 'https://i.imgur.com/JaLDgZD.png');
             
 	insert into activity_level (activity_level_id, activity_level_name)
 		values (1, 'infrequent'),
