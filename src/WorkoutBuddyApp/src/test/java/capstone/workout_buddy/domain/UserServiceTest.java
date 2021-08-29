@@ -150,6 +150,21 @@ class UserServiceTest {
         assertEquals("Date of birth required.", result.getMessages().get(0));
     }
 
+    @Test
+    void shouldUpdateUser() {
+        User user1 = makeUser();
+        user1.setUserId(2);
+        ArrayList<User> list = new ArrayList<>();
+        list.add(user1);
+        when(repository.findAll()).thenReturn(list);
+
+        User actual = makeUser();
+        actual.setUserId(2);
+        Result<User> result = service.update(actual);
+        assertTrue(result.isSuccess());
+
+    }
+
 
 
     User makeUser(){
@@ -160,8 +175,11 @@ class UserServiceTest {
         user.setDateBirth(LocalDate.of(1972, 4, 24));
         user.setLoginId("login111");
         user.setProgramId(2);
+        user.setGoalId(2);
+        user.setActivityLevelId(1);
         return user;
     }
+
 
 
 }

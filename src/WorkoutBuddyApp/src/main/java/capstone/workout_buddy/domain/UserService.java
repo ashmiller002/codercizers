@@ -28,7 +28,7 @@ public class UserService {
     }
 
     public Result<User> add(User user){
-        Result<User> result = validationAdd(user);
+        Result<User> result = validation(user);
 
         if(!result.isSuccess()) {
             return result;
@@ -44,8 +44,34 @@ public class UserService {
         return result;
     }
 
+    public Result<User> update(User user){
+        Result<User> result = validation(user);
 
-    private Result<User> validationAdd(User user){
+        if(!result.isSuccess()) {
+            return result;
+        }
+
+        Program program = programRepository.findByGoalAndActivity(user.getGoalId(), user.getActivityLevelId());
+        user.setProgramId(program.getProgramId());
+
+        if (user.getUserId() <= 0){
+            result.addMessage("UserId must be set for update operation", ResultType.INVALID);
+            return result;
+        }
+
+        if (!repository.update(user)){
+            String msg = String.format("UserId not found.");
+            result.addMessage(msg, ResultType.NOT_FOUND);
+            return result;
+        }
+
+        result.setPayload(user);
+        return result;
+    }
+
+
+
+    private Result<User> validation(User user){
         Result<User> result = new Result<>();
 
         if (user == null){
