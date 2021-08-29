@@ -73,12 +73,14 @@ class UserServiceTest {
 
     @Test
     void shouldNotAddDuplicateEmail(){
-        User user = makeUser();
+        User user1 = makeUser();
+        user1.setUserId(7);
         ArrayList<User> list = new ArrayList<>();
-        list.add(user);
+        list.add(user1);
         when(repository.findAll()).thenReturn(list);
 
-        Result<User> result = service.add(user);
+        User actual = makeUser();
+        Result<User> result = service.add(actual);
         assertFalse(result.isSuccess());
         assertEquals("This email is already registered to an account", result.getMessages().get(0));
     }
@@ -148,6 +150,78 @@ class UserServiceTest {
         assertEquals("Date of birth required.", result.getMessages().get(0));
     }
 
+    @Test
+    void shouldUpdateUser() {
+        User actual = makeUser();
+        actual.setUserId(2);
+        when(repository.update(actual)).thenReturn(true);
+        Result<User> result = service.update(actual);
+
+        assertTrue(result.isSuccess());
+        assertEquals(ResultType.SUCCESS, result.getType());
+    }
+
+    @Test
+    void shouldNotUpdateDupEmail(){
+        User actual = makeUser();
+        User user1 = makeUser();
+        user1.setUserId(7);
+        ArrayList<User> list = new ArrayList<>();
+        list.add(user1);
+        when(repository.findAll()).thenReturn(list);
+
+        Result<User> result = service.update(actual);
+        assertFalse(result.isSuccess());
+        assertEquals("This email is already registered to an account", result.getMessages().get(0));
+    }
+
+    @Test
+    void shouldNotUpdateEmptyFields(){
+        User user = makeUser();
+        user.setUserId(2);
+        user.setEmail("");
+        Result<User> result = service.update(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Cannot add user without valid email.", result.getMessages().get(0));
+
+        user.setEmail("chad@test.com");
+        user.setFirstName("");
+        result = service.update(user);
+        assertFalse(result.isSuccess());
+        assertEquals("First name required.", result.getMessages().get(0));
+
+        user.setFirstName("Chad");
+        user.setLastName("");
+        result = service.update(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Last name required.", result.getMessages().get(0));
+
+    }
+
+    @Test
+    void shouldNotUpdateInvalidDateBirth(){
+        User user = makeUser();
+        user.setUserId(2);
+        user.setDateBirth(null);
+
+        Result<User> result = service.update(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Date of birth required.", result.getMessages().get(0));
+
+        user.setDateBirth(LocalDate.of(2021, 8, 29));
+        result = service.update(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Must provide valid date of birth.", result.getMessages().get(0));
+
+        user.setDateBirth(LocalDate.of(2021, 9, 4));
+        result = service.update(user);
+        assertFalse(result.isSuccess());
+        assertEquals("Must provide valid date of birth.", result.getMessages().get(0));
+
+    }
+
+
+
 
 
     User makeUser(){
@@ -158,8 +232,11 @@ class UserServiceTest {
         user.setDateBirth(LocalDate.of(1972, 4, 24));
         user.setLoginId("login111");
         user.setProgramId(2);
+        user.setGoalId(2);
+        user.setActivityLevelId(1);
         return user;
     }
+
 
 
 }

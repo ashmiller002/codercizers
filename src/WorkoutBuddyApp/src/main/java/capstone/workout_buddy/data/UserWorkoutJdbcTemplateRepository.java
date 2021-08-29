@@ -1,5 +1,6 @@
 package capstone.workout_buddy.data;
 
+import capstone.workout_buddy.data.mappers.UserWorkoutMapper;
 import capstone.workout_buddy.data.mappers.WorkoutMapper;
 import capstone.workout_buddy.models.UserWorkout;
 import capstone.workout_buddy.models.Workout;
@@ -50,13 +51,13 @@ public class UserWorkoutJdbcTemplateRepository implements UserWorkoutRepository{
     @Override
     public List<Workout> findWorkoutsByUserId(int userId){
 
-        final String sql = "select user_id, user_workout_id, activity_id, workout_date, workout_id," +
-                " workout_name, image_url, workout_status " +
+        final String sql = "select user_id, user_workout_id, workout_date, w.workout_id," +
+                " workout_name, image_url, workout_status, category_id " +
                 " from user_workout uw" +
-                " inner join workout w on uw.workout_id = w workout_id;";
+                " inner join workout w on uw.workout_id = w.workout_id;";
 
 
-        return jdbcTemplate.query(sql, new WorkoutMapper(), userId);
+        return jdbcTemplate.query(sql, new WorkoutMapper());
 
     }
 

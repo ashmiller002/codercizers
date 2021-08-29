@@ -30,19 +30,44 @@ public class UserService {
     public Result<User> add(User user){
         Result<User> result = validation(user);
 
+        if(!result.isSuccess()) {
+            return result;
+        }
+
         if (user.getProgram() == 0){
             Program program = programRepository.findByGoalAndActivity(user.getGoalId(), user.getActivityLevelId());
             user.setProgramId(program.getProgramId());
-        }
-
-        if(!result.isSuccess()) {
-            return result;
         }
 
         user = repository.add(user);
         result.setPayload(user);
         return result;
     }
+
+    public Result<User> update(User user){
+        Result<User> result = validation(user);
+
+        if(!result.isSuccess()) {
+            return result;
+        }
+
+        Program program = programRepository.findByGoalAndActivity(user.getGoalId(), user.getActivityLevelId());
+        user.setProgramId(program.getProgramId());
+
+        if (user.getUserId() <= 0){
+            result.addMessage("UserId must be set for update operation", ResultType.INVALID);
+            return result;
+        }
+
+        if (!repository.update(user)){
+            String msg = String.format("UserId not found.");
+            result.addMessage(msg, ResultType.NOT_FOUND);
+            return result;
+        }
+        result.setPayload(user);
+        return result;
+    }
+
 
 
     private Result<User> validation(User user){
@@ -81,8 +106,11 @@ public class UserService {
     private Result<User> validateDupEmails(Result<User> result, User user){
         List<User> users = repository.findAll();
         for (User u: users){
-            if (u.getEmail().equalsIgnoreCase(user.getEmail())){
-                result.addMessage("This email is already registered to an account", ResultType.INVALID);
+            if (u.getUserId() != user.getUserId()){
+                if (u.getEmail().equalsIgnoreCase(user.getEmail())){
+                    result.addMessage("This email is already registered to an account", ResultType.INVALID);
+                    return result;
+                }
             }
         }
         return result;

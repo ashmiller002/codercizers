@@ -45,4 +45,18 @@ public class UserController {
         }
         return ErrorResponse.build(result);
     }
+
+    @PutMapping("/{loginId}")
+    public ResponseEntity<Object> update(@PathVariable String loginId, @RequestBody User user){
+        if (!loginId.equals(user.getLoginId())){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        Result<User> result = service.update(user);
+        if (result.isSuccess()){
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.OK);
+        }
+
+        return ErrorResponse.build(result);
+    }
 }
