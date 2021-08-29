@@ -12,6 +12,7 @@ public class UserWorkout {
     private int activityId;
     private Date workoutDate;
     private List<Workout> workouts = new ArrayList<>();
+    private Workout workout;
 
     public UserWorkout() {
     }
@@ -53,5 +54,21 @@ public class UserWorkout {
 
     public void setWorkoutDate(Date workoutDate) {
         this.workoutDate = workoutDate;
+    }
+
+    public List<Workout> getWorkouts() {
+        return workouts;
+    }
+
+    public void setWorkouts(List<Workout> workouts) {
+        this.workouts = workouts;
+    }
+
+    public Workout getWorkout() {
+        return workout;
+    }
+
+    public void setWorkout(Workout workout) {
+        this.workout = workout;
     }
 }
