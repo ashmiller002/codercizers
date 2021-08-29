@@ -2,7 +2,6 @@ package capstone.workout_buddy.controllers;
 
 import capstone.workout_buddy.domain.Result;
 import capstone.workout_buddy.domain.UserWorkoutService;
-import capstone.workout_buddy.domain.WorkoutService;
 import capstone.workout_buddy.models.UserWorkout;
 import capstone.workout_buddy.models.Workout;
 import org.springframework.http.HttpStatus;
