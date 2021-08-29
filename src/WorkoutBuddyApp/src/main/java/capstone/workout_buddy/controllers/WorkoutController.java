@@ -47,7 +47,7 @@ public class WorkoutController {
     public ResponseEntity<Object> add(@RequestBody Workout workout){
         Result<Workout> result = service.add(workout);
         if(result.isSuccess()){
-            return  new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
         return ErrorResponse.build(result);
     }
