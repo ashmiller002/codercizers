@@ -42,7 +42,7 @@ function Login() {
                     const { id, roles } = jwtDecode(jwt_token);
                     console.log(roles);
                     if (roles === "USER") {
-                        setUserInformation(id, jwt_token, () => {
+                        setUserInformation(id, () => {
                             auth.onAuthenticated(jwt_token);
                             history.push("/");
                         });
@@ -58,8 +58,8 @@ function Login() {
             })
     }
 
-    function setUserInformation(id, jwt_token, onSuccess) {
-        getUserWithLoginId(id, jwt_token)
+    function setUserInformation(id, onSuccess) {
+        getUserWithLoginId(id)
             .then((userInfo) => {
                 auth.setFullUserInformation(userInfo);
                 onSuccess();

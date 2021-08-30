@@ -24,7 +24,7 @@ export async function getSuggestedWorkout(user) {
             "Authorization": `Bearer ${token}`
         }
     };
-    const response = await fetch(`${url}/workout/suggestedworkout/${user.loginId}`, init);
+    const response = await fetch(`${url}/workout/suggestedworkout/${user.userId}`, init);
     if (response.status !== 200) {
         return Promise.reject(["Suggested workout fetch failed"]);
     }

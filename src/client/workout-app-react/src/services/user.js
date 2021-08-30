@@ -1,10 +1,11 @@
 const url = "http://localhost:8080";
 
 
-export async function getUserWithLoginId(id, jwt_token) {
+export async function getUserWithLoginId(id) {
+    const token = localStorage.getItem('jwt_token');
     const init = {
         headers: {
-             "Authorization": `Bearer ${jwt_token}`
+             "Authorization": `Bearer ${token}`
         }
     };
     const response = await fetch(`${url}/api/user/${id}`, init);
@@ -15,6 +16,23 @@ export async function getUserWithLoginId(id, jwt_token) {
         return Promise.reject(["No user found with those credentials."])
     }
     return Promise.reject(["login failed"]);
+}
+
+export async function getUserWithUserId(id) {
+    const token = localStorage.getItem('jwt_token');
+    const init = {
+        headers: {
+             "Authorization": `Bearer ${token}`
+        }
+    };
+    const response = await fetch(`${url}/api/user/userid/${id}`, init);
+    if (response.status === 200) {
+        return await response.json();
+    }
+    if (response.status === 404) {
+        return Promise.reject(["No user found with those credentials."])
+    }
+    return Promise.reject(["User fetch failed"]);
 }
 
 export async function registerUser(user) {
@@ -50,7 +68,7 @@ export async function editUser(user) {
     };
     return fetch(`${url}/api/user/${user.loginId}`, init)
     .then(async response => {
-        if (response.status === 204) {
+        if (response.status === 200) {
             return response.json();
         }
         if (response.status === 404) {

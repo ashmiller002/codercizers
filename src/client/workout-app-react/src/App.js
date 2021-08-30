@@ -192,7 +192,7 @@ function App() {
                 : <Redirect to="/login" />
               }
             </Route>
-            <Route path="/editaccount">
+            <Route path="/editaccount/:loginId">
               {auth.user !== null && auth.user[1] === "USER"
                 ? <div>
                   <UserNavBar />
