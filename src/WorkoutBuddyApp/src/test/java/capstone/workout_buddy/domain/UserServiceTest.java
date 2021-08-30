@@ -27,8 +27,20 @@ class UserServiceTest {
     }
 
     @Test
-    void findByLoginId() {
+    void shouldFindByLoginId() {
+        User mock = makeUser();
+        mock.setUserId(2);
+        mock.setGoalId(0);
+        mock.setActivityLevelId(0);
+        when(repository.findByLoginId("login111")).thenReturn(mock);
+
+        User actual = service.findByLoginId("login111");
+        assertNotNull(actual);
+        assertEquals(1, actual.getActivityLevelId());
+        assertEquals(2, actual.getGoalId());
     }
+
+
 
     @Test
     void shouldAddNewUser() {
