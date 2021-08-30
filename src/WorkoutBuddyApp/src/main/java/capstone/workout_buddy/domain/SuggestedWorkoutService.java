@@ -11,8 +11,10 @@ import capstone.workout_buddy.models.Workout;
 import org.springframework.stereotype.Service;
 
 
+import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -30,13 +32,15 @@ public class SuggestedWorkoutService {
     }
 
     public Workout suggestWorkout(int userId){
-        Workout suggestedWorkout = new Workout();
         List<UserWorkout> userWorkout = userWorkoutRepository.findWorkoutsByUserId(userId);
+        List<Workout> workoutList = workoutRepository.findAll();
         User user = userRepository.findByUserId(userId);
         Program userProgram = programRepository.findById(user.getProgram());
+        int suggestedWorkoutId = 5;
 
         Workout priorDayWorkout = new Workout();
         List<UserWorkout> recentWorkouts = new ArrayList<>();
+        HashMap<Integer, Integer> categoryCounts = countPerCategory(recentWorkouts);
 
         for (UserWorkout w: userWorkout){
             if (w.getWorkoutDate().isAfter((LocalDate.now().minusDays(6)))){
@@ -52,6 +56,12 @@ public class SuggestedWorkoutService {
         switch (userProgram.getGoalId()){
             case 1:
                 //strength goal
+                if (userProgram.getActivityLevelId() == 1){
+                    suggestedWorkoutId = strengthWorkoutModerate(recentWorkouts, priorDayWorkout, categoryCounts);
+                    }
+                else {
+                    suggestedWorkoutId = strengthWorkoutHigh(recentWorkouts, priorDayWorkout, categoryCounts);
+                }
                 break;
             case 2:
                 //mobility goal
@@ -59,19 +69,68 @@ public class SuggestedWorkoutService {
             case 3:
                 //cardio goal
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + userProgram.getGoalId());
+        }
+
+
+        //set suggestedWorkout based on workoutId
+        Workout suggestedWorkout = workoutRepository.findById(suggestedWorkoutId);
+
+        return suggestedWorkout;
+    }
+    
+
+    private int strengthWorkoutModerate(List<UserWorkout> recentWorkouts, Workout priorDayWorkout, HashMap<Integer, Integer> categoryCounts){
+        //alternate rest day with exercise - DONE
+        //one upper one lower per week
+        //recommend 50% chance between upper and lower
+        int suggestedWorkoutId = 0;
+        int countUpper = 0, countLower = 0, nonStrength = 0;
+
+        if (priorDayWorkout.getCategoryId() != 5){
+            List<Workout> categoryWorkouts = workoutRepository.findByCategory(5);
+            suggestedWorkoutId = (int)(Math.random() * categoryWorkouts.size()) + 1;
+            return suggestedWorkoutId;
         }
 
 
 
-        return suggestedWorkout;
+        return suggestedWorkoutId;
     }
 
-    private Workout strengthWorkout(UserWorkout recentWorkouts, Workout priorDayWorkout){
-        Workout suggestedWorkout = new Workout();
+    private int strengthWorkoutHigh(List<UserWorkout> recentWorkouts, Workout priorDayWorkout, HashMap<Integer, Integer> categoryCounts){
 
 
-        return suggestedWorkout;
+        return 0;
     }
+
+    private HashMap<Integer, Integer> countPerCategory(List<UserWorkout> recentWorkouts){
+        HashMap<Integer, Integer> categoryCounts = new HashMap<>();
+        categoryCounts.put(1,0);
+        categoryCounts.put(2,0);
+        categoryCounts.put(3,0);
+        categoryCounts.put(4,0);
+        categoryCounts.put(5,0);
+
+        for (UserWorkout w: recentWorkouts){
+            if (w.getWorkout().getCategoryId() == 1){
+                categoryCounts.put(1, categoryCounts.get(1)+1);
+            } else if (w.getWorkout().getCategoryId() == 2){
+                categoryCounts.put(2, categoryCounts.get(2)+1);
+            }
+            else if (w.getWorkout().getCategoryId() == 3){
+                categoryCounts.put(3, categoryCounts.get(3)+1);
+            }
+            else if (w.getWorkout().getCategoryId() == 4){
+                categoryCounts.put(4, categoryCounts.get(4)+1);
+            } else {
+                categoryCounts.put(5, categoryCounts.get(5)+1);
+            }
+        }
+        return categoryCounts;
+    }
+
 
 
 
