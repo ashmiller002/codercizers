@@ -22,7 +22,9 @@ function AdminWorkoutCatalogue() {
             .then(json => {
                 setWorkouts(json);
             })
-            .catch(err => { console.log(err) })
+            .catch(err => {
+                setErrors(err);
+            })
     }, [])
 
     return (

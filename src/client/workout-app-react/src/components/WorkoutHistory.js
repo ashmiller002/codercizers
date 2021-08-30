@@ -1,6 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
-import LoginContext from '../contexts/LoginContext.js';
+import { useEffect, useState } from 'react';
 import { getWorkoutHistory } from '../services/workouts.js';
 import Error from './Error.js';
 import UserWorkoutHistoryCard from './workoutCards/UserWorkoutHistoryCard.js'
@@ -10,8 +8,6 @@ function WorkoutHistory({ userId }) {
 
     const [userWorkouts, setUserWorkouts] = useState();
     const [errors, setErrors] = useState();
-    const history = useHistory();
-    const auth = useContext(LoginContext)
     let storedUserId;
 
     useEffect(() => {
