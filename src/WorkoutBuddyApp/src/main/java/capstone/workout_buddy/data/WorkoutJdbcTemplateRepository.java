@@ -52,8 +52,8 @@ public class WorkoutJdbcTemplateRepository implements WorkoutRepository {
     @Override
     public Workout add(Workout workout){
 
-        final String sql = "insert into workout (workout_name, category_id, workout_status) " +
-                "values (?, ?, ?);";
+        final String sql = "insert into workout (workout_name, category_id, workout_status, image_url) " +
+                "values (?, ?, ?, ?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection ->{
@@ -61,6 +61,7 @@ public class WorkoutJdbcTemplateRepository implements WorkoutRepository {
             ps.setString(1, workout.getWorkoutName());
             ps.setInt(2, workout.getCategoryId());
             ps.setString(3, workout.getWorkoutStatus());
+            ps.setString(4, workout.getImageUrl());
             return ps;
         }, keyHolder);
 

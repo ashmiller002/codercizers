@@ -26,8 +26,6 @@ public class UserWorkoutMapper implements RowMapper<UserWorkout> {
         WorkoutMapper workoutMapper = new WorkoutMapper();
         userWorkout.setWorkout(workoutMapper.mapRow(resultSet, i));
 
-
-
         return userWorkout;
 
     }

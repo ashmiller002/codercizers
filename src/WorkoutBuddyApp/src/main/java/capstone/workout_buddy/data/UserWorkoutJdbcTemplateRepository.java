@@ -37,7 +37,7 @@ public class UserWorkoutJdbcTemplateRepository implements UserWorkoutRepository{
         int rowsAffected = jdbcTemplate.update(connection ->{
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, userWorkout.getUserId());
-            ps.setInt(2, userWorkout.getUserWorkoutId());
+            ps.setInt(2, userWorkout.getWorkout().getWorkoutId());
             ps.setDate(3, Date.valueOf(userWorkout.getWorkoutDate()));
             return ps;
         }, keyHolder);
