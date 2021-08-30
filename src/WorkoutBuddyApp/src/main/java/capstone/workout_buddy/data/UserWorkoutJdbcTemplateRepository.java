@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.sql.Date;
 import java.util.List;
 
 @Repository
@@ -37,7 +38,7 @@ public class UserWorkoutJdbcTemplateRepository implements UserWorkoutRepository{
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, userWorkout.getUserId());
             ps.setInt(2, userWorkout.getUserWorkoutId());
-            ps.setDate(3, userWorkout.getWorkoutDate());
+            ps.setDate(3, Date.valueOf(userWorkout.getWorkoutDate()));
             return ps;
         }, keyHolder);
 
@@ -49,7 +50,7 @@ public class UserWorkoutJdbcTemplateRepository implements UserWorkoutRepository{
     }
 
     @Override
-    public List<Workout> findWorkoutsByUserId(int userId){
+    public List<UserWorkout> findWorkoutsByUserId(int userId){
 
         final String sql = "select user_id, user_workout_id, workout_date, w.workout_id," +
                 " workout_name, image_url, workout_status, category_id " +
@@ -57,7 +58,7 @@ public class UserWorkoutJdbcTemplateRepository implements UserWorkoutRepository{
                 " inner join workout w on uw.workout_id = w.workout_id;";
 
 
-        return jdbcTemplate.query(sql, new WorkoutMapper());
+        return jdbcTemplate.query(sql, new UserWorkoutMapper());
 
     }
 

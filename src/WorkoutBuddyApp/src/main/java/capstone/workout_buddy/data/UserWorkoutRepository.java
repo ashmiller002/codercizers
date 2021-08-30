@@ -9,5 +9,5 @@ public interface UserWorkoutRepository {
 
     UserWorkout add(UserWorkout userWorkout);
 
-    public List<Workout> findWorkoutsByUserId(int userId);
+    public List<UserWorkout> findWorkoutsByUserId(int userId);
 }

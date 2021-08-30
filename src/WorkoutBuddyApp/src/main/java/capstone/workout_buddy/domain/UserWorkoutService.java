@@ -32,7 +32,7 @@ public class UserWorkoutService {
         return result;
     }
 
-    public List<Workout> findWorkoutsByUserId(int userId){
+    public List<UserWorkout> findWorkoutsByUserId(int userId){
         return repository.findWorkoutsByUserId(userId);
     }
 
