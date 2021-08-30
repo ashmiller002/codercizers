@@ -1,3 +1,52 @@
-h1 {
-    text-align: center;
+.pnf {
+    width: 75px;
+    height: 75px;
+    margin: 50px;
+    z-index: 900;
+    position: fixed;
+    color: rgba(1, 1, 17, 0.473);
+    position:absolute;
+    z-index: 300;
+    
 }
+
+.square{
+    width: 75px;
+    height: 75px;
+    background-color: teal;
+    margin: 50px;
+    z-index: -1;
+    position: inherit;
+}
+  
+.square.two{
+    background-color: rgb(108, 147, 158);
+}
+  
+.square.three{
+    background-color: rgb(60, 62, 63);
+}
+
+p{
+    font-size: large;
+    font-weight: bold;
+    position: absolute;
+    left: 550px;
+    top: 50px;
+    bottom: 20;
+
+}
+
+.container{
+    visibility: hidden;
+
+}
+
+img{
+    position: absolute;
+    left: 750px;
+    bottom: 350px;
+    width: 425px;
+    height: 375px;
+}
+
