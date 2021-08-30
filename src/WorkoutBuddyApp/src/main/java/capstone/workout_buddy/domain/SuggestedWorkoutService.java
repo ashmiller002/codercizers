@@ -39,7 +39,7 @@ public class SuggestedWorkoutService {
         List<UserWorkout> recentWorkouts = new ArrayList<>();
 
         for (UserWorkout w: userWorkout){
-            if (w.getWorkoutDate().after(LocalDate.now().minusDays(6))){
+            if (w.getWorkoutDate().isAfter((LocalDate.now().minusDays(6)))){
                 //getting a list of recent workouts
                 recentWorkouts.add(w);
             }
@@ -67,7 +67,7 @@ public class SuggestedWorkoutService {
     }
 
     private Workout strengthWorkout(UserWorkout recentWorkouts, Workout priorDayWorkout){
-        Workout suggestedWorkout;
+        Workout suggestedWorkout = new Workout();
 
 
         return suggestedWorkout;
