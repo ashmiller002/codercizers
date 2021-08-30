@@ -30,7 +30,7 @@ function WorkoutHistory() {
             <Error errorMessages={errors} />
             <div className="row">
                 {userWorkouts !== undefined && userWorkouts.map(w => {
-                    return <UserWorkoutHistoryCard workout={w} />
+                    return <UserWorkoutHistoryCard key={String(w.workoutId) + String(w.date)} workout={w} />
                 })}
             </div>
         </div>

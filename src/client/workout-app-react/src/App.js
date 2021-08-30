@@ -5,7 +5,6 @@ import UserNavBar from './components/UserNavBar.js';
 import AdminNavBar from './components/AdminNavBar.js';
 import WorkoutCatalog from './components/WorkoutCatalog.js';
 import WorkoutHistory from './components/WorkoutHistory.js';
-import AddExternalWorkout from './components/AddExternalWorkout.js';
 import './App.css';
 import Account from './components/Account.js';
 import AddEditWorkout from './components/AddEditWorkout.js';
@@ -150,7 +149,7 @@ function App() {
 
 
   return (
-    <div class="App">
+    <div className="App">
       <LoginContext.Provider value={auth}>
         <Router>
           <Switch>

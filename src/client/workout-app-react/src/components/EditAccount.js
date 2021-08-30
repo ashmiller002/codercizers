@@ -88,19 +88,19 @@ function EditAccount() {
 
                     <div className="input-field">
                         <input placeholder="First Name" required type="text" id="firstName" name="firstName" value={fullUserInfo.firstName} onChange={onChangeFullUser} />
-                        <label class="active" htmlFor="firstName">First Name</label>
+                        <label className="active" htmlFor="firstName">First Name</label>
                     </div>
                     <div className="input-field">
                         <input placeholder="Last Name" required type="text" id="lastName" name="lastName" value={fullUserInfo.lastName} onChange={onChangeFullUser} />
-                        <label class="active" htmlFor="lastName">Last Name</label>
+                        <label className="active" htmlFor="lastName">Last Name</label>
                     </div>
                     <div className="input-field">
                         <input placeholder="Date of Birth" required type="date" id="dateBirth" name="dateBirth" value={fullUserInfo.dateBirth} onChange={onChangeFullUser} />
-                        <label class="active" htmlFor="dateBirth">Date of Birth</label>
+                        <label className="active" htmlFor="dateBirth">Date of Birth</label>
                     </div>
                     <div className="input-field">
                         <input placeholder="Email" type="email" required id="email" name="email" value={fullUserInfo.email} onChange={onChangeFullUser} />
-                        <label class="active" htmlFor="email">Email</label>
+                        <label className="active" htmlFor="email">Email</label>
                     </div>
                     <div className="activityLevelOrGoal">
 

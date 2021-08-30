@@ -75,7 +75,7 @@ export async function getWorkoutHistory(userId) {
             "Authorization": `Bearer ${token}`
         }
     };
-    const response = await fetch(`${url}/workout/${userId}`, init);
+    const response = await fetch(`${url}/api/userWorkout/${userId}`, init);
     if (response.status !== 200) {
         return Promise.reject(["Could not get workout history"]);
     }
