@@ -17,7 +17,7 @@ public class UserWorkoutMapper implements RowMapper<UserWorkout> {
         userWorkout.getWorkout().setWorkoutId(resultSet.getInt("workout_id"));
         userWorkout.getWorkout().setImageUrl(resultSet.getString("image_url"));
         userWorkout.getWorkout().setWorkoutStatus(resultSet.getString("workout_status"));
-        userWorkout.setWorkoutDate(resultSet.getDate("workout_date"));
+        userWorkout.setWorkoutDate(resultSet.getDate("workout_date").toLocalDate());
         userWorkout.setUserId(resultSet.getInt("user_id"));
 
         return userWorkout;
