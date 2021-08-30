@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,10 +31,10 @@ class UserWorkoutJdbcTemplateRepositoryTest {
         actual.setUserWorkoutId(2);
         actual.setUserId(1);
         actual.setActivityId(1);
-        actual.setWorkoutDate(Date.valueOf("2021-8-02"));
+        actual.setWorkoutDate(LocalDate.of(2021,8,2));
         repository.add(actual);
         assertNotNull(actual);
-        assertEquals(Date.valueOf("2021-8-02"), actual.getWorkoutDate());
+        assertEquals(LocalDate.of(2021,8,2), actual.getWorkoutDate());
         assertEquals(1 ,actual.getUserId());
     }
 

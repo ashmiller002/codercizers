@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.sql.Date;
 import java.util.List;
 
 @Repository
@@ -37,7 +38,7 @@ public class UserWorkoutJdbcTemplateRepository implements UserWorkoutRepository{
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, userWorkout.getUserId());
             ps.setInt(2, userWorkout.getUserWorkoutId());
-            ps.setDate(3, userWorkout.getWorkoutDate());
+            ps.setDate(3, Date.valueOf(userWorkout.getWorkoutDate()));
             return ps;
         }, keyHolder);
 
