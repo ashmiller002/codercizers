@@ -89,7 +89,7 @@ function AddEditWorkout() {
         <div className="container">
             <h2>{method} Workout</h2>
             <Error errorMessages={errors} />
-            <form class="addEditWorkout" onSubmit={handleClick}>
+            <form className="addEditWorkout" onSubmit={handleClick}>
                 <div className="row">
                     <label htmlFor="workoutName">WorkoutName</label>
                     <input type="text" id="workoutName" name="workoutName" value={workout.workoutName} onChange={handleChange} />

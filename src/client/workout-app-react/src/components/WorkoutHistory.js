@@ -4,7 +4,7 @@ import LoginContext from '../contexts/LoginContext.js';
 import { getWorkoutHistory } from '../services/workouts.js';
 import Error from './Error.js';
 import UserWorkoutHistoryCard from './workoutCards/UserWorkoutHistoryCard.js'
- 
+
 function WorkoutHistory() {
 
 
@@ -19,9 +19,9 @@ function WorkoutHistory() {
                 setUserWorkouts(data);
             })
             .catch(err => {
-                console.log(err);
-                //setErrors(err);
+                setErrors(err);
             })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [history])
     return (
         <div className="container">
@@ -30,7 +30,7 @@ function WorkoutHistory() {
             <Error errorMessages={errors} />
             <div className="row">
                 {userWorkouts !== undefined && userWorkouts.map(w => {
-                    return <UserWorkoutHistoryCard workout={w} />
+                    return <UserWorkoutHistoryCard key={String(w.workoutId) + String(w.date)} workout={w} />
                 })}
             </div>
         </div>

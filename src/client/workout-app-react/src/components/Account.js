@@ -1,13 +1,41 @@
 import LoginContext from "../contexts/LoginContext";
-import FullUserContext from "../contexts/FullUserContext"
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getUserWithLoginId } from "../services/user.js";
+import Error from "./Error";
 
 function Account() {
 
+    const blankFullUserInfo = {
+        loginId: "",
+        firstName: "",
+        lastName: "",
+        dateBirth: "",
+        email: "",
+        goal: "",
+        activityLevel: "",
+    }
+    //delete this
+    const token = localStorage.getItem('jwt_token');
+    console.log(token);
+
     const auth = useContext(LoginContext);
+    const [fullUserInfo, setFullUserInfo] = useState(blankFullUserInfo);
+    const [errors, setErrors] = useState();
+
+    useEffect(() => {
+        getUserWithLoginId(auth.user[2])
+            .then((data) => {
+                setFullUserInfo(data);
+            })
+            .catch(errs => {
+                setErrors(errs);
+            })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     function getGoal() {
-        switch (auth.fullUser.goalId) {
+        switch (fullUserInfo.goalId) {
             case 1: return "Strength";
             case 2: return "Mobility";
             case 3: return "Weight Loss";
@@ -18,27 +46,28 @@ function Account() {
     const realGoal = getGoal();
 
     function getActivityLevel() {
-        switch (auth.fullUser.activityLevelId) {
+        switch (fullUserInfo.activityLevelId) {
             case 1: return "Less than 3 times per week";
             case 2: return "3 times per week or more";
+            default: return "Unknown";
         }
     }
 
     const realActivityLevel = getActivityLevel();
-console.log(auth.fullUser);
 
 
     return (
         <div className="container">
             <h2>Account</h2>
+            <Error errorMessages={errors} />
             {/* Add username  */}
-            <p><b>First Name:</b> {auth.fullUser.firstName}</p>
-            <p><b>Last Name:</b> {auth.fullUser.lastName}</p>
-            <p><b>Date of Birth:</b> {auth.fullUser.dateBirth}</p>
-            <p><b>Email:</b> {auth.fullUser.email}</p>
+            <p><b>First Name:</b> {fullUserInfo.firstName}</p>
+            <p><b>Last Name:</b> {fullUserInfo.lastName}</p>
+            <p><b>Date of Birth:</b> {fullUserInfo.dateBirth}</p>
+            <p><b>Email:</b> {fullUserInfo.email}</p>
             <p><b>Goal:</b> {realGoal}</p>
             <p><b>How Often Do You Exercise?</b> {realActivityLevel}</p>
-            <Link to="/editaccount" className="btn">Edit</Link>
+            <Link to={`/editaccount/${fullUserInfo.loginId}`} className="btn">Edit</Link>
         </div>
     )
 }

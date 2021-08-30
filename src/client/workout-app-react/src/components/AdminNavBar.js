@@ -66,7 +66,7 @@ function AdminNavBar() {
         <div>
             <nav id="navbar" >
                 <div className="nav-wrapper">
-                    <Link className="sidenav-trigger" data-target="mobile-demo"><i className="material-icons">menu</i></Link>
+                    <button className="sidenav-trigger" data-target="mobile-demo"><i className="material-icons">menu</i></button>
                     <ul className="hide-on-med-and-down">
                         <li><Link to="/" className={"btn " + selected[0]} id="home" onClick={handleClick}>Home</Link></li>
                         <li><Link to="/adminworkoutcatalog" className={"btn " + selected[1]} id="adminWorkoutCatalog" onClick={handleClick}>Workout Catalog</Link></li>
@@ -85,7 +85,7 @@ function AdminNavBar() {
                 <li><Link to="/adminworkoutcatalog" className={"btn " + selected[1]} id="adminWorkoutCatalog" onClick={handleClick}>Workout Catalog</Link></li>
                 <li><Link to="/addworkout" className={"btn " + selected[2]} id="addWorkout" onClick={handleClick}>Add Workout</Link></li>
                 {auth.user !== null &&
-                    <li> <a className={"btn"} id="logout" onClick={auth.logout}>Logout</a></li>
+                    <li> <a href="localhost:3000/" className={"btn"} id="logout" onClick={auth.logout}>Logout</a></li>
                 }
             </ul>
         </div>

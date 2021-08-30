@@ -2,13 +2,26 @@
 @port = 8080
 @host = {{hostname}}:{{port}}
 @baseurl = http://{{host}}/api
-@url = {{baseurl}}/user
+@url = {{baseurl}}/userWorkout
 
-@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkZXYxMC11c2Vycy1hcGkiLCJzdWIiOiJzYWxseUBqb25lcy5jb20iLCJpZCI6IjllNWQ5MjcyLWFmNGYtMTFlYi04MzY4LTAyNDJhYzExMDAwMiIsInJvbGVzIjoiVVNFUiIsImV4cCI6MTYzMDE3MTcwOX0.R4zr7xS1EQ7l1wckvqdW_PHQIep9nekIppKBKkHcItc
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkZXYxMC11c2Vycy1hcGkiLCJzdWIiOiJzYWxseUBqb25lcy5jb20iLCJpZCI6IjllNWQ5MjcyLWFmNGYtMTFlYi04MzY4LTAyNDJhYzExMDAwMiIsInJvbGVzIjoiVVNFUiIsImV4cCI6MTYzMDQxOTY2OH0.njPCyR8fRVIn_dBaM8O5MEEZCL-bqJYWZ6ywjByVttc
 
 
 ###
 
-GET http://localhost:8080/api/user/9e5d9272-af4f-11eb-8368-0242ac110002 HTTP/1.1
+GET {{url}}/1 HTTP/1.1
 Authorization: Bearer {{token}}
+//find workouts by user ID
 
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+//create user workout
+
+{
+   "userId" : 1,
+   "workoutId" : 1,
+   "workoutDate" : "2021-08-25"
+}
