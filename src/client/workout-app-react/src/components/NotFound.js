@@ -160,14 +160,14 @@ function NotFound() {
       <h1 ref={(el) => (pnf = el)} className="pnf">
         404: Page Not Found
       </h1>
-      <p ref={(el) => (paragraph = el)}>
+      <p className="errorPara" ref={(el) => (paragraph = el)}>
         Sorry, we couldn't find this page. But don't worry, we can find other
         things from our <a href="/">homepage</a>.
       </p>
-      <div ref={(el) => (imgBorder = el)}className="imgBorder"></div>
-      <div ref={(el) => (imgBorder2 = el)}className="imgBorder2"></div>
-      <div ref={(el) => (imgBorder3 = el)}className="imgBorder3"></div>
-      <img ref={(el) => (img = el)} src="/errorImage.png" alt="" />
+      <div ref={(el) => (imgBorder = el)} className="imgBorder"></div>
+      <div ref={(el) => (imgBorder2 = el)} className="imgBorder2"></div>
+      <div ref={(el) => (imgBorder3 = el)} className="imgBorder3"></div>
+      <img ref={(el) => (img = el)} className="errorImg" src="/errorImage.png" alt="" />
       <div className="squareContainer">
         <div
           ref={(el) => (square = el)}

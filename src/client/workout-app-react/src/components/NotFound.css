@@ -29,7 +29,7 @@
     background-color: rgb(60, 62, 63);
 }
 
-p{
+.errorPara{
     font-size: large;
     font-weight: bold;
     position: absolute;
@@ -43,7 +43,7 @@ p{
     visibility: hidden;
 }
 
-img{
+.errorImg{
     position: absolute;
     left: 750px;
     bottom: 350px;
