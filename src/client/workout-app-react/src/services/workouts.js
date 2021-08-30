@@ -24,7 +24,7 @@ export async function getSuggestedWorkout(user) {
             "Authorization": `Bearer ${token}`
         }
     };
-    const response = await fetch(`${url}/workout/suggestedworkout/${user.loginId}`, init);
+    const response = await fetch(`${url}/workout/suggestedworkout/${user.userId}`, init);
     if (response.status !== 200) {
         return Promise.reject(["Suggested workout fetch failed"]);
     }
@@ -45,7 +45,7 @@ export async function getWorkoutByWorkoutId(workoutId) {
         return Promise.reject(["No workout with this id found"]);
     }
     if (response.status !== 200) {
-        return Promise.reject(["Current workout fetch failed"]);
+        return Promise.reject(["Workout fetch failed"]);
     }
     return await response.json();
 }
@@ -63,7 +63,8 @@ export async function addWorkoutToUserHistory(workoutId, userId) {
     };
     const response = await fetch(`${url}/workout/${userId}`, init);
     if (response.status !== 201) {
-        return Promise.reject(["Could not add workout to user history"]);
+        const messages = await response.json();
+        return Promise.reject(messages);
     }
     return await response.json();
 }
@@ -75,7 +76,7 @@ export async function getWorkoutHistory(userId) {
             "Authorization": `Bearer ${token}`
         }
     };
-    const response = await fetch(`${url}/workout/${userId}`, init);
+    const response = await fetch(`${url}/api/userWorkout/${userId}`, init);
     if (response.status !== 200) {
         return Promise.reject(["Could not get workout history"]);
     }

@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Switch, Route, useHistory, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import jwtDecode from 'jwt-decode';
 import UserNavBar from './components/UserNavBar.js';
 import AdminNavBar from './components/AdminNavBar.js';
 import WorkoutCatalog from './components/WorkoutCatalog.js';
 import WorkoutHistory from './components/WorkoutHistory.js';
-import AddExternalWorkout from './components/AddExternalWorkout.js';
 import './App.css';
 import Account from './components/Account.js';
 import AddEditWorkout from './components/AddEditWorkout.js';
@@ -14,7 +12,6 @@ import AdminWorkoutCatalog from './components/AdminWorkoutCatalog.js';
 import Login from './components/Login.js';
 import LoginContext from './contexts/LoginContext.js';
 import Register from './components/Register.js';
-import FullUserContext from './contexts/FullUserContext.js';
 import EditAccount from './components/EditAccount.js';
 import CurrentWorkout from './components/CurrentWorkout.js';
 import { refresh } from './services/auth.js';
@@ -30,17 +27,6 @@ function App() {
   const [initialized, setInitialized] = useState(false);
   const history = useHistory();
 
-  // const blankUser = {
-  //   loginId: "1",
-  //   userId: "1",
-  //   firstName: "firstName",
-  //   lastName: "lastName",
-  //   dateBirth: "2000-03-12",
-  //   email: "email@email.com",
-  //   goal: "2",
-  //   activityLevel: "1"
-  // }
-  //real blank user
   const blankUser = {
     loginId: null,
     userId: 0,
@@ -52,7 +38,7 @@ function App() {
     activityLevel: null, // frequent = 2 or infrequent = 1 send just number
   }
 
- 
+
   const [fullUser, setFullUser] = useState(blankUser);
   // on login get user info and setFullUser
   const parseToken = (token) => {
@@ -66,7 +52,7 @@ function App() {
     }
   }
 
-  const onAuthenticated = (token) => {
+  function onAuthenticated(token) {
     const payload = parseToken(token);
     setUser([payload.sub, payload.roles, payload.id]);
     localStorage.setItem('jwt_token', token);
@@ -82,8 +68,8 @@ function App() {
     if (token) {
       onAuthenticated(token);
     }
-
     setInitialized(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history])
 
 
@@ -150,7 +136,7 @@ function App() {
 
 
   return (
-    <div class="App">
+    <div className="App">
       <LoginContext.Provider value={auth}>
         <Router>
           <Switch>
@@ -192,7 +178,7 @@ function App() {
                 : <Redirect to="/login" />
               }
             </Route>
-            <Route path="/editaccount">
+            <Route path="/editaccount/:loginId">
               {auth.user !== null && auth.user[1] === "USER"
                 ? <div>
                   <UserNavBar />
@@ -206,7 +192,7 @@ function App() {
               {auth.user !== null && auth.user[1] === "ADMIN"
                 ? <div>
                   <AdminNavBar />
-                  <AddEditWorkout/>
+                  <AddEditWorkout />
                 </div>
                 : <Redirect to="/login" />
               }
@@ -215,7 +201,7 @@ function App() {
               {auth.user !== null && auth.user[1] === "ADMIN"
                 ? <div>
                   <AdminNavBar />
-                  <AddEditWorkout/>
+                  <AddEditWorkout />
                 </div>
                 : <Redirect to="/login" />
               }
@@ -255,13 +241,13 @@ function App() {
               }
             </Route>
             <Route>
-            {auth.user !== null && auth.user[1] === "USER" &&
-                  <UserNavBar />
+              {auth.user !== null && auth.user[1] === "USER" &&
+                <UserNavBar />
               }
 
               {/* if admin: */}
               {auth.user !== null && auth.user[1] === "ADMIN" &&
-                  <AdminNavBar />
+                <AdminNavBar />
               }
               <NotFound />
             </Route>

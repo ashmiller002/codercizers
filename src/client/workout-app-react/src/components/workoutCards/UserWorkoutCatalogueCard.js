@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import Error from '../Error';
 import './Cards.css'
 
 // used in workout catalogue. Also used on User Home page. has select button that lists as current workout.
@@ -29,7 +28,7 @@ function UserWorkoutCatalogueCard({ workout }) {
         <div className="col s12 m6 l4 xl4">
             <div className="card small">
                 <div className="card-image">
-                    <img src={workout.imageUrl} />
+                    <img src={workout.imageUrl} alt="workout"/>
                 </div>
                 <div className="card-content">
                     <p><b>Name: </b>{workout.workoutName}</p>

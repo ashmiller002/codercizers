@@ -49,7 +49,7 @@ function AdminWorkoutCards( {currentworkout} ) {
             <div className="col s12 m6 l4 xl4">
             <div className="card small disabled">
                 <div className="card-image">
-                    <img src={workout.imageUrl} />
+                    <img src={workout.imageUrl} alt="workout"/>
                 </div>
                 <div className="card-content">
                     <p><b>Name: </b>{workout.workoutName}</p>
@@ -57,7 +57,7 @@ function AdminWorkoutCards( {currentworkout} ) {
                 </div>
                 <div className="sticky-action">
                     <Link to={`/editworkout/${workout.workoutId}`} className="btn-small">Edit</Link>
-                    <button class="btn-small cancel" onClick={enableWorkout}>Enable</button>
+                    <button className="btn-small cancel" onClick={enableWorkout}>Enable</button>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@ function AdminWorkoutCards( {currentworkout} ) {
         <div className="col s12 m6 l4 xl4">
             <div className="card small">
                 <div className="card-image">
-                    <img src={workout.imageUrl} />
+                    <img src={workout.imageUrl} alt="workout"/>
                 </div>
                 <div className="card-content">
                     <p><b>Name: </b>{workout.workoutName}</p>
@@ -76,7 +76,7 @@ function AdminWorkoutCards( {currentworkout} ) {
                 </div>
                 <div className="sticky-action">
                     <Link to={`/editworkout/${workout.workoutId}`} className="btn-small">Edit</Link>
-                    <button class="btn-small red darken-4 disable" onClick={disableWorkout}>Disable</button>
+                    <button className="btn-small red darken-4 disable" onClick={disableWorkout}>Disable</button>
                 </div>
             </div>
         </div>

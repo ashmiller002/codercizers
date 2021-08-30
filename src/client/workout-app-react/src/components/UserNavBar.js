@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./UserNavBar.css";
 import LoginContext from "../contexts/LoginContext";
-import FullUserContext from "../contexts/FullUserContext";
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 function UserNavBar() {
@@ -58,7 +57,7 @@ function UserNavBar() {
         <div>
             <nav id="navbar" >
                 <div className="nav-wrapper">
-                    <Link className="sidenav-trigger" data-target="mobile-demo"><i className="material-icons">menu</i></Link>
+                    <button className="sidenav-trigger" data-target="mobile-demo"><i className="material-icons">menu</i></button>
                     <ul className="hide-on-med-and-down">
                         <li><Link to="/" className={"btn " + selected[4]} id="home">Home</Link></li>
                         <li><Link to="/workoutcatalog" className={"btn " + selected[0]} id="workoutCatalog">Workout Catalog</Link></li>
@@ -81,7 +80,7 @@ function UserNavBar() {
                 <li><Link to="account" className={"btn " + selected[3]} id="account" >Account</Link></li>
 
                 {auth.user !== null &&
-                    <li><a className="btn" id="logout" onClick={auth.logout}>Logout</a></li>
+                    <li><a href="localhost:3000/" className="btn" id="logout" onClick={auth.logout}>Logout</a></li>
                 }
             </ul>
 

@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import FullUserContext from '../contexts/FullUserContext';
 import { addWorkoutToUserHistory, getWorkoutByWorkoutId } from '../services/workouts';
 import Error from './Error';
 import CurrentWorkoutCard from './workoutCards/CurrentWorkoutCard';
@@ -8,9 +7,6 @@ import CurrentWorkoutCard from './workoutCards/CurrentWorkoutCard';
 function CurrentWorkout() {
 
     const history = useHistory();
-    const fullUser = useContext(FullUserContext);
-
-    // temp workout: delete when app is working
 
     const blankWorkout = {
         workoutId: "",

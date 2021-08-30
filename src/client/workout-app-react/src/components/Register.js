@@ -1,7 +1,5 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import FullUserContext from '../contexts/FullUserContext';
-import LoginContext from '../contexts/LoginContext';
 import { register } from '../services/auth';
 import { registerUser } from '../services/user';
 import Error from './Error';
@@ -11,8 +9,6 @@ import './Register.css';
 function Register() {
 
     const [errors, setErrors] = useState();
-    const auth = useContext(LoginContext);
-    const fullUser = useContext(FullUserContext);
     const history = useHistory();
 
 
@@ -97,28 +93,28 @@ function Register() {
                 <form onSubmit={handleSubmit} className="register">
                     <div className="input-field">
                         <input placeholder="Username" required type="text" id="username" name="username" className="validate" value={credentials.username} onChange={onChangeLogin} />
-                        <label class="active" htmlFor="username">Username</label>
-                        <span class="helper-text">We'll never share your email with anyone else.</span>
+                        <label className="active" htmlFor="username">Username</label>
+                        <span className="helper-text">We'll never share your email with anyone else.</span>
                     </div>
                     <div className="input-field">
                         <input placeholder="Password" required type="password" id="password" name="password" value={credentials.password} onChange={onChangeLogin} />
-                        <label class="active" htmlFor="password">Password</label>
+                        <label className="active" htmlFor="password">Password</label>
                     </div>
                     <div className="input-field">
                         <input placeholder="First Name" required type="text" id="firstName" name="firstName" value={fullUserInfo.firstName} onChange={onChangeFullUser} />
-                        <label class="active" htmlFor="firstName">First Name</label>
+                        <label className="active" htmlFor="firstName">First Name</label>
                     </div>
                     <div className="input-field">
                         <input placeholder="Last Name" required type="text" id="lastName" name="lastName" value={fullUserInfo.lastName} onChange={onChangeFullUser} />
-                        <label class="active" htmlFor="lastName">Last Name</label>
+                        <label className="active" htmlFor="lastName">Last Name</label>
                     </div>
                     <div className="input-field">
                         <input placeholder="Date of Birth" required type="date" id="dateBirth" name="dateBirth" value={fullUserInfo.dateBirth} onChange={onChangeFullUser} />
-                        <label class="active" htmlFor="dateBirth">Date of Birth</label>
+                        <label className="active" htmlFor="dateBirth">Date of Birth</label>
                     </div>
                     <div className="input-field">
                         <input placeholder="Email" type="email" required id="email" name="email" value={fullUserInfo.email} onChange={onChangeFullUser} />
-                        <label class="active" htmlFor="email">Email</label>
+                        <label className="active" htmlFor="email">Email</label>
                     </div>
                     <div className="activityLevelOrGoal">
 

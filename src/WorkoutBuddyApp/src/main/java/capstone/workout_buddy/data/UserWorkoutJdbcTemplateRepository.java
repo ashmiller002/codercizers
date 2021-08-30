@@ -52,13 +52,12 @@ public class UserWorkoutJdbcTemplateRepository implements UserWorkoutRepository{
     @Override
     public List<UserWorkout> findWorkoutsByUserId(int userId){
 
-        final String sql = "select user_id, user_workout_id, workout_date, w.workout_id," +
-                " workout_name, image_url, workout_status, category_id " +
-                " from user_workout uw" +
-                " inner join workout w on uw.workout_id = w.workout_id;";
+        final String sql = "select uw.user_id, uw.user_workout_id, uw.workout_date, uw.workout_id, w.workout_name, w.image_url, w.workout_status, w.category_id " +
+                "        from user_workout AS uw " +
+                "        inner join workout AS w on uw.workout_id = w.workout_id " +
+                "        where user_id = ?;";
 
-
-        return jdbcTemplate.query(sql, new UserWorkoutMapper());
+        return jdbcTemplate.query(sql, new UserWorkoutMapper(), userId);
 
     }
 
