@@ -5,7 +5,7 @@ import { getWorkoutHistory } from '../services/workouts.js';
 import Error from './Error.js';
 import UserWorkoutHistoryCard from './workoutCards/UserWorkoutHistoryCard.js'
 
-function WorkoutHistory() {
+function WorkoutHistory({ userId }) {
 
 
     const [userWorkouts, setUserWorkouts] = useState();
@@ -14,7 +14,7 @@ function WorkoutHistory() {
     const auth = useContext(LoginContext)
 
     useEffect(() => {
-        getWorkoutHistory(auth.fullUser.userId)
+        getWorkoutHistory(userId)
             .then(data => {
                 setUserWorkouts(data);
             })
@@ -30,7 +30,7 @@ function WorkoutHistory() {
             <Error errorMessages={errors} />
             <div className="row">
                 {userWorkouts !== undefined && userWorkouts.map(w => {
-                    return <UserWorkoutHistoryCard key={String(w.workoutId) + String(w.date)} workout={w} />
+                    return <UserWorkoutHistoryCard key={w.userWorkoutId} userWorkout={w} />
                 })}
             </div>
         </div>

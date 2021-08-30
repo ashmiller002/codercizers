@@ -2,12 +2,12 @@
 
 import './Cards.css'
 
-function UserWorkoutHistoryCard({ workout }) {
+function UserWorkoutHistoryCard({ userWorkout }) {
     function getCategory() {
-        if (workout === undefined) {
+        if (userWorkout === undefined) {
             return "Unknown";
         }
-        switch (workout.categoryId) {
+        switch (userWorkout.workout.categoryId) {
             case 1: return "Upper Body Strength"
             case 2: return "Lower Body Strength"
             case 3: return "Cardio"
@@ -23,12 +23,12 @@ function UserWorkoutHistoryCard({ workout }) {
         <div className="col s12 m6 l4 xl4">
             <div className="card small">
                 <div className="card-image">
-                    <img src={workout.imageUrl} alt="workout"/>
+                    <img src={userWorkout.workout.imageUrl} alt="workout"/>
                 </div>
                 <div className="card-content">
-                    <p><b>Name: </b>{workout.workoutName}</p>
+                    <p><b>Name: </b>{userWorkout.workout.workoutName}</p>
                     <p><b>Category: </b>{realCategory}</p>
-                    {/* Need to get date too */}
+                    <p><b>Date: </b>{userWorkout.workoutDate}</p>
                 </div>
             </div>
         </div>
