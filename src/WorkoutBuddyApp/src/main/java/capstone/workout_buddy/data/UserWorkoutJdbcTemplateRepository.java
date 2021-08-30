@@ -49,7 +49,7 @@ public class UserWorkoutJdbcTemplateRepository implements UserWorkoutRepository{
     }
 
     @Override
-    public List<Workout> findWorkoutsByUserId(int userId){
+    public List<UserWorkout> findWorkoutsByUserId(int userId){
 
         final String sql = "select user_id, user_workout_id, workout_date, w.workout_id," +
                 " workout_name, image_url, workout_status, category_id " +
@@ -57,7 +57,7 @@ public class UserWorkoutJdbcTemplateRepository implements UserWorkoutRepository{
                 " inner join workout w on uw.workout_id = w.workout_id;";
 
 
-        return jdbcTemplate.query(sql, new WorkoutMapper());
+        return jdbcTemplate.query(sql, new UserWorkoutMapper());
 
     }
 
