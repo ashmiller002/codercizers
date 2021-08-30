@@ -51,7 +51,20 @@ class UserWorkoutServiceTest {
         Result<UserWorkout> actual = service.add(userWorkout);
         assertEquals(ResultType.SUCCESS, actual.getType());
         assertEquals(mockOut, actual.getPayload());
+    }
 
+    @Test
+    void shouldFindWorkout(){
+        UserWorkout userWorkout = new UserWorkout();
+
+        Workout workout = new Workout();
+        workout.setWorkoutId(2);
+
+        userWorkout.setWorkout(workout);
+        userWorkout.setUserWorkoutId(0);
+        userWorkout.setUserId(1);
+        userWorkout.setActivityId(1);
+        userWorkout.setWorkoutDate(LocalDate.of(2021,8,2));
     }
 
     @Test
