@@ -10,6 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +36,7 @@ class UserWorkoutServiceTest {
         userWorkout.setUserWorkoutId(0);
         userWorkout.setUserId(1);
         userWorkout.setActivityId(1);
-        userWorkout.setWorkoutDate(Date.valueOf("2021-8-02"));
+        userWorkout.setWorkoutDate(LocalDate.of(2021,8,2));
 
         UserWorkout mockOut = new UserWorkout();
         Workout workout2 = new Workout(2,"upperBodyTest", 2,  "enable" );
@@ -43,7 +44,7 @@ class UserWorkoutServiceTest {
         mockOut.setUserWorkoutId(1);
         mockOut.setUserId(1);
         mockOut.setActivityId(1);
-        mockOut.setWorkoutDate(Date.valueOf("2021-8-02"));
+        mockOut.setWorkoutDate(LocalDate.of(2021,8,2));
 
         when(repository.add(userWorkout)).thenReturn(mockOut);
 
