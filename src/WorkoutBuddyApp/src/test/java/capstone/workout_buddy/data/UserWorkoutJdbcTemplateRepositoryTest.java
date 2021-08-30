@@ -40,7 +40,7 @@ class UserWorkoutJdbcTemplateRepositoryTest {
 
     @Test
     void shouldFindWorkoutsByUserId() {
-        List<Workout> workouts = repository.findWorkoutsByUserId(1);
-        assertNotNull(workouts);
+        List<UserWorkout> userWorkouts = repository.findWorkoutsByUserId(1);
+        assertNotNull(userWorkouts);
     }
 }

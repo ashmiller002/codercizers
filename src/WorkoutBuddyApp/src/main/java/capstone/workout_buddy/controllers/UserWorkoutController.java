@@ -3,7 +3,6 @@ package capstone.workout_buddy.controllers;
 import capstone.workout_buddy.domain.Result;
 import capstone.workout_buddy.domain.UserWorkoutService;
 import capstone.workout_buddy.models.UserWorkout;
-import capstone.workout_buddy.models.Workout;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +20,12 @@ public class UserWorkoutController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<List<Workout>> findWorkoutsByUserId(@PathVariable int userId){
-        List<Workout> workouts = service.findWorkoutsByUserId(userId);
-        if(workouts == null){
+    public ResponseEntity<List<UserWorkout>> findWorkoutsByUserId(@PathVariable int userId){
+        List<UserWorkout> userWorkouts = service.findWorkoutsByUserId(userId);
+        if(userWorkouts == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return ResponseEntity.ok(workouts);
+        return ResponseEntity.ok(userWorkouts);
     }
 
     @PostMapping()
