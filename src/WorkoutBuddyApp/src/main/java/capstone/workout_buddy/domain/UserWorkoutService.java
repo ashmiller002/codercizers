@@ -1,8 +1,8 @@
 package capstone.workout_buddy.domain;
 
 import capstone.workout_buddy.data.UserWorkoutRepository;
+import capstone.workout_buddy.data.WorkoutRepository;
 import capstone.workout_buddy.models.UserWorkout;
-import capstone.workout_buddy.models.Workout;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,12 +11,16 @@ import java.util.List;
 public class UserWorkoutService {
 
     private final UserWorkoutRepository repository;
+    private final WorkoutRepository workoutRepository;
 
-    public UserWorkoutService(UserWorkoutRepository repository) {
+    public UserWorkoutService(UserWorkoutRepository repository, WorkoutRepository workoutRepository) {
         this.repository = repository;
+        this.workoutRepository = workoutRepository;
     }
 
-    public Result<UserWorkout> add(UserWorkout userWorkout){
+    public Result<UserWorkout> add(UserWorkout userWorkout, int workoutId){
+        userWorkout.setWorkout(workoutRepository.findById(workoutId));
+
         Result<UserWorkout> result = validate(userWorkout);
         if (!result.isSuccess()) {
             return result;

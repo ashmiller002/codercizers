@@ -28,9 +28,9 @@ public class UserWorkoutController {
         return ResponseEntity.ok(userWorkouts);
     }
 
-    @PostMapping()
-    public ResponseEntity<Object> add(@RequestBody UserWorkout userWorkout){
-        Result<UserWorkout> result = service.add(userWorkout);
+    @PostMapping("/{workoutId}")
+    public ResponseEntity<Object> add(@PathVariable int workoutId, @RequestBody UserWorkout userWorkout){
+        Result<UserWorkout> result = service.add(userWorkout, workoutId);
         if(result.isSuccess()){
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
