@@ -12,9 +12,17 @@ function WorkoutHistory({ userId }) {
     const [errors, setErrors] = useState();
     const history = useHistory();
     const auth = useContext(LoginContext)
+    let storedUserId;
 
     useEffect(() => {
-        getWorkoutHistory(userId)
+        if (userId !== 0) {
+            localStorage.setItem('user_id', userId);
+            storedUserId = userId;
+        }
+        if (userId === 0) {
+            storedUserId = localStorage.getItem('user_id');
+        }
+        getWorkoutHistory(storedUserId)
             .then(data => {
                 setUserWorkouts(data);
             })
@@ -22,7 +30,7 @@ function WorkoutHistory({ userId }) {
                 setErrors(err);
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [history])
+    }, [])
     return (
         <div className="container">
             <h2>Workout History</h2>

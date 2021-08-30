@@ -32,18 +32,6 @@ span {
     margin-top: -2px;
 }
 
-#navbar button {
-    background-color: black;
-    color: white;
-    border-style: none;
-    border-color: black;
-    padding-bottom: 0px;
-    height: 30px;
-}
-
-#navbar button:hover {
-color:rgb(182, 182, 182);
-}
 #navbar i {
     line-height: 50px;
     height: 50px;

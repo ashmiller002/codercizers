@@ -55,6 +55,8 @@ export async function addWorkoutToUserHistory(workoutId, userId, workoutDate) {
     const init = {
         method: "POST",
         headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
             "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
