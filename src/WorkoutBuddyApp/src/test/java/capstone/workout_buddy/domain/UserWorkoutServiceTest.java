@@ -48,7 +48,7 @@ class UserWorkoutServiceTest {
 
         when(repository.add(userWorkout)).thenReturn(mockOut);
 
-        Result<UserWorkout> actual = service.add(userWorkout);
+        Result<UserWorkout> actual = service.add(userWorkout,1);
         assertEquals(ResultType.SUCCESS, actual.getType());
         assertEquals(mockOut, actual.getPayload());
     }
@@ -79,7 +79,7 @@ class UserWorkoutServiceTest {
         userWorkout.setWorkoutDate(null);
 
 
-        Result<UserWorkout> actual = service.add(userWorkout);
+        Result<UserWorkout> actual = service.add(userWorkout, 1);
         assertEquals(ResultType.INVALID, actual.getType());
 
     }
