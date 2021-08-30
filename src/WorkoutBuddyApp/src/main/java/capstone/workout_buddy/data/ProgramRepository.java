@@ -8,6 +8,8 @@ public interface ProgramRepository {
 
     List<Program> findAll();
 
+    Program findById(int programId);
+
     Program findByGoalAndActivity(int goalId, int activityId);
 
 

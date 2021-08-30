@@ -56,7 +56,6 @@ public class UserController {
         if (result.isSuccess()){
             return new ResponseEntity<>(result.getPayload(), HttpStatus.OK);
         }
-
         return ErrorResponse.build(result);
     }
 }
