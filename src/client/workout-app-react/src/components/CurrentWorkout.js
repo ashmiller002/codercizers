@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import LoginContext from '../contexts/LoginContext';
 import { addWorkoutToUserHistory, getWorkoutByWorkoutId } from '../services/workouts';
 import Error from './Error';
 import CurrentWorkoutCard from './workoutCards/CurrentWorkoutCard';
@@ -15,9 +16,17 @@ function CurrentWorkout() {
         categoryId: ""
     }
 
+    const auth = useContext(LoginContext);
     const { workoutid } = useParams();
     const [errors, setErrors] = useState();
     const [workout, setWorkout] = useState(blankWorkout);
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+
+    const workoutDate = `${yyyy}-${mm}-${dd}`;
+
 
     useEffect(() => {
         getWorkoutByWorkoutId(workoutid)
@@ -28,10 +37,11 @@ function CurrentWorkout() {
                 console.log(err);
                 //setErrors(err);
             })
-    })
+    }, [])
 
-    function handleSubmit(workoutId, userId) {
-        addWorkoutToUserHistory(workoutId, userId)
+    function handleSubmit(evt) {
+        console.log(workoutid)
+        addWorkoutToUserHistory(workoutid, auth.fullUser.userId, workoutDate)
             .then(() => {
                 history.push("/workouthistory")
             })

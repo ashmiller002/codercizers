@@ -65,8 +65,7 @@ function AddEditWorkout() {
                 history.push("/adminworkoutcatalog");
             })
             .catch(err => {
-                //setErrors(err);
-                console.log(err);
+                setErrors(err);
             })
         } else if (method === "Add") {
             addWorkout(workout)
