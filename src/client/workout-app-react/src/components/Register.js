@@ -1,7 +1,5 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import FullUserContext from '../contexts/FullUserContext';
-import LoginContext from '../contexts/LoginContext';
 import { register } from '../services/auth';
 import { registerUser } from '../services/user';
 import Error from './Error';
@@ -11,8 +9,6 @@ import './Register.css';
 function Register() {
 
     const [errors, setErrors] = useState();
-    const auth = useContext(LoginContext);
-    const fullUser = useContext(FullUserContext);
     const history = useHistory();
 
 

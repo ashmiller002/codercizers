@@ -44,7 +44,7 @@ function Home() {
                 <div className="col s12 m6 l4 xl4">
                     <div className="card small">
                         <div className="card-image ">
-                            <img src="https://images.freeimages.com/images/large-previews/2f6/swept-sky-1406631.jpg" />
+                            <img src="https://images.freeimages.com/images/large-previews/2f6/swept-sky-1406631.jpg" alt="blue sky" />
                         </div>
                         <div className="card-content ">
                             <p><b>Browse Other Workouts</b></p>

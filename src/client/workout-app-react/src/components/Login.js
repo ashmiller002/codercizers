@@ -1,11 +1,10 @@
 import jwtDecode from 'jwt-decode';
-import { useState, useContext, useEffect, useImperativeHandle } from 'react';
+import { useState, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import LoginContext from '../contexts/LoginContext';
 import { authenticate } from '../services/auth.js';
 import { getUserWithLoginId } from '../services/user';
 import Error from './Error';
-import FullUserContext from '../contexts/FullUserContext.js';
 import './Login.css';
 
 
@@ -14,7 +13,6 @@ function Login() {
 
     const [errors, setErrors] = useState();
     const auth = useContext(LoginContext);
-    const fullUser = useContext(FullUserContext);
     const history = useHistory();
     const blankCredentials = {
         username: "",
@@ -40,7 +38,6 @@ function Login() {
                     const { jwt_token } = body;
                     localStorage.setItem('jwt_token', jwt_token);
                     const { id, roles } = jwtDecode(jwt_token);
-                    console.log(roles);
                     if (roles === "USER") {
                         setUserInformation(id, () => {
                             auth.onAuthenticated(jwt_token);

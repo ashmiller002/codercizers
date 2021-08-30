@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import { getAllWorkouts } from "../services/workouts";
 import Error from "./Error";
 import AdminWorkoutCards from "./workoutCards/AdminWorkoutCards.js"
@@ -14,7 +13,6 @@ function AdminWorkoutCatalogue() {
         workoutStatus: "enable"
     }
 
-    const history = useHistory();
     const [errors, setErrors] = useState();
     const [workouts, setWorkouts] = useState([blankWorkout]);
 

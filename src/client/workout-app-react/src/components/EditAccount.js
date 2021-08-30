@@ -1,9 +1,6 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory, Link, useParams } from 'react-router-dom';
-import FullUserContext from '../contexts/FullUserContext';
-import LoginContext from '../contexts/LoginContext';
-import { register } from '../services/auth';
-import { editUser, getUserWithLoginId, getUserWithUserId } from '../services/user';
+import { editUser, getUserWithLoginId } from '../services/user';
 import Error from './Error';
 import './Register.css';
 
