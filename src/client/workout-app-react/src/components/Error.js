@@ -1,12 +1,12 @@
-
+import './Error.css';
 
 function Error({ errorMessages }) {
     if (errorMessages !== undefined) {
         return (
-            <div className="alert alert-danger col-5" role="alert">
+            <div className="materialert danger">
                 {
                     errorMessages.map((m) => {
-                        return (<div>{m}</div>)
+                        return (<div key={errorMessages.indexOf(m)}>{m}</div>)
                     })
                 }
 

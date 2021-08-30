@@ -19,8 +19,7 @@ function WorkoutHistory() {
                 setUserWorkouts(data);
             })
             .catch(err => {
-                console.log(err);
-                //setErrors(err);
+                setErrors(err);
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [history])

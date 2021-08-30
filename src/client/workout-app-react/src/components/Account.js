@@ -2,6 +2,7 @@ import LoginContext from "../contexts/LoginContext";
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getUserWithLoginId } from "../services/user.js";
+import Error from "./Error";
 
 function Account() {
 
@@ -20,6 +21,7 @@ function Account() {
 
     const auth = useContext(LoginContext);
     const [fullUserInfo, setFullUserInfo] = useState(blankFullUserInfo);
+    const [errors, setErrors] = useState();
 
     useEffect(() => {
         getUserWithLoginId(auth.user[2])
@@ -27,7 +29,7 @@ function Account() {
                 setFullUserInfo(data);
             })
             .catch(errs => {
-                //setErrors(errs);
+                setErrors(errs);
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -57,6 +59,7 @@ function Account() {
     return (
         <div className="container">
             <h2>Account</h2>
+            <Error errorMessages={errors} />
             {/* Add username  */}
             <p><b>First Name:</b> {fullUserInfo.firstName}</p>
             <p><b>Last Name:</b> {fullUserInfo.lastName}</p>
