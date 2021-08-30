@@ -31,3 +31,15 @@ span {
     vertical-align: middle;
     margin-top: -2px;
 }
+
+#navbar button {
+    background-color: black;
+    color: white;
+    border-style: none;
+    border-color: black;
+    padding-bottom: 0px;
+}
+
+#navbar i .material-icons {
+    padding-top:0px;
+}

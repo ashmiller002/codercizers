@@ -58,7 +58,7 @@ function UserNavBar() {
         <div>
             <nav id="navbar" >
                 <div className="nav-wrapper">
-                    <a className="sidenav-trigger" data-target="mobile-demo"><i className="material-icons">menu</i></a>
+                    <button className="sidenav-trigger" data-target="mobile-demo"><i className="material-icons">menu</i></button>
                     <ul className="hide-on-med-and-down">
                         <li><Link to="/" className={"btn " + selected[4]} id="home">Home</Link></li>
                         <li><Link to="/workoutcatalog" className={"btn " + selected[0]} id="workoutCatalog">Workout Catalog</Link></li>

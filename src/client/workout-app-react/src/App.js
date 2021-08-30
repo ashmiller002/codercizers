@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Switch, Route, useHistory, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import jwtDecode from 'jwt-decode';
 import UserNavBar from './components/UserNavBar.js';
 import AdminNavBar from './components/AdminNavBar.js';
 import WorkoutCatalog from './components/WorkoutCatalog.js';
@@ -13,7 +12,6 @@ import AdminWorkoutCatalog from './components/AdminWorkoutCatalog.js';
 import Login from './components/Login.js';
 import LoginContext from './contexts/LoginContext.js';
 import Register from './components/Register.js';
-import FullUserContext from './contexts/FullUserContext.js';
 import EditAccount from './components/EditAccount.js';
 import CurrentWorkout from './components/CurrentWorkout.js';
 import { refresh } from './services/auth.js';
@@ -29,17 +27,6 @@ function App() {
   const [initialized, setInitialized] = useState(false);
   const history = useHistory();
 
-  // const blankUser = {
-  //   loginId: "1",
-  //   userId: "1",
-  //   firstName: "firstName",
-  //   lastName: "lastName",
-  //   dateBirth: "2000-03-12",
-  //   email: "email@email.com",
-  //   goal: "2",
-  //   activityLevel: "1"
-  // }
-  //real blank user
   const blankUser = {
     loginId: null,
     userId: 0,
@@ -65,7 +52,7 @@ function App() {
     }
   }
 
-  const onAuthenticated = (token) => {
+  function onAuthenticated(token) {
     const payload = parseToken(token);
     setUser([payload.sub, payload.roles, payload.id]);
     localStorage.setItem('jwt_token', token);
