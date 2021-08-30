@@ -30,20 +30,23 @@ public class SuggestedWorkoutService {
     }
 
     public Workout suggestWorkout(int userId){
-        Workout workout = new Workout();
+        Workout suggestedWorkout = new Workout();
         List<UserWorkout> userWorkout = userWorkoutRepository.findWorkoutsByUserId(userId);
         User user = userRepository.findByUserId(userId);
-        int programId = user.getProgram();
-        Program userProgram = programRepository.findById(programId);
+        Program userProgram = programRepository.findById(user.getProgram());
 
-        UserWorkout priorDayWorkout = new UserWorkout();
+        Workout priorDayWorkout = new Workout();
         List<UserWorkout> recentWorkouts = new ArrayList<>();
 
         for (UserWorkout w: userWorkout){
             if (w.getWorkoutDate().after(LocalDate.now().minusDays(6))){
+                //getting a list of recent workouts
                 recentWorkouts.add(w);
             }
-
+            if (w.getWorkoutDate().equals(LocalDate.now().minusDays(1))){
+                //saving prior day workout to variable
+                priorDayWorkout = w.getWorkout();
+            }
         }
 
         switch (userProgram.getGoalId()){
@@ -60,10 +63,17 @@ public class SuggestedWorkoutService {
 
 
 
-        return workout;
+        return suggestedWorkout;
     }
 
-    //strength category
+    private Workout strengthWorkout(UserWorkout recentWorkouts, Workout priorDayWorkout){
+        Workout suggestedWorkout;
+
+
+        return suggestedWorkout;
+    }
+
+
 
 
 
