@@ -4,7 +4,7 @@ import LoginContext from '../contexts/LoginContext.js';
 import { getWorkoutHistory } from '../services/workouts.js';
 import Error from './Error.js';
 import UserWorkoutHistoryCard from './workoutCards/UserWorkoutHistoryCard.js'
- 
+
 function WorkoutHistory() {
 
 
@@ -22,6 +22,7 @@ function WorkoutHistory() {
                 console.log(err);
                 //setErrors(err);
             })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [history])
     return (
         <div className="container">

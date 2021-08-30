@@ -16,20 +16,20 @@ function Account() {
     }
     //delete this
     const token = localStorage.getItem('jwt_token');
-console.log(token);
+    console.log(token);
 
     const auth = useContext(LoginContext);
     const [fullUserInfo, setFullUserInfo] = useState(blankFullUserInfo);
-   
+
     useEffect(() => {
         getUserWithLoginId(auth.user[2])
-        .then((data) => {
-            setFullUserInfo(data);
-        })
-        .catch(errs => {
-            //setErrors(errs);
-        })
-
+            .then((data) => {
+                setFullUserInfo(data);
+            })
+            .catch(errs => {
+                //setErrors(errs);
+            })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     function getGoal() {
@@ -47,6 +47,7 @@ console.log(token);
         switch (fullUserInfo.activityLevelId) {
             case 1: return "Less than 3 times per week";
             case 2: return "3 times per week or more";
+            default: return "Unknown";
         }
     }
 

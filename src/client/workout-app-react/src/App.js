@@ -38,7 +38,7 @@ function App() {
     activityLevel: null, // frequent = 2 or infrequent = 1 send just number
   }
 
- 
+
   const [fullUser, setFullUser] = useState(blankUser);
   // on login get user info and setFullUser
   const parseToken = (token) => {
@@ -68,8 +68,8 @@ function App() {
     if (token) {
       onAuthenticated(token);
     }
-
     setInitialized(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history])
 
 
@@ -192,7 +192,7 @@ function App() {
               {auth.user !== null && auth.user[1] === "ADMIN"
                 ? <div>
                   <AdminNavBar />
-                  <AddEditWorkout/>
+                  <AddEditWorkout />
                 </div>
                 : <Redirect to="/login" />
               }
@@ -201,7 +201,7 @@ function App() {
               {auth.user !== null && auth.user[1] === "ADMIN"
                 ? <div>
                   <AdminNavBar />
-                  <AddEditWorkout/>
+                  <AddEditWorkout />
                 </div>
                 : <Redirect to="/login" />
               }
@@ -241,13 +241,13 @@ function App() {
               }
             </Route>
             <Route>
-            {auth.user !== null && auth.user[1] === "USER" &&
-                  <UserNavBar />
+              {auth.user !== null && auth.user[1] === "USER" &&
+                <UserNavBar />
               }
 
               {/* if admin: */}
               {auth.user !== null && auth.user[1] === "ADMIN" &&
-                  <AdminNavBar />
+                <AdminNavBar />
               }
               <NotFound />
             </Route>
