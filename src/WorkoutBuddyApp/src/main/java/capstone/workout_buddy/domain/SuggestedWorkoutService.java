@@ -111,6 +111,8 @@ public class SuggestedWorkoutService {
             //do a random upper/lower
             int cat = (int)(Math.random() * 2) +1;
             categoryWorkouts = workoutRepository.findByCategory(cat);
+        }else {
+            categoryWorkouts = workoutRepository.findByCategory(5);
         }
 
         categoryWorkouts.removeIf(workout -> (workout.getWorkoutName().contains("Custom")));
