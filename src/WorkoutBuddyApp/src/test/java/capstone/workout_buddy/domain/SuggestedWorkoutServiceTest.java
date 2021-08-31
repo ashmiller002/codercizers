@@ -121,23 +121,30 @@ class SuggestedWorkoutServiceTest {
         when(userRepository.findByUserId(1)).thenReturn(user);
         when(programRepository.findById(1)).thenReturn(new Program(1, 1, 1));
 
-        Workout workout = makeRestDay();
-
         Workout mockCatWorkout = makeLowerBodyWorkout();
         List<Workout> categoryList = new ArrayList<>();
         categoryList.add(mockCatWorkout);
 
+
         //setting up userWorkout list
         List<UserWorkout> mockWorkouts = new ArrayList<>();
         UserWorkout mockWorkout = new UserWorkout();
+        Workout workout = makeRestDay();
         mockWorkout.setUserWorkoutId(1);
         mockWorkout.setWorkoutDate(LocalDate.now().minusDays(1));
         mockWorkout.setWorkout(workout);
         mockWorkout.setActivityId(1);
         mockWorkouts.add(mockWorkout);
+        UserWorkout mockWorkout2 = new UserWorkout();
+        workout = makeUpperBodyWorkout();
+        mockWorkout2.setUserWorkoutId(2);
+        mockWorkout2.setWorkoutDate(LocalDate.now().minusDays(2));
+        mockWorkout2.setWorkout(workout);
+        mockWorkout2.setActivityId(3);
+        mockWorkouts.add(mockWorkout2);
 
         when(userWorkoutRepository.findWorkoutsByUserId(1)).thenReturn(mockWorkouts);
-        when(workoutRepository.findById(1)).thenReturn(mockCatWorkout);
+        when(workoutRepository.findById(3)).thenReturn(mockCatWorkout);
         when(workoutRepository.findByCategory(2)).thenReturn(categoryList);
 
         Result<Workout> result = service.suggestWorkout(1);

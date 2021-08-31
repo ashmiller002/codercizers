@@ -32,6 +32,7 @@ public class SuggestedWorkoutService {
     }
 
     public Result<Workout> suggestWorkout(int userId){
+        //add validation for user?  like if user not found....
         Result<Workout> result = new Result<>();
         List<UserWorkout> userWorkout = userWorkoutRepository.findWorkoutsByUserId(userId);
         User user = userRepository.findByUserId(userId);
@@ -41,14 +42,16 @@ public class SuggestedWorkoutService {
         Workout priorDayWorkout = new Workout();
         List<UserWorkout> recentWorkouts = new ArrayList<>();
 
-        for (UserWorkout w: userWorkout){
-            if (w.getWorkoutDate().isAfter((LocalDate.now().minusDays(6)))){
-                //getting a list of recent workouts
-                recentWorkouts.add(w);
-            }
-            if (w.getWorkoutDate().equals(LocalDate.now().minusDays(1))){
-                //saving prior day workout to variable
-                priorDayWorkout = w.getWorkout();
+        if (userWorkout != null){
+            for (UserWorkout w: userWorkout){
+                if (w.getWorkoutDate().isAfter((LocalDate.now().minusDays(6)))){
+                    //getting a list of recent workouts
+                    recentWorkouts.add(w);
+                }
+                if (w.getWorkoutDate().equals(LocalDate.now().minusDays(1))){
+                    //saving prior day workout to variable
+                    priorDayWorkout = w.getWorkout();
+                }
             }
         }
 
@@ -71,6 +74,7 @@ public class SuggestedWorkoutService {
                 //cardio goal
                 break;
             default:
+                //default workout suggestion?
                 throw new IllegalStateException("Unexpected value: " + userProgram.getGoalId());
         }
 
@@ -132,29 +136,31 @@ public class SuggestedWorkoutService {
         categoryCounts.put(5,0);
         int count = 0;
 
-        for (UserWorkout w: recentWorkouts){
-            if (w.getWorkout().getCategoryId() == 1){
-                count = categoryCounts.get(1);
-                count++;
-                categoryCounts.put(1, count);
-            } else if (w.getWorkout().getCategoryId() == 2){
-                count = categoryCounts.get(2);
-                count++;
-                categoryCounts.put(2, count);
-            }
-            else if (w.getWorkout().getCategoryId() == 3){
-                count = categoryCounts.get(3);
-                count++;
-                categoryCounts.put(3, count);
-            }
-            else if (w.getWorkout().getCategoryId() == 4){
-                count = categoryCounts.get(4);
-                count++;
-                categoryCounts.put(4, count);
-            } else {
-                count = categoryCounts.get(5);
-                count++;
-                categoryCounts.put(5, count);
+        if (recentWorkouts != null){
+            for (UserWorkout w: recentWorkouts){
+                if (w.getWorkout().getCategoryId() == 1){
+                    count = categoryCounts.get(1);
+                    count++;
+                    categoryCounts.put(1, count);
+                } else if (w.getWorkout().getCategoryId() == 2){
+                    count = categoryCounts.get(2);
+                    count++;
+                    categoryCounts.put(2, count);
+                }
+                else if (w.getWorkout().getCategoryId() == 3){
+                    count = categoryCounts.get(3);
+                    count++;
+                    categoryCounts.put(3, count);
+                }
+                else if (w.getWorkout().getCategoryId() == 4){
+                    count = categoryCounts.get(4);
+                    count++;
+                    categoryCounts.put(4, count);
+                } else {
+                    count = categoryCounts.get(5);
+                    count++;
+                    categoryCounts.put(5, count);
+                }
             }
         }
         return categoryCounts;
