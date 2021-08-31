@@ -24,6 +24,7 @@ function Account() {
         getUserWithLoginId(auth.user[2])
             .then((data) => {
                 setFullUserInfo(data);
+                console.log(data);
             })
             .catch(errs => {
                 setErrors(errs);

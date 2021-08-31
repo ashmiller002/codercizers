@@ -5,23 +5,35 @@ import UserWorkoutCatalogueCard from "./workoutCards/UserWorkoutCatalogueCard.js
 import Error from "./Error.js";
 
 
-function Home() {
+function Home({userId}) {
 
     const blankWorkout = {
         workoutId: "",
         workoutName: "",
-        imageUrl: "https://image.shutterstock.com/image-photo/404-not-found-slate-inscription-600w-175568471.jpg",
+        imageUrl: "",
         categoryId: "",
         workoutStatus: "enable"
     }
     const [errors, setErrors] = useState();
     const [workout, setWorkout] = useState(blankWorkout);
 
+    let storedUserId;
 
     useEffect(() => {
-        getSuggestedWorkout()
-            .then(json => setWorkout(json))
-            .catch(errs => setErrors(errs))
+        if (userId !== 0) {
+            localStorage.setItem('user_id', userId);
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            storedUserId = userId;
+        }
+        if (userId === 0) {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            storedUserId = localStorage.getItem('user_id');
+        }
+        getSuggestedWorkout(storedUserId)
+            .then(json => {setWorkout(json)})
+            .catch(errs => {
+                setErrors(errs)
+            })
     }, [])
 
     return (

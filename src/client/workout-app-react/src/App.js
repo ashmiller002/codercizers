@@ -228,7 +228,7 @@ function App() {
               {auth.user !== null && auth.user[1] === "USER" &&
                 <div>
                   <UserNavBar />
-                  <Home />
+                  <Home userId={auth.fullUser.userId} />
                 </div>
               }
 
