@@ -4,6 +4,9 @@
 * Open the user API server app in intelliJ located here: codercizers\src\user-api\server\
 * The user API runs on port 5000
 * Configure environmental variables - database name: dev_10_users
+    * DB_URL=jdbc:mysql://localhost:3306/dev_10_users
+    * JWT_SECRET_KEY=de8a26d0-f6e8-4470-91d0-ba7a44391281
+
 
 ## Workout API
 * Open the workout API app in intelliJ located here: codercizers\src\WorkoutBuddyApp\

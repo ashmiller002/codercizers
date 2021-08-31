@@ -17,14 +17,14 @@ export async function getWorkoutsByCategoryId(categoryId) {
     return await response.json();
 }
 
-export async function getSuggestedWorkout(user) {
+export async function getSuggestedWorkout(userId) {
     const token = localStorage.getItem('jwt_token');
     const init = {
         headers: {
             "Authorization": `Bearer ${token}`
         }
     };
-    const response = await fetch(`${url}/workout/suggestedworkout/${user.userId}`, init);
+    const response = await fetch(`${url}/api/suggested/${userId}`, init);
     if (response.status !== 200) {
         return Promise.reject(["Suggested workout fetch failed"]);
     }

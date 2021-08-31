@@ -3,8 +3,8 @@ import './Cards.css'
 
 
 function CurrentWorkoutCard({ workout, handleSubmit }) {
-
     function getCategory() {
+
         if (workout === undefined) {
             return "Unknown";
         }
