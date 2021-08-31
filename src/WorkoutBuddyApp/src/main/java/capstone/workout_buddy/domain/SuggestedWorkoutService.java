@@ -69,6 +69,11 @@ public class SuggestedWorkoutService {
                 break;
             case 2:
                 //mobility goal
+                if (userProgram.getActivityLevelId() == 1){
+                    suggestedWorkoutId = mobilityMod(priorDayWorkout, categoryCounts);
+                }else {
+                    suggestedWorkoutId = mobilityHigh(priorDayWorkout, categoryCounts);
+                }
                 break;
             case 3:
                 //cardio goal
@@ -77,7 +82,6 @@ public class SuggestedWorkoutService {
                 //default workout suggestion?
                 throw new IllegalStateException("Unexpected value: " + userProgram.getGoalId());
         }
-
 
         //set suggestedWorkout based on workoutId
         result.setPayload(workoutRepository.findById(suggestedWorkoutId));
@@ -135,7 +139,7 @@ public class SuggestedWorkoutService {
             //recommend lower body
             categoryWorkouts = workoutRepository.findByCategory(2);
         }else if (categoryCounts.get(3) <1 && categoryCounts.get(4) <1){
-            //recommend mobiltiy or cardio
+            //recommend mobility or cardio
             int cat = (int)(Math.random() * 2) +3;
             categoryWorkouts = workoutRepository.findByCategory(cat);
         }else {
@@ -146,6 +150,55 @@ public class SuggestedWorkoutService {
         categoryWorkouts.removeIf(workout -> (workout.getWorkoutName().contains("Custom")));
         suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
         return suggestedWorkoutId;
+    }
+
+    private int mobilityMod(Workout priorDayWorkout, HashMap<Integer, Integer> categoryCounts){
+        //alternate rest with mobility
+        //3 mobility per week
+        int suggestedWorkoutId = 5;
+        List<Workout> categoryWorkouts = new ArrayList<>();
+
+        if (priorDayWorkout.getCategoryId() != 5 && priorDayWorkout.getCategoryId() != 0){
+            categoryWorkouts = workoutRepository.findByCategory(5);
+            suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
+            return suggestedWorkoutId;
+        }
+
+        if (categoryCounts.get(4) < 3){
+            categoryWorkouts = workoutRepository.findByCategory(4);
+        } else {
+            categoryWorkouts = workoutRepository.findByCategory(5);
+        }
+
+        categoryWorkouts.removeIf(workout -> (workout.getWorkoutName().contains("Custom")));
+        suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
+        return suggestedWorkoutId;
+    }
+
+    private int mobilityHigh(Workout priorDayWorkout, HashMap<Integer, Integer> categoryCounts){
+        //4 mobility per week
+        //50% chance cardio/strength
+        int suggestedWorkoutId = 5;
+        List<Workout> categoryWorkouts = new ArrayList<>();
+
+        if (categoryCounts.get(4) < 4){
+            categoryWorkouts = workoutRepository.findByCategory(4);
+        } else if (categoryCounts.get(3) < 1 && categoryCounts.get(1) < 1 && categoryCounts.get(2) < 1){
+            int cat = (int)(Math.random() * 3) +1;
+            categoryWorkouts = workoutRepository.findByCategory(cat);
+        } else {
+            categoryWorkouts = workoutRepository.findByCategory(5);
+        }
+        categoryWorkouts.removeIf(workout -> (workout.getWorkoutName().contains("Custom")));
+        suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
+        return suggestedWorkoutId;
+    }
+
+    private int cardioMod(){
+        return 0;
+    }
+    private int cardioHigh(){
+        return 0;
     }
 
     private HashMap<Integer, Integer> countPerCategory(List<UserWorkout> recentWorkouts){
