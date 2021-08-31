@@ -40,7 +40,6 @@ public class SuggestedWorkoutService {
 
         Workout priorDayWorkout = new Workout();
         List<UserWorkout> recentWorkouts = new ArrayList<>();
-        HashMap<Integer, Integer> categoryCounts = countPerCategory(recentWorkouts);
 
         for (UserWorkout w: userWorkout){
             if (w.getWorkoutDate().isAfter((LocalDate.now().minusDays(6)))){
@@ -52,6 +51,8 @@ public class SuggestedWorkoutService {
                 priorDayWorkout = w.getWorkout();
             }
         }
+
+        HashMap<Integer, Integer> categoryCounts = countPerCategory(recentWorkouts);
 
         switch (userProgram.getGoalId()){
             case 1:
@@ -95,22 +96,31 @@ public class SuggestedWorkoutService {
 
         if (categoryCounts.get(1) == 0 && priorDayWorkout.getCategoryId() != 1){
             List<Workout> categoryWorkouts = workoutRepository.findByCategory(1);
-            suggestedWorkoutId = (int)(Math.random() * categoryWorkouts.size()) + 1;
+            suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
         } else if (categoryCounts.get(2) == 0 && priorDayWorkout.getCategoryId() != 2){
             //suggest lower body cat 2
             List<Workout> categoryWorkouts = workoutRepository.findByCategory(2);
-            suggestedWorkoutId = (int)(Math.random() * categoryWorkouts.size()) + 1;
+            suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
         } else if (categoryCounts.get(1) == 1 && categoryCounts.get(2) == 1){
             //do a random upper/lower
             int cat = (int)(Math.random() * 2) +1;
             List<Workout> categoryWorkouts = workoutRepository.findByCategory(cat);
-            suggestedWorkoutId = (int)(Math.random() * categoryWorkouts.size()) + 1;
+            suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
         }
         return suggestedWorkoutId;
     }
 
     private int strengthWorkoutHigh(List<UserWorkout> recentWorkouts, Workout priorDayWorkout, HashMap<Integer, Integer> categoryCounts){
-        return 0;
+        //two upper, two lower per week
+        // no consecutive upper or lower
+        // fifth 50% mobility or cardio
+        int suggestedWorkoutId = 5;
+
+
+
+
+
+        return suggestedWorkoutId;
     }
 
     private HashMap<Integer, Integer> countPerCategory(List<UserWorkout> recentWorkouts){
@@ -120,20 +130,31 @@ public class SuggestedWorkoutService {
         categoryCounts.put(3,0);
         categoryCounts.put(4,0);
         categoryCounts.put(5,0);
+        int count = 0;
 
         for (UserWorkout w: recentWorkouts){
             if (w.getWorkout().getCategoryId() == 1){
-                categoryCounts.put(1, categoryCounts.get(1)+1);
+                count = categoryCounts.get(1);
+                count++;
+                categoryCounts.put(1, count);
             } else if (w.getWorkout().getCategoryId() == 2){
-                categoryCounts.put(2, categoryCounts.get(2)+1);
+                count = categoryCounts.get(2);
+                count++;
+                categoryCounts.put(2, count);
             }
             else if (w.getWorkout().getCategoryId() == 3){
-                categoryCounts.put(3, categoryCounts.get(3)+1);
+                count = categoryCounts.get(3);
+                count++;
+                categoryCounts.put(3, count);
             }
             else if (w.getWorkout().getCategoryId() == 4){
-                categoryCounts.put(4, categoryCounts.get(4)+1);
+                count = categoryCounts.get(4);
+                count++;
+                categoryCounts.put(4, count);
             } else {
-                categoryCounts.put(5, categoryCounts.get(5)+1);
+                count = categoryCounts.get(5);
+                count++;
+                categoryCounts.put(5, count);
             }
         }
         return categoryCounts;

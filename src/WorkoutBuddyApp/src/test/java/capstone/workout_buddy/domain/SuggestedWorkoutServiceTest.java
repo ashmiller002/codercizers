@@ -138,13 +138,15 @@ class SuggestedWorkoutServiceTest {
 
         when(userWorkoutRepository.findWorkoutsByUserId(1)).thenReturn(mockWorkouts);
         when(workoutRepository.findById(1)).thenReturn(mockCatWorkout);
-        when(workoutRepository.findByCategory(1)).thenReturn(categoryList);
+        when(workoutRepository.findByCategory(2)).thenReturn(categoryList);
 
         Result<Workout> result = service.suggestWorkout(1);
         assertNotNull(result.getPayload());
         assertTrue(result.isSuccess());
         assertEquals(3, result.getPayload().getWorkoutId());
     }
+
+
 
     User makeUser(){
         User user = new User();
