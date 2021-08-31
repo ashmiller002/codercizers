@@ -729,6 +729,121 @@ class SuggestedWorkoutServiceTest {
     }
 
     @Test
+    void shouldSuggestRestCardioHigh(){
+        User user = makeUser();
+        user.setProgramId(3);
+        user.setActivityLevelId(2);
+        user.setGoalId(3);
+        when(userRepository.findByUserId(1)).thenReturn(user);
+        when(programRepository.findById(3)).thenReturn(new Program(3, 3, 2));
+
+        List<Workout> categoryList = new ArrayList<>();
+        Workout mockCatWorkout = makeRestDay();
+        categoryList.add(mockCatWorkout);
+
+        List<UserWorkout> mockUserWorkouts = new ArrayList<>();
+        UserWorkout mockWorkout = new UserWorkout();
+        mockWorkout.setUserWorkoutId(1);
+        mockWorkout.setWorkoutDate(LocalDate.now().minusDays(1));
+        mockWorkout.setWorkout(makeCardio());
+        mockUserWorkouts.add(mockWorkout);
+
+        UserWorkout mockWorkout2 = new UserWorkout();
+        mockWorkout2.setUserWorkoutId(2);
+        mockWorkout2.setWorkoutDate(LocalDate.now().minusDays(3));
+        mockWorkout2.setWorkout(makeCardio());
+        mockUserWorkouts.add(mockWorkout2);
+
+        UserWorkout mockWorkout3 = new UserWorkout();
+        mockWorkout3.setUserWorkoutId(3);
+        mockWorkout3.setWorkout(makeCardio());
+        mockWorkout3.setWorkoutDate(LocalDate.now().minusDays(6));
+        mockUserWorkouts.add(mockWorkout3);
+
+        UserWorkout mockWorkout4 = new UserWorkout();
+        mockWorkout4.setUserWorkoutId(4);
+        mockWorkout4.setWorkout(makeCardio());
+        mockWorkout4.setWorkoutDate(LocalDate.now().minusDays(4));
+        mockUserWorkouts.add(mockWorkout4);
+
+        UserWorkout mockWorkout5 = new UserWorkout();
+        mockWorkout5.setWorkout(makeLowerBodyWorkout());
+        mockWorkout5.setUserWorkoutId(5);
+        mockWorkout5.setWorkoutDate(LocalDate.now().minusDays(6));
+        mockUserWorkouts.add(mockWorkout5);
+
+        when(userWorkoutRepository.findWorkoutsByUserId(1)).thenReturn(mockUserWorkouts);
+        when(workoutRepository.findById(13)).thenReturn(mockCatWorkout);
+        when(workoutRepository.findByCategory(5)).thenReturn(categoryList);
+
+        Result<Workout> result = service.suggestWorkout(1);
+        assertNotNull(result.getPayload());
+        assertTrue(result.isSuccess());
+        assertEquals(13, result.getPayload().getWorkoutId());
+    }
+
+    @Test
+    void shouldSuggestNonCardioCardioHigh(){
+        User user = makeUser();
+        user.setProgramId(3);
+        user.setActivityLevelId(2);
+        user.setGoalId(3);
+        when(userRepository.findByUserId(1)).thenReturn(user);
+        when(programRepository.findById(3)).thenReturn(new Program(3, 3, 2));
+
+        List<Workout> categoryList = new ArrayList<>();
+        Workout mockCatWorkout = makeUpperBodyWorkout();
+        categoryList.add(mockCatWorkout);
+
+        List<Workout> categoryList2 = new ArrayList<>();
+        Workout mockCatWorkout2 = makeLowerBodyWorkout();
+        categoryList2.add(mockCatWorkout2);
+
+        List<Workout> categoryList3 = new ArrayList<>();
+        Workout mockCatWorkout3 = makeMobilityWorkout();
+        categoryList3.add(mockCatWorkout3);
+
+        List<UserWorkout> mockUserWorkouts = new ArrayList<>();
+        UserWorkout mockWorkout = new UserWorkout();
+        mockWorkout.setUserWorkoutId(1);
+        mockWorkout.setWorkoutDate(LocalDate.now().minusDays(1));
+        mockWorkout.setWorkout(makeCardio());
+        mockUserWorkouts.add(mockWorkout);
+
+        UserWorkout mockWorkout2 = new UserWorkout();
+        mockWorkout2.setUserWorkoutId(2);
+        mockWorkout2.setWorkoutDate(LocalDate.now().minusDays(3));
+        mockWorkout2.setWorkout(makeCardio());
+        mockUserWorkouts.add(mockWorkout2);
+
+        UserWorkout mockWorkout3 = new UserWorkout();
+        mockWorkout3.setUserWorkoutId(3);
+        mockWorkout3.setWorkout(makeCardio());
+        mockWorkout3.setWorkoutDate(LocalDate.now().minusDays(6));
+        mockUserWorkouts.add(mockWorkout3);
+
+        UserWorkout mockWorkout4 = new UserWorkout();
+        mockWorkout4.setUserWorkoutId(4);
+        mockWorkout4.setWorkout(makeCardio());
+        mockWorkout4.setWorkoutDate(LocalDate.now().minusDays(4));
+        mockUserWorkouts.add(mockWorkout4);
+
+        when(userWorkoutRepository.findWorkoutsByUserId(1)).thenReturn(mockUserWorkouts);
+        when(workoutRepository.findById(1)).thenReturn(mockCatWorkout);
+        when(workoutRepository.findByCategory(1)).thenReturn(categoryList);
+        when(workoutRepository.findById(3)).thenReturn(mockCatWorkout2);
+        when(workoutRepository.findByCategory(2)).thenReturn(categoryList2);
+        when(workoutRepository.findById(11)).thenReturn(mockCatWorkout3);
+        when(workoutRepository.findByCategory(4)).thenReturn(categoryList3);
+
+        Result<Workout> result = service.suggestWorkout(1);
+        assertNotNull(result.getPayload());
+        assertTrue(result.isSuccess());
+        assertNotEquals(13, result.getPayload().getWorkoutId());
+        assertNotEquals(8, result.getPayload().getWorkoutId());
+    }
+
+    @Test
     void shouldSuggestCardioModCardio(){
         User user = makeUser();
         user.setProgramId(3);
@@ -736,6 +851,36 @@ class SuggestedWorkoutServiceTest {
         user.setGoalId(3);
         when(userRepository.findByUserId(1)).thenReturn(user);
         when(programRepository.findById(3)).thenReturn(new Program(3, 3, 1));
+
+        List<Workout> categoryList = new ArrayList<>();
+        Workout mockCatWorkout = makeCardio();
+        categoryList.add(mockCatWorkout);
+
+        List<UserWorkout> mockUserWorkouts = new ArrayList<>();
+        UserWorkout mockWorkout = new UserWorkout();
+        mockWorkout.setUserWorkoutId(1);
+        mockWorkout.setWorkoutDate(LocalDate.now().minusDays(1));
+        mockWorkout.setWorkout(makeRestDay());
+        mockUserWorkouts.add(mockWorkout);
+
+        when(userWorkoutRepository.findWorkoutsByUserId(1)).thenReturn(mockUserWorkouts);
+        when(workoutRepository.findById(8)).thenReturn(mockCatWorkout);
+        when(workoutRepository.findByCategory(3)).thenReturn(categoryList);
+
+        Result<Workout> result = service.suggestWorkout(1);
+        assertNotNull(result.getPayload());
+        assertTrue(result.isSuccess());
+        assertEquals(8, result.getPayload().getWorkoutId());
+    }
+
+    @Test
+    void shouldSuggestCardioHighCardio(){
+        User user = makeUser();
+        user.setProgramId(3);
+        user.setActivityLevelId(2);
+        user.setGoalId(3);
+        when(userRepository.findByUserId(1)).thenReturn(user);
+        when(programRepository.findById(3)).thenReturn(new Program(3, 3, 2));
 
         List<Workout> categoryList = new ArrayList<>();
         Workout mockCatWorkout = makeCardio();
