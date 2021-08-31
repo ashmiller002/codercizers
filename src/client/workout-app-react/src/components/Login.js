@@ -63,9 +63,9 @@ function Login() {
             }
             )
             .catch((err) => {
-                console.log(err);
+                setErrors(err);
                 auth.logout();
-                //setErrors(err);
+
 
             }
             )

@@ -1,20 +1,24 @@
-import { useEffect, useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
-import LoginContext from '../contexts/LoginContext.js';
+import { useEffect, useState } from 'react';
 import { getWorkoutHistory } from '../services/workouts.js';
 import Error from './Error.js';
 import UserWorkoutHistoryCard from './workoutCards/UserWorkoutHistoryCard.js'
 
-function WorkoutHistory() {
+function WorkoutHistory({ userId }) {
 
 
     const [userWorkouts, setUserWorkouts] = useState();
     const [errors, setErrors] = useState();
-    const history = useHistory();
-    const auth = useContext(LoginContext)
+    let storedUserId;
 
     useEffect(() => {
-        getWorkoutHistory(auth.fullUser.userId)
+        if (userId !== 0) {
+            localStorage.setItem('user_id', userId);
+            storedUserId = userId;
+        }
+        if (userId === 0) {
+            storedUserId = localStorage.getItem('user_id');
+        }
+        getWorkoutHistory(storedUserId)
             .then(data => {
                 setUserWorkouts(data);
             })
@@ -22,7 +26,7 @@ function WorkoutHistory() {
                 setErrors(err);
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [history])
+    }, [])
     return (
         <div className="container">
             <h2>Workout History</h2>
@@ -30,7 +34,7 @@ function WorkoutHistory() {
             <Error errorMessages={errors} />
             <div className="row">
                 {userWorkouts !== undefined && userWorkouts.map(w => {
-                    return <UserWorkoutHistoryCard key={String(w.workoutId) + String(w.date)} workout={w} />
+                    return <UserWorkoutHistoryCard key={w.userWorkoutId} userWorkout={w} />
                 })}
             </div>
         </div>

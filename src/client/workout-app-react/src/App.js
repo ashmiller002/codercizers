@@ -145,7 +145,7 @@ function App() {
               {auth.user !== null && auth.user[1] === "USER"
                 ? <div>
                   <UserNavBar />
-                  <WorkoutHistory />
+                  <WorkoutHistory userId={auth.fullUser.userId} />
                 </div>
                 : <Redirect to="/login" />
               }
