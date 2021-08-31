@@ -66,7 +66,7 @@ function AdminNavBar() {
         <div>
             <nav id="navbar" >
                 <div className="nav-wrapper">
-                    <button className="sidenav-trigger" data-target="mobile-demo"><i className="material-icons">menu</i></button>
+                    <a href="#" className="sidenav-trigger" data-target="mobile-demo"><i className="material-icons">menu</i></a>
                     <ul className="hide-on-med-and-down">
                         <li><Link to="/" className={"btn " + selected[0]} id="home" onClick={handleClick}>Home</Link></li>
                         <li><Link to="/adminworkoutcatalog" className={"btn " + selected[1]} id="adminWorkoutCatalog" onClick={handleClick}>Workout Catalog</Link></li>

@@ -50,18 +50,21 @@ export async function getWorkoutByWorkoutId(workoutId) {
     return await response.json();
 }
 
-export async function addWorkoutToUserHistory(workoutId, userId) {
+export async function addWorkoutToUserHistory(workoutId, userId, workoutDate) {
     const token = localStorage.getItem('jwt_token');
     const init = {
-        method: "PUT",
+        method: "POST",
         headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
             "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
-            "workoutId": workoutId
+            "userId": userId,
+            "workoutDate" : workoutDate
         })
     };
-    const response = await fetch(`${url}/workout/${userId}`, init);
+    const response = await fetch(`${url}/api/userWorkout/${workoutId}`, init);
     if (response.status !== 201) {
         const messages = await response.json();
         return Promise.reject(messages);

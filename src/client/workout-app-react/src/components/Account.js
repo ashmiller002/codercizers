@@ -15,9 +15,6 @@ function Account() {
         goal: "",
         activityLevel: "",
     }
-    //delete this
-    const token = localStorage.getItem('jwt_token');
-    console.log(token);
 
     const auth = useContext(LoginContext);
     const [fullUserInfo, setFullUserInfo] = useState(blankFullUserInfo);

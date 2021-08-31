@@ -65,8 +65,7 @@ function AddEditWorkout() {
                 history.push("/adminworkoutcatalog");
             })
             .catch(err => {
-                //setErrors(err);
-                console.log(err);
+                setErrors(err);
             })
         } else if (method === "Add") {
             addWorkout(workout)
@@ -74,8 +73,7 @@ function AddEditWorkout() {
                 history.push("/adminworkoutcatalog");
             })
             .catch(err => {
-                //setErrors(err);
-                console.log(err);
+                setErrors(err);
             })
         }
 
@@ -92,11 +90,11 @@ function AddEditWorkout() {
             <form className="addEditWorkout" onSubmit={handleClick}>
                 <div className="row">
                     <label htmlFor="workoutName">WorkoutName</label>
-                    <input type="text" id="workoutName" name="workoutName" value={workout.workoutName} onChange={handleChange} />
+                    <input type="text" id="workoutName" name="workoutName" value={workout.workoutName} onChange={handleChange}  required/>
                 </div>
                 <div className="row">
                     <label htmlFor="imageUrl">Workout Image Url</label>
-                    <input type="text" id="imageUrl" name="imageUrl" value={workout.imageUrl} onChange={handleChange} />
+                    <input type="text" id="imageUrl" name="imageUrl" value={workout.imageUrl} onChange={handleChange} required />
                 </div>
                 <div className="category">
                     <label><div className="radioPrompt">Category</div>

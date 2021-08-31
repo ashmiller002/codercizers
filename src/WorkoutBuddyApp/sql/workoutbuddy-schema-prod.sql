@@ -106,4 +106,14 @@ insert into workout (workout_id, workout_name, category_id, workout_status, imag
             (5, 2, 2),
             (6, 2, 3);
     
+    insert into user (first_name, last_name, date_birth, email, program_id, login_id)
+		values ('Beyonce', 'Knowles', '1990-01-09', 'beyonce@beyonce.com', 1, '9e5d9272-af4f-11eb-8368-0242ac110002');
+        
+	insert into user_workout (user_id, workout_id, workout_date)
+		values ( 1, 1, '2021-06-13'),
+			(1, 13, '2021-06-14'),
+            (1, 11, '2021-06-23'),
+            (1, 3, '2021-06-29'),
+            (1, 5, '2021-07-21');
+            
     

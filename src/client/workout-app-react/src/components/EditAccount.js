@@ -29,7 +29,7 @@ function EditAccount() {
             setFullUserInfo(data);
         })
         .catch(errs => {
-            //setErrors(errs);
+            setErrors(errs);
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -66,12 +66,10 @@ function EditAccount() {
     function handleEdit(user) {
         editUser(user)
             .then(() => {
-                console.log("here!")
-                history.push("/account")})
+                history.push("/account");
+            })
             .catch(error => {
-                console.log("no, here!");
-                console.log(error);
-                //setErrors(error);
+                setErrors(error);
             });
 
     }
