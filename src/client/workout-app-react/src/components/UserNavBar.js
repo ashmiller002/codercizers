@@ -57,7 +57,7 @@ function UserNavBar() {
         <div>
             <nav id="navbar" >
                 <div className="nav-wrapper">
-                    <a href="#" className="sidenav-trigger" data-target="mobile-demo"><i className="material-icons">menu</i></a>
+                    <a href={window.location.href} className="sidenav-trigger" data-target="mobile-demo"><i className="material-icons">menu</i></a>
                     <ul className="hide-on-med-and-down">
                         <li><Link to="/" className={"btn " + selected[4]} id="home">Home</Link></li>
                         <li><Link to="/workoutcatalog" className={"btn " + selected[0]} id="workoutCatalog">Workout Catalog</Link></li>
@@ -80,7 +80,7 @@ function UserNavBar() {
                 <li><Link to="/account" className={"btn " + selected[3]} id="account" >Account</Link></li>
 
                 {auth.user !== null &&
-                    <li><a href="localhost:3000/" className="btn" id="logout" onClick={auth.logout}>Logout</a></li>
+                    <li><a href={window.location.href} className="btn" id="logout" onClick={auth.logout}>Logout</a></li>
                 }
             </ul>
 

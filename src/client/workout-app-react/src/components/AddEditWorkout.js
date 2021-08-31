@@ -15,7 +15,7 @@ function AddEditWorkout() {
 
     const { id } = useParams();
     const [errors, setErrors] = useState();
-    let ableToSubmit = true;
+    let ableToSubmit = false;
     const [method, setMethod] = useState("Add");
     const history = useHistory();
 
@@ -28,16 +28,19 @@ function AddEditWorkout() {
             getWorkoutByWorkoutId(id)
                 .then(data => {
                     setWorkout(data);
+                    // eslint-disable-next-line react-hooks/exhaustive-deps
                     ableToSubmit = true;
                 })
                 .catch(err => {
                     setErrors(err);
+                    // eslint-disable-next-line react-hooks/exhaustive-deps
                     ableToSubmit = false;
                 });
         }
         if (pathname.includes("add")) {
             setMethod("Add");
         }
+
     }, [history])
 
     function handleChange(evt) {
@@ -61,20 +64,20 @@ function AddEditWorkout() {
         }
         if (method === "Edit") {
             editWorkoutById(workout)
-            .then(data => {
-                history.push("/adminworkoutcatalog");
-            })
-            .catch(err => {
-                setErrors(err);
-            })
+                .then(data => {
+                    history.push("/adminworkoutcatalog");
+                })
+                .catch(err => {
+                    setErrors(err);
+                })
         } else if (method === "Add") {
             addWorkout(workout)
-            .then(data => {
-                history.push("/adminworkoutcatalog");
-            })
-            .catch(err => {
-                setErrors(err);
-            })
+                .then(data => {
+                    history.push("/adminworkoutcatalog");
+                })
+                .catch(err => {
+                    setErrors(err);
+                })
         }
 
 
@@ -90,7 +93,7 @@ function AddEditWorkout() {
             <form className="addEditWorkout" onSubmit={handleClick}>
                 <div className="row">
                     <label htmlFor="workoutName">WorkoutName</label>
-                    <input type="text" id="workoutName" name="workoutName" value={workout.workoutName} onChange={handleChange}  required/>
+                    <input type="text" id="workoutName" name="workoutName" value={workout.workoutName} onChange={handleChange} required />
                 </div>
                 <div className="row">
                     <label htmlFor="imageUrl">Workout Image Url</label>

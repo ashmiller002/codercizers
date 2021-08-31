@@ -22,9 +22,11 @@ function Home({userId}) {
     useEffect(() => {
         if (userId !== 0) {
             localStorage.setItem('user_id', userId);
+            // eslint-disable-next-line react-hooks/exhaustive-deps
             storedUserId = userId;
         }
         if (userId === 0) {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
             storedUserId = localStorage.getItem('user_id');
         }
         getSuggestedWorkout(storedUserId)
