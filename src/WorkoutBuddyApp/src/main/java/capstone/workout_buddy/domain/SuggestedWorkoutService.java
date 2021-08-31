@@ -77,12 +77,17 @@ public class SuggestedWorkoutService {
                 break;
             case 3:
                 //cardio goal
+                if (userProgram.getActivityLevelId() ==1){
+                    suggestedWorkoutId = cardioMod(priorDayWorkout, categoryCounts);
+                }
+                else {
+                    suggestedWorkoutId = cardioHigh(priorDayWorkout, categoryCounts);
+                }
                 break;
             default:
                 //default workout suggestion?
                 throw new IllegalStateException("Unexpected value: " + userProgram.getGoalId());
         }
-
         //set suggestedWorkout based on workoutId
         result.setPayload(workoutRepository.findById(suggestedWorkoutId));
 
@@ -194,11 +199,48 @@ public class SuggestedWorkoutService {
         return suggestedWorkoutId;
     }
 
-    private int cardioMod(){
-        return 0;
+    private int cardioMod(Workout priorDayWorkout, HashMap<Integer, Integer> categoryCounts){
+        //3 cardio/week, alternate with rest day
+        int suggestedWorkoutId = 5;
+        List<Workout> categoryWorkouts = new ArrayList<>();
+
+        if (priorDayWorkout.getCategoryId() != 5 && priorDayWorkout.getCategoryId() != 0){
+            categoryWorkouts = workoutRepository.findByCategory(5);
+            suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
+            return suggestedWorkoutId;
+        }
+
+        if (categoryCounts.get(3) < 3){
+            categoryWorkouts = workoutRepository.findByCategory(3);
+        } else {
+            categoryWorkouts = workoutRepository.findByCategory(5);
+        }
+
+        categoryWorkouts.removeIf(workout -> (workout.getWorkoutName().contains("Custom")));
+        suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
+        return suggestedWorkoutId;
     }
-    private int cardioHigh(){
-        return 0;
+    private int cardioHigh(Workout priorDayWorkout, HashMap<Integer, Integer> categoryCounts){
+        //4 cardio per week
+        //5 total workouts with 50% chance mobility or strength
+        int suggestedWorkoutId = 5;
+        List<Workout> categoryWorkouts = new ArrayList<>();
+
+        if (categoryCounts.get(3) < 4){
+            categoryWorkouts = workoutRepository.findByCategory(3);
+        } else if (categoryCounts.get(4) < 1 && categoryCounts.get(1) < 1 && categoryCounts.get(2) < 1){
+            int cat = 3;
+            do {
+                cat = (int)(Math.random() * 4) +1;
+            }while (cat == 3);
+            categoryWorkouts = workoutRepository.findByCategory(cat);
+        } else {
+            categoryWorkouts = workoutRepository.findByCategory(5);
+        }
+        
+        categoryWorkouts.removeIf(workout -> (workout.getWorkoutName().contains("Custom")));
+        suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
+        return suggestedWorkoutId;
     }
 
     private HashMap<Integer, Integer> countPerCategory(List<UserWorkout> recentWorkouts){
