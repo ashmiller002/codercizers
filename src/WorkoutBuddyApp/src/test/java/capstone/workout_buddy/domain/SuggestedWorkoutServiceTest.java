@@ -41,7 +41,7 @@ class SuggestedWorkoutServiceTest {
 
 
     @Test
-    void shouldSuggestRestDay() {
+    void shouldSuggestRestDayModStrength() {
         User user = makeUser();
         user.setUserId(1);
         user.setProgramId(1);
@@ -79,16 +79,126 @@ class SuggestedWorkoutServiceTest {
         assertEquals(13, result.getPayload().getWorkoutId());
     }
 
+    @Test
+    void shouldSuggestUpperBodyModStrength(){
+        User user = makeUser();
+        user.setProgramId(1);
+        user.setActivityLevelId(1);
+        user.setGoalId(1);
+        when(userRepository.findByUserId(1)).thenReturn(user);
+        when(programRepository.findById(1)).thenReturn(new Program(1, 1, 1));
+
+
+        Workout mockCatWorkout = makeUpperBodyWorkout();
+        List<Workout> categoryList = new ArrayList<>();
+        categoryList.add(mockCatWorkout);
+
+        List<UserWorkout> mockWorkouts = new ArrayList<>();
+        Workout workout = makeRestDay();
+        UserWorkout mockWorkout = new UserWorkout();
+        mockWorkout.setUserWorkoutId(1);
+        mockWorkout.setWorkoutDate(LocalDate.now().minusDays(1));
+        mockWorkout.setWorkout(workout);
+        mockWorkout.setActivityId(1);
+        mockWorkouts.add(mockWorkout);
+        when(userWorkoutRepository.findWorkoutsByUserId(1)).thenReturn(mockWorkouts);
+        when(workoutRepository.findById(1)).thenReturn(mockCatWorkout);
+        when(workoutRepository.findByCategory(1)).thenReturn(categoryList);
+
+
+        Result<Workout> result = service.suggestWorkout(1);
+        assertNotNull(result.getPayload());
+        assertTrue(result.isSuccess());
+        assertEquals(1, result.getPayload().getWorkoutId());
+    }
+
+    @Test
+    void shouldSuggestLowerBodyModStrength(){
+        User user = makeUser();
+        user.setProgramId(1);
+        user.setActivityLevelId(1);
+        user.setGoalId(1);
+        when(userRepository.findByUserId(1)).thenReturn(user);
+        when(programRepository.findById(1)).thenReturn(new Program(1, 1, 1));
+
+        Workout workout = makeRestDay();
+
+        Workout mockCatWorkout = makeLowerBodyWorkout();
+        List<Workout> categoryList = new ArrayList<>();
+        categoryList.add(mockCatWorkout);
+
+        //setting up userWorkout list
+        List<UserWorkout> mockWorkouts = new ArrayList<>();
+        UserWorkout mockWorkout = new UserWorkout();
+        mockWorkout.setUserWorkoutId(1);
+        mockWorkout.setWorkoutDate(LocalDate.now().minusDays(1));
+        mockWorkout.setWorkout(workout);
+        mockWorkout.setActivityId(1);
+        mockWorkouts.add(mockWorkout);
+
+        when(userWorkoutRepository.findWorkoutsByUserId(1)).thenReturn(mockWorkouts);
+        when(workoutRepository.findById(1)).thenReturn(mockCatWorkout);
+        when(workoutRepository.findByCategory(1)).thenReturn(categoryList);
+
+        Result<Workout> result = service.suggestWorkout(1);
+        assertNotNull(result.getPayload());
+        assertTrue(result.isSuccess());
+        assertEquals(3, result.getPayload().getWorkoutId());
+    }
+
     User makeUser(){
         User user = new User();
+        user.setUserId(1);
         user.setFirstName("Chad");
         user.setLastName("Ginsy");
         user.setEmail("chad@test.com");
         user.setDateBirth(LocalDate.of(1972, 4, 24));
         user.setLoginId("login111");
-//        user.setProgramId(2);
-//        user.setGoalId(2);
-//        user.setActivityLevelId(1);
+        user.setProgramId(2);
+        user.setGoalId(2);
+        user.setActivityLevelId(1);
         return user;
     }
+
+    Workout makeUpperBodyWorkout(){
+        Workout workout = new Workout();
+        workout.setWorkoutId(1);
+        workout.setCategoryId(1);
+        workout.setWorkoutName("Upper Body Strength");
+        return workout;
+    }
+
+    Workout makeLowerBodyWorkout(){
+        Workout workout = new Workout();
+        workout.setWorkoutId(3);
+        workout.setCategoryId(2);
+        workout.setWorkoutName("Lower Body");
+        return workout;
+    }
+
+    Workout makeRestDay(){
+        Workout workout = new Workout();
+        workout.setWorkoutId(13);
+        workout.setCategoryId(5);
+        workout.setWorkoutName("Rest Day");
+        return workout;
+    }
+
+    Workout makeCardio(){
+        Workout workout = new Workout();
+        workout.setWorkoutId(8);
+        workout.setCategoryId(3);
+        workout.setWorkoutName("Dance Cardio");
+        return workout;
+    }
+
+    Workout makeMobilityWorkout(){
+        Workout workout = new Workout();
+        workout.setWorkoutId(11);
+        workout.setCategoryId(4);
+        workout.setWorkoutName("Yoga");
+        return workout;
+    }
+
+
 }

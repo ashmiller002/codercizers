@@ -97,7 +97,7 @@ public class SuggestedWorkoutService {
             List<Workout> categoryWorkouts = workoutRepository.findByCategory(1);
             suggestedWorkoutId = (int)(Math.random() * categoryWorkouts.size()) + 1;
         } else if (categoryCounts.get(2) == 0 && priorDayWorkout.getCategoryId() != 2){
-            //suggest lower body cat 1
+            //suggest lower body cat 2
             List<Workout> categoryWorkouts = workoutRepository.findByCategory(2);
             suggestedWorkoutId = (int)(Math.random() * categoryWorkouts.size()) + 1;
         } else if (categoryCounts.get(1) == 1 && categoryCounts.get(2) == 1){
