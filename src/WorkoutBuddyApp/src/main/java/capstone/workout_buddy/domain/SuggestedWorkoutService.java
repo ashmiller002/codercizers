@@ -92,7 +92,8 @@ public class SuggestedWorkoutService {
         //recommend 50% chance between upper and lower
         int suggestedWorkoutId = 5;
 
-        if (priorDayWorkout.getCategoryId() != 5){
+
+        if (priorDayWorkout.getCategoryId() != 5 && priorDayWorkout != null){
             List<Workout> categoryWorkouts = workoutRepository.findByCategory(5);
             suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
             return suggestedWorkoutId;
@@ -119,11 +120,24 @@ public class SuggestedWorkoutService {
         // no consecutive upper or lower
         // fifth 50% mobility or cardio
         int suggestedWorkoutId = 5;
-
-
-
-
-
+        if (categoryCounts.get(1) < 2 && priorDayWorkout.getCategoryId() != 1){
+            //recommend upper body
+            List<Workout> categoryWorkouts = workoutRepository.findByCategory(1);
+            suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
+        }else if (categoryCounts.get(2) < 2 && priorDayWorkout.getCategoryId() != 2){
+            //recommend lower body
+            List<Workout> categoryWorkouts = workoutRepository.findByCategory(2);
+            suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
+        }else if (categoryCounts.get(3) <1 && categoryCounts.get(4) <1){
+            //recommend mobiltiy or cardio
+            int cat = (int)(Math.random() * 2) +3;
+            List<Workout> categoryWorkouts = workoutRepository.findByCategory(cat);
+            suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
+        }else {
+            //recommend rest day
+            List<Workout> categoryWorkouts = workoutRepository.findByCategory(5);
+            suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
+        }
         return suggestedWorkoutId;
     }
 
