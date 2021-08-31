@@ -44,7 +44,7 @@ public class SuggestedWorkoutService {
 
         if (userWorkout != null){
             for (UserWorkout w: userWorkout){
-                if (w.getWorkoutDate().isAfter((LocalDate.now().minusDays(6)))){
+                if (w.getWorkoutDate().isAfter((LocalDate.now().minusDays(7)))){
                     //getting a list of recent workouts
                     recentWorkouts.add(w);
                 }
