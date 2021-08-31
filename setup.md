@@ -3,12 +3,12 @@
 ## User API
 * Open the user API server app in intelliJ located here: codercizers\src\user-api\server\
 * The user API runs on port 5000
-* Configure environmental variables
+* Configure environmental variables - database name: dev_10_users
 
 ## Workout API
 * Open the workout API app in intelliJ located here: codercizers\src\WorkoutBuddyApp\
 * The workout API runs on port 8080
-* Configure environmental variables
+* Configure environmental variables - database name: workout_buddy
 
 ## React
 * Open the react app here: codercizers\src\client\workout-app-react\
