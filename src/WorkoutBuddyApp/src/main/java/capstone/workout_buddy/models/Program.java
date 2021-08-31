@@ -6,6 +6,15 @@ public class Program {
     private int goalId;
     private int activityLevelId;
 
+    public Program() {
+    }
+
+    public Program(int programId, int goalId, int activityLevelId) {
+        this.programId = programId;
+        this.goalId = goalId;
+        this.activityLevelId = activityLevelId;
+    }
+
     public int getProgramId() {
         return programId;
     }

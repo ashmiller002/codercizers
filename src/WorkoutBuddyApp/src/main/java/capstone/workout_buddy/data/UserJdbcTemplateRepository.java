@@ -48,8 +48,6 @@ public class UserJdbcTemplateRepository implements UserRepository {
         User user = jdbcTemplate.query(sql, new UserMapper(), loginId).stream()
                 .findFirst().orElse(null);
 
-        //add the goalId and activityLevelId
-
         return user;
     }
 
