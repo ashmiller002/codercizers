@@ -69,7 +69,7 @@ class SuggestedWorkoutServiceTest {
         mockWorkout.setActivityId(13);
         mockWorkouts.add(mockWorkout);
         when(userWorkoutRepository.findWorkoutsByUserId(1)).thenReturn(mockWorkouts);
-        when(workoutRepository.findById(13)).thenReturn(workout);
+        when(workoutRepository.findById(13)).thenReturn(mockCatWorkout);
         when(workoutRepository.findByCategory(5)).thenReturn(categoryList);
 
 
