@@ -93,13 +93,14 @@ public class SuggestedWorkoutService {
         int suggestedWorkoutId = 5;
 
 
-        if (priorDayWorkout.getCategoryId() != 5 && priorDayWorkout != null){
+        if (priorDayWorkout.getCategoryId() != 5 && priorDayWorkout.getCategoryId() != 0){
             List<Workout> categoryWorkouts = workoutRepository.findByCategory(5);
             suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
             return suggestedWorkoutId;
         }
 
         if (categoryCounts.get(1) == 0 && priorDayWorkout.getCategoryId() != 1){
+            //suggest upper body cat 1
             List<Workout> categoryWorkouts = workoutRepository.findByCategory(1);
             suggestedWorkoutId = categoryWorkouts.get((int)(Math.random() * categoryWorkouts.size())).getWorkoutId();
         } else if (categoryCounts.get(2) == 0 && priorDayWorkout.getCategoryId() != 2){

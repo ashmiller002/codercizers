@@ -220,12 +220,12 @@ class UserServiceTest {
         assertFalse(result.isSuccess());
         assertEquals("Date of birth required.", result.getMessages().get(0));
 
-        user.setDateBirth(LocalDate.of(2021, 8, 29));
+        user.setDateBirth(LocalDate.now());
         result = service.update(user);
         assertFalse(result.isSuccess());
         assertEquals("Must provide valid date of birth.", result.getMessages().get(0));
 
-        user.setDateBirth(LocalDate.of(2021, 9, 4));
+        user.setDateBirth(LocalDate.now().plusDays(6));
         result = service.update(user);
         assertFalse(result.isSuccess());
         assertEquals("Must provide valid date of birth.", result.getMessages().get(0));

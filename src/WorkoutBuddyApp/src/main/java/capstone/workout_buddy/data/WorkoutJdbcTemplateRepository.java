@@ -44,7 +44,8 @@ public class WorkoutJdbcTemplateRepository implements WorkoutRepository {
 
         final String sql = "select category_id, workout_status, workout_id, workout_name, image_url" +
                 " from workout "
-                + "where category_id = ?;";
+                + "where category_id = ? " +
+                "and workout_status = 'enable';";
 
         return jdbcTemplate.query(sql, new WorkoutMapper(), categoryId);
     }

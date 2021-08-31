@@ -24,14 +24,12 @@ class WorkoutJdbcTemplateRepositoryTest {
 
     @Test
     void shouldFindWorkoutById(){
-        Workout upperBody = new Workout(1,"upperBodyTest", 1,  "enable" );
-        Workout lowerBody = new Workout(2,"lowerBodyTest", 2,  "enable" );
 
         Workout actual = repository.findById(1);
-        assertEquals("upperBodyTest", actual.getWorkoutName());
+        assertEquals("Upper Body 1", actual.getWorkoutName());
 
-        actual = repository.findById(2);
-        assertEquals("lowerBodyTest", actual.getWorkoutName());
+        actual = repository.findById(4);
+        assertEquals("Lower Body 1", actual.getWorkoutName());
     }
 
     @Test
@@ -48,7 +46,7 @@ class WorkoutJdbcTemplateRepositoryTest {
         Workout actual = all.get(0);
 
         assertEquals(1, actual.getWorkoutId());
-        assertEquals("upperBodyTest", actual.getWorkoutName());
+        assertEquals("Upper Body 1", actual.getWorkoutName());
     }
     @Test
     void shouldFindWorkoutsByCategory() {
@@ -68,8 +66,9 @@ class WorkoutJdbcTemplateRepositoryTest {
 
     @Test
     void shouldUpdateWorkout() {
-        Workout workout = new Workout(1,"upperBodyTest", 1,  "enable" );
+        Workout workout = new Workout(1,"Upper Body 1", 1,  "disable" );
         assertTrue(repository.update(workout));
+
     }
 
     @Test
