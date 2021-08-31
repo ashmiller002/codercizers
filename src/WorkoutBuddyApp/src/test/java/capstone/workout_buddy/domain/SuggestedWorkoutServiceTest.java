@@ -113,6 +113,33 @@ class SuggestedWorkoutServiceTest {
     }
 
     @Test
+    void shouldSuggestUpperNullPriorDay(){
+        User user = makeUser();
+        user.setProgramId(1);
+        user.setActivityLevelId(1);
+        user.setGoalId(1);
+        when(userRepository.findByUserId(1)).thenReturn(user);
+        when(programRepository.findById(1)).thenReturn(new Program(1, 1, 1));
+
+
+        Workout mockCatWorkout = makeUpperBodyWorkout();
+        List<Workout> categoryList = new ArrayList<>();
+        categoryList.add(mockCatWorkout);
+
+        List<UserWorkout> mockWorkouts = new ArrayList<>();
+
+        when(userWorkoutRepository.findWorkoutsByUserId(1)).thenReturn(mockWorkouts);
+        when(workoutRepository.findById(1)).thenReturn(mockCatWorkout);
+        when(workoutRepository.findByCategory(1)).thenReturn(categoryList);
+
+
+        Result<Workout> result = service.suggestWorkout(1);
+        assertNotNull(result.getPayload());
+        assertTrue(result.isSuccess());
+        assertEquals(1, result.getPayload().getWorkoutId());
+    }
+
+    @Test
     void shouldSuggestLowerBodyModStrength(){
         User user = makeUser();
         user.setProgramId(1);
@@ -151,6 +178,11 @@ class SuggestedWorkoutServiceTest {
         assertNotNull(result.getPayload());
         assertTrue(result.isSuccess());
         assertEquals(3, result.getPayload().getWorkoutId());
+    }
+
+    @Test
+    void shouldRecommendUpperBodyHighStrength(){
+
     }
 
 
