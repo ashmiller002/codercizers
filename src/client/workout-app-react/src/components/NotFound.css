@@ -1,15 +1,15 @@
 .pnf {
     width: 75px;
-    height: 75px;
+    height: 200px;
     margin: 50px;
     z-index: 900;
     
     color: rgba(1, 1, 17, 0.473);
-    position:absolute;
+    
     left: 30px;
+    position: relative;
     z-index: 300;
-    
-    
+
 }
 
 .square{
@@ -18,7 +18,7 @@
     background-color: teal;
     margin: 50px;
     z-index: -1;
-    position: inherit;
+    
 }
   
 .square.two{
@@ -32,11 +32,8 @@
 .errorPara{
     font-size: large;
     font-weight: bold;
-    position: absolute;
-    left: 450px;
-    top: 50px;
-    bottom: 20;
-
+    position: relative;
+    bottom: 100px;
 }
 
 .divContainer{
@@ -44,44 +41,41 @@
 }
 
 .errorImg{
-    position: absolute;
-    left: 750px;
-    bottom: 350px;
+    
     width: 425px;
     height: 375px;
     z-index: 110;
+    
+    max-width: 100%
 }
 
-.imgBorder{
-    position: absolute;
-    left: 720px;
-    bottom: 330px;
+/* .imgBorder{
+    
     width: 424px;
     height: 375px;
     background-color: teal;
     z-index: 90;
     opacity: .5;
+    overflow: hidden;
 }
 
 .imgBorder2{
-    position: absolute;
-    left: 700px;
-    bottom: 310px;
+    
     width: 424px;
     height: 375px;
     background-color: rgb(108, 147, 158);
     z-index: 70;
     opacity: .5;
+    position: relative;
 }
 
 .imgBorder3{
-    position: absolute;
-    left: 680px;
-    bottom: 290px;
+  
     width: 424px;
     height: 375px;
     background-color: rgb(60, 62, 63);
     z-index: 50;
     opacity: .5;
-}
+    position: relative;
+} */
 

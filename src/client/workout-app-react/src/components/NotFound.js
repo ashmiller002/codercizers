@@ -25,7 +25,7 @@ function NotFound() {
       height: 200,
       x: 30,
       ease: Power3.easeOut,
-      opacity: .5
+      opacity: 0.5,
     });
     setSquareSize(true);
   };
@@ -37,7 +37,7 @@ function NotFound() {
       height: 75,
       x: 0,
       ease: Power3.easeOut,
-      opacity: 1
+      opacity: 1,
     });
     setSquareSize(false);
   };
@@ -49,7 +49,7 @@ function NotFound() {
       height: 200,
       x: 30,
       ease: Power3.easeOut,
-      opacity: .5
+      opacity: 0.5,
     });
     setSquareTwoSize(true);
   };
@@ -61,7 +61,7 @@ function NotFound() {
       height: 75,
       x: 0,
       ease: Power3.easeOut,
-      opacity: 1
+      opacity: 1,
     });
     setSquareTwoSize(false);
   };
@@ -73,7 +73,7 @@ function NotFound() {
       height: 200,
       x: 30,
       ease: Power3.easeOut,
-      opacity: .5
+      opacity: 0.5,
     });
     setSquareThreeSize(true);
   };
@@ -85,7 +85,7 @@ function NotFound() {
       height: 75,
       x: 0,
       ease: Power3.easeOut,
-      opacity: 1
+      opacity: 1,
     });
     setSquareThreeSize(false);
   };
@@ -130,70 +130,89 @@ function NotFound() {
       ease: Power3.easeIn,
     });
     gsap.from(imgBorder, {
-        delay: 0.2,
-        duration: 1,
-        opacity: 0,
-        y: 30,
-        x: -30,
-        ease: Power3.easeIn,
-      });
-      gsap.from(imgBorder2, {
-        delay: 0.3,
-        duration: 1,
-        opacity: 0,
-        y: 30,
-        x: -30,
-        ease: Power3.easeIn,
-      });
-      gsap.from(imgBorder3, {
-        delay: 0.4,
-        duration: 1,
-        opacity: 0,
-        y: 30,
-        x: -30,
-        ease: Power3.easeIn,
-      });
+      delay: 0.2,
+      duration: 1,
+      opacity: 0,
+      y: 30,
+      x: -30,
+      ease: Power3.easeIn,
+    });
+    gsap.from(imgBorder2, {
+      delay: 0.3,
+      duration: 1,
+      opacity: 0,
+      y: 30,
+      x: -30,
+      ease: Power3.easeIn,
+    });
+    gsap.from(imgBorder3, {
+      delay: 0.4,
+      duration: 1,
+      opacity: 0,
+      y: 30,
+      x: -30,
+      ease: Power3.easeIn,
+    });
   }, []);
 
   return (
-    <div ref={(el) => (notFound = el)} className="divContainer">
-      <h1 ref={(el) => (pnf = el)} className="pnf">
-        404: Page Not Found
-      </h1>
-      <p className="errorPara" ref={(el) => (paragraph = el)}>
-        Sorry, we couldn't find this page. But don't worry, we can find other
-        things from our <a href="/">homepage</a>.
-      </p>
-      <div ref={(el) => (imgBorder = el)} className="imgBorder"></div>
-      <div ref={(el) => (imgBorder2 = el)} className="imgBorder2"></div>
-      <div ref={(el) => (imgBorder3 = el)} className="imgBorder3"></div>
-      <img ref={(el) => (img = el)} className="errorImg" src="/errorImage.png" alt="" />
-      <div className="squareContainer">
-        <div
-          ref={(el) => (square = el)}
-          onMouseOver={
-            squareSize !== true ? handleSquareExpand : handleSquareShrink
-          }
-          className="square"
-        ></div>
-        <div
-          ref={(el) => (squareTwo = el)}
-          onMouseOver={
-            squareTwoSize !== true
-              ? handleSquareTwoExpand
-              : handleSquareTwoShrink
-          }
-          className="square two"
-        ></div>
-        <div
-          ref={(el) => (squareThree = el)}
-          onMouseOver={
-            squareThreeSize !== true
-              ? handleSquareThreeExpand
-              : handleSquareThreeShrink
-          }
-          className="square three"
-        ></div>
+    <div className="container">
+      <div className="row">
+        <div className="">
+          <div ref={(el) => (notFound = el)} className="divContainer">
+            <div className="col s3">
+              <h1 ref={(el) => (pnf = el)} className="pnf" >
+                404: Page Not Found
+              </h1>
+            </div>
+            <div className="col s10 push-s4">
+              <p className="errorPara" className="flow-text" ref={(el) => (paragraph = el)}>
+                  
+                Sorry, we couldn't find this page. But don't worry, we can find
+                other things from our <a href="/">homepage</a>.
+              </p>
+            </div>
+            <div className="col s10 push-s5">
+              <img
+                ref={(el) => (img = el)}
+                className="responsive-img"
+                className="circle"
+                src="/errorImage.png"
+                alt=""
+              />
+              <div ref={(el) => (imgBorder = el)} className="imgBorder"></div>
+              <div ref={(el) => (imgBorder2 = el)} className="imgBorder2"></div>
+              <div ref={(el) => (imgBorder3 = el)} className="imgBorder3"></div>
+            </div>
+            <div className="squareContainer">
+              <div
+                ref={(el) => (square = el)}
+                onMouseOver={
+                  squareSize !== true ? handleSquareExpand : handleSquareShrink
+                }
+                className="square"
+              ></div>
+              <div
+                ref={(el) => (squareTwo = el)}
+                onMouseOver={
+                  squareTwoSize !== true
+                    ? handleSquareTwoExpand
+                    : handleSquareTwoShrink
+                }
+                className="square two"
+              ></div>
+              <div
+                ref={(el) => (squareThree = el)}
+                onMouseOver={
+                  squareThreeSize !== true
+                    ? handleSquareThreeExpand
+                    : handleSquareThreeShrink
+                }
+                className="square three"
+              ></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
