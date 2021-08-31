@@ -121,7 +121,6 @@ class SuggestedWorkoutServiceTest {
         when(userRepository.findByUserId(1)).thenReturn(user);
         when(programRepository.findById(1)).thenReturn(new Program(1, 1, 1));
 
-
         Workout mockCatWorkout = makeUpperBodyWorkout();
         List<Workout> categoryList = new ArrayList<>();
         categoryList.add(mockCatWorkout);
@@ -131,7 +130,6 @@ class SuggestedWorkoutServiceTest {
         when(userWorkoutRepository.findWorkoutsByUserId(1)).thenReturn(mockWorkouts);
         when(workoutRepository.findById(1)).thenReturn(mockCatWorkout);
         when(workoutRepository.findByCategory(1)).thenReturn(categoryList);
-
 
         Result<Workout> result = service.suggestWorkout(1);
         assertNotNull(result.getPayload());
