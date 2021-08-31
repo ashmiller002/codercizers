@@ -30,8 +30,7 @@ function Home({userId}) {
         getSuggestedWorkout(storedUserId)
             .then(json => {setWorkout(json)})
             .catch(errs => {
-                //setErrors(errs)
-                console.log(errs);
+                setErrors(errs)
             })
     }, [])
 
