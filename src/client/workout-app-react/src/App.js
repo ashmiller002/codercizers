@@ -216,15 +216,6 @@ function App() {
                 : <Redirect to="/login" />
               }
             </Route>
-            <Route path="/aboutus">
-            {auth.user !== null && auth.user[1] === "USER"
-                ? <div>
-                  <UserNavBar />
-                  <AboutUs />
-                </div>
-                : <Redirect to="/login" />
-              }
-            </Route>
             {/* Do these routes below with both roles. if not logged in, redirect to login */}
             <Route path="/login">
               <Login />
