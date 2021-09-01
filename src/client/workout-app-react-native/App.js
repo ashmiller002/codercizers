@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { NativeRouter, Switch, Route, Link, useHistory } from 'react-router-native';
 import Home from './components/Home';
 import LoginGood from './components/LoginGood';
+import SuggestedWorkout from './components/SuggestedWorkout';
 
 
 export default function App() {
@@ -13,9 +14,7 @@ export default function App() {
         <Switch>
           <Route exact path="/login" component={LoginGood}>
           </Route>
-          <Route exact path="/getsuggestedworkout">
-
-          </Route>
+          <Route exact path="/getsuggestedworkout" component={SuggestedWorkout} />
           <Route exact path="/" component={Home} />
         </Switch>
       </NativeRouter>
