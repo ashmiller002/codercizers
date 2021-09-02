@@ -13,8 +13,8 @@
 }
 
 .square{
-    width: 75px;
-    height: 75px;
+    width: 25px;
+    height: 25px;
     background-color: teal;
     margin: 50px;
     z-index: -1;
@@ -36,18 +36,20 @@
     bottom: 100px;
 }
 
-#divContainer{
+.errorContainer{
     visibility: hidden;
 }
 
 .errorImg{
     
-    width: 425px;
-    height: 375px;
+    width: 250px;
+    height: 200px;
     z-index: 200;
-    max-width: 100%;
-    position: relative;
-    left: 100px
+    max-width: 100%; 
+}
+
+#errorContainer{
+text-align: center;
 }
 
 /* .imgBorder{
