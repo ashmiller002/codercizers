@@ -27,9 +27,8 @@ function AdminWorkoutCatalogue() {
             duration: .5,
             opacity: 0,
             y: 60,
-            cardMovement
+            ease: Power3.easeIn
         });
-        
         getAllWorkouts()
             .then(json => {
                 setWorkouts(json);
