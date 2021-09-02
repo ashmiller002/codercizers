@@ -36,7 +36,7 @@
     bottom: 100px;
 }
 
-.divContainer{
+#divContainer{
     visibility: hidden;
 }
 
@@ -44,9 +44,10 @@
     
     width: 425px;
     height: 375px;
-    z-index: 110;
-    
-    max-width: 100%
+    z-index: 200;
+    max-width: 100%;
+    position: relative;
+    left: 100px
 }
 
 /* .imgBorder{
