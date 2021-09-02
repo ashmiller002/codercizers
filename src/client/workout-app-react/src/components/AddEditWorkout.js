@@ -6,6 +6,8 @@ import "./AddEditWorkout.css";
 
 
 function AddEditWorkout() {
+
+
     const blankWorkout = {
         workoutId: "0",
         workoutName: "",
@@ -16,7 +18,7 @@ function AddEditWorkout() {
 
     const { id } = useParams();
     const [errors, setErrors] = useState();
-    let ableToSubmit = false;
+    const [ableToSubmit, setAbleToSubmit] = useState(true);
     const [method, setMethod] = useState("Add");
     const history = useHistory();
     
@@ -29,19 +31,19 @@ function AddEditWorkout() {
                 .then(data => {
                     setWorkout(data);
                     // eslint-disable-next-line react-hooks/exhaustive-deps
-                    ableToSubmit = true;
+                    setAbleToSubmit(true);
                 })
                 .catch(err => {
                     setErrors(err);
                     // eslint-disable-next-line react-hooks/exhaustive-deps
-                    ableToSubmit = false;
+                    setAbleToSubmit(false);
                 });
         }
         if (pathname.includes("add")) {
             setMethod("Add");
         }
 
-    }, [history])
+    }, [history, id])
 
     function handleChange(evt) {
         const nextWorkout = { ...workout };
