@@ -1,0 +1,112 @@
+.adminPage{
+    visibility: hidden;
+}
+.welcomeText{
+    
+    
+}
+
+.welcome{
+    
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(10, 72, 100);
+}
+
+.bodyText{
+    font-size: x-large;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
+    position: relative;
+    
+}
+
+.text2{
+    font-family: 'Aguafina Script', cursive;
+    font-size: xx-large;
+}
+
+.enable{
+    color: rgb(18, 18, 199);
+    font-weight: bold;
+}
+
+.disable{
+    color: rgb(160, 12, 12);
+    font-weight: bold;
+}
+
+.add{
+    color: rgb(26, 180, 26);
+    font-weight: bold;
+}
+
+.adminImage{
+    width: 120px;
+    position: relative;
+    left: 200px;
+    bottom: 300;  
+}
+
+/* Exo thin font from Google. */
+@import url(https://fonts.googleapis.com/css?family=Exo:100);
+
+/* Background data (Original source: https://subtlepatterns.com/grid-me/) */
+$bg-url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC";
+$bg-width: 50px;
+$bg-height: 50px;
+
+/* Animations */
+@-webkit-keyframes bg-scrolling-reverse {
+  100% { background-position: $bg-width $bg-height; }
+}
+@-moz-keyframes    bg-scrolling-reverse {
+  100% { background-position: $bg-width $bg-height; }
+}
+@-o-keyframes      bg-scrolling-reverse {
+  100% { background-position: $bg-width $bg-height; }
+}
+@keyframes         bg-scrolling-reverse {
+  100% { background-position: $bg-width $bg-height; }
+}
+
+@-webkit-keyframes bg-scrolling {
+  0% { background-position: $bg-width $bg-height; }
+}
+@-moz-keyframes    bg-scrolling {
+  0% { background-position: $bg-width $bg-height; }
+}
+@-o-keyframes      bg-scrolling {
+  0% { background-position: $bg-width $bg-height; }
+}
+@keyframes         bg-scrolling {
+  0% { background-position: $bg-width $bg-height; }
+}
+
+/* Main styles */
+body {
+  
+  
+  
+  
+  
+  /* img size is 50x50 */
+  background: url($bg-url) repeat 0 0;
+  
+  -webkit-animation: bg-scrolling-reverse 9s infinite; /* Safari 4+ */
+  -moz-animation:    bg-scrolling-reverse 9s infinite; /* Fx 5+ */
+  -o-animation:      bg-scrolling-reverse 9s infinite; /* Opera 12+ */
+  animation:         bg-scrolling-reverse 9s infinite; /* IE 10+ */
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function:    linear;
+  -o-animation-timing-function:      linear;
+  animation-timing-function:         linear;
+  
+  &::before {
+    
+
+    font-size: 8rem;
+    font-weight: 100;
+    font-style: normal;
+  }
+}

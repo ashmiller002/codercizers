@@ -11,3 +11,9 @@
 .input-field label{
     pointer-events: all !important;
 }
+
+.workoutBuddy{
+    font-family: 'Tourney', cursive;
+    color:rgb(9, 143, 143);
+    font-weight: bolder;
+}

@@ -18,7 +18,6 @@ import { refresh } from './services/auth.js';
 import { getUserWithLoginId } from './services/user.js';
 import AdminHome from './components/AdminHome.js';
 import NotFound from './components/NotFound.js';
-import AboutUs from './components/AboutUs.js';
 
 const wait = 1000 * 60 * 7;
 
