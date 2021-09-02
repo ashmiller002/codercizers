@@ -65,13 +65,15 @@ function Login() {
             .catch((err) => {
                 setErrors(err);
                 auth.logout();
+
+
             }
             )
     }
     return (
         <div className="login">
             <div className="container ">
-                <h1 className="workoutBuddy">Welcome to Workout Buddy!</h1>
+                <h1>Welcome to Workout Buddy!</h1>
                 <h4>Login</h4>
                 <Error errorMessages={errors} />
                 <form className="login" onSubmit={handleSubmit}>

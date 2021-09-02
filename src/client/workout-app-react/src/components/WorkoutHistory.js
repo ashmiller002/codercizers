@@ -1,9 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { getWorkoutHistory } from '../services/workouts.js';
 import Error from './Error.js';
 import UserWorkoutHistoryCard from './workoutCards/UserWorkoutHistoryCard.js'
-import { gsap, Power3 } from "gsap";
-import "./WorkoutHistory.css";
 
 function WorkoutHistory({ userId }) {
 
@@ -11,26 +9,8 @@ function WorkoutHistory({ userId }) {
     const [userWorkouts, setUserWorkouts] = useState();
     const [errors, setErrors] = useState();
     let storedUserId;
-    let headerText = useRef(null);
-    let cardMovement = useRef(null);
-    let popIn = useRef(null);
 
     useEffect(() => {
-        gsap.to(popIn, { duration: 0, css: { visibility: "visible" } });
-        gsap.from(headerText, {
-            delay: 0.1,
-            duration: .5,
-            opacity: 0,
-            x: 30,
-            ease: Power3.easeIn,
-          });
-          gsap.from(cardMovement, {
-            delay: 0.2,
-            duration: .5,
-            opacity: 0,
-            y: 60,
-            ease: Power3.easeIn
-          });
         if (userId !== 0) {
             localStorage.setItem('user_id', userId);
             // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -70,16 +50,14 @@ function WorkoutHistory({ userId }) {
     }
 
     return (
-        <div className="container" id="pageContainer">
-            <div ref={(el) => (popIn = el)} className="pageContainer">
-                <h2 ref={(el) => (headerText = el)} className="workoutHistory">Workout History</h2>
-                <div className="divider"></div>
-                <Error errorMessages={errors} />
-                <div ref={(el) => (cardMovement = el)} className="row">
-                    {userWorkouts !== undefined && userWorkouts.map(w => {
-                        return <UserWorkoutHistoryCard key={w.userWorkoutId} userWorkout={w} />
-                    })}
-                </div>
+        <div className="container">
+            <h2>Workout History</h2>
+            <div className="divider"></div>
+            <Error errorMessages={errors} />
+            <div className="row">
+                {userWorkouts !== undefined && userWorkouts.map(w => {
+                    return <UserWorkoutHistoryCard key={w.userWorkoutId} userWorkout={w} />
+                })}
             </div>
         </div>
     )

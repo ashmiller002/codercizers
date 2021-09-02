@@ -1,9 +1,8 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { addWorkout, editWorkoutById, getWorkoutByWorkoutId } from "../services/workouts";
 import Error from "./Error";
 import "./AddEditWorkout.css";
-
 
 function AddEditWorkout() {
     const blankWorkout = {
@@ -19,7 +18,8 @@ function AddEditWorkout() {
     let ableToSubmit = false;
     const [method, setMethod] = useState("Add");
     const history = useHistory();
-    
+
+
 
     useEffect(() => {
         const pathname = window.location.pathname;
