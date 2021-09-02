@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import LoginContext from '../contexts/LoginContext';
 import { addWorkoutToUserHistory, getWorkoutByWorkoutId } from '../services/workouts';
 import Error from './Error';
 import CurrentWorkoutCard from './workoutCards/CurrentWorkoutCard';
+import { gsap, Power3 } from "gsap";
 
 function CurrentWorkout() {
 
@@ -27,8 +28,25 @@ function CurrentWorkout() {
 
     const workoutDate = `${yyyy}-${mm}-${dd}`;
 
+    let headerText = useRef(null);
+    let cardMovement= useRef(null);
+
 
     useEffect(() => {
+        gsap.from(headerText, {
+            delay: 0.1,
+            duration: .5,
+            opacity: 0,
+            x: 30,
+            ease: Power3.easeIn,
+          });
+          gsap.from(cardMovement, {
+            delay: 0.2,
+            duration: .5,
+            opacity: 0,
+            y: 60,
+            cardMovement
+          });
         getWorkoutByWorkoutId(workoutid)
             .then(data => {
                 setWorkout(data);
@@ -52,9 +70,9 @@ function CurrentWorkout() {
 
     return (
         <div className="container">
-            <h2>Current Workout</h2>
+            <h2 ref={(el) => (headerText = el)}>Current Workout</h2>
             <Error errorMessages={errors} />
-            <div className="row">
+            <div ref={(el) => (cardMovement = el)} className="row">
                 <CurrentWorkoutCard workout={workout} handleSubmit={handleSubmit} />
             </div>
         </div>

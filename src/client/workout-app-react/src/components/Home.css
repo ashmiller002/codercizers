@@ -1,0 +1,8 @@
+.header {
+    font-family: 'Tourney', cursive;
+    color:rgb(9, 143, 143);
+    font-weight: bolder;
+}
+#pageContainer{
+    visibility: hidden;
+}
