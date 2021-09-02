@@ -1,6 +1,8 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const url = "http://192.168.68.101:5000";
+//const url = "http://192.168.68.101:5000";
+//const url = "http://10.0.2.2:5000";
+const url = "http://localhost:5000";
 
 export async function authenticate(credentials) {
   const init = {

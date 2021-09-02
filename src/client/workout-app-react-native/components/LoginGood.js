@@ -12,6 +12,8 @@ import { StyleSheet, Text, View, SafeAreaView, Button, TextInput } from 'react-n
 import Error from './Error';
 import LoginContext from '../contexts/LoginContext';
 import { authenticate } from '../services/auth.js';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import jwtDecode from 'jwt-decode';
 
 
 
@@ -29,30 +31,30 @@ function LoginGood({ history }) {
 
     const [credentials, setCredentials] = useState(blankCredentials);
 
-    const handleSubmit = (evt) => {
+    const handleSubmit = () => {
         setCredentials({
             username: username,
             password: password
         })
 
         authenticate(credentials)
-            .then(body => {
+            .then(async (body) => {
                 if (body === null) {
                     setErrors(["Username/Password combination does not exist."])
                 } else {
                     const { jwt_token } = body;
-                    localStorage.setItem('jwt_token', jwt_token);
+                    await AsyncStorage.setItem('jwt_token', jwt_token);
                     const { id, roles } = jwtDecode(jwt_token);
-                    if (roles === "USER") {
-                        setUserInformation(id, () => {
-                            auth.onAuthenticated(jwt_token);
-                            history.push("/");
-                        });
+                    // if (roles === "USER") {
+                    //     setUserInformation(id, () => {
+                    //         auth.onAuthenticated(jwt_token);
+                    //         history.push("/");
+                    //     });
 
-                    } else {
-                        auth.onAuthenticated(jwt_token);
-                        history.push("/");
-                    }
+                    // } else {
+                    //     auth.onAuthenticated(jwt_token);
+                    //     history.push("/");
+                    // }
                 }
             })
             .catch(err => {
@@ -60,21 +62,21 @@ function LoginGood({ history }) {
             })
     }
 
-    function setUserInformation(id, onSuccess) {
-        getUserWithLoginId(id)
-            .then((userInfo) => {
-                auth.setFullUserInformation(userInfo);
-                onSuccess();
-            }
-            )
-            .catch((err) => {
-                setErrors(err);
-                auth.logout();
+    // function setUserInformation(id, onSuccess) {
+    //     getUserWithLoginId(id)
+    //         .then((userInfo) => {
+    //             auth.setFullUserInformation(userInfo);
+    //             onSuccess();
+    //         }
+    //         )
+    //         .catch((err) => {
+    //             setErrors(err);
+    //             auth.logout();
 
 
-            }
-            )
-    }
+    //         }
+    //         )
+    // }
     return (
         <View>
             <View>
