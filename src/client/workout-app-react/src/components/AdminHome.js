@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import "./AdminHome.scss";
+import "./AdminHome.css";
 import { gsap, Power3 } from "gsap";
 
 function AdminHome() {
