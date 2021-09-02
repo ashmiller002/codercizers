@@ -125,8 +125,9 @@ function NotFound() {
       delay: 0,
       duration: 1,
       opacity: 0,
-      y: 30,
-      x: -30,
+      y: 70,
+      x: -70,
+      scale: 1.6,
       ease: Power3.easeIn,
     });
     gsap.from(imgBorder, {
@@ -176,7 +177,7 @@ function NotFound() {
               <img
                 ref={(el) => (img = el)}
                 className="responsive-img"
-                className="circle"
+                
                 src="/errorImage.png"
                 alt=""
               />
