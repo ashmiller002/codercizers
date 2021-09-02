@@ -19,7 +19,6 @@ import { getUserWithLoginId } from './services/user.js';
 import AdminHome from './components/AdminHome.js';
 import NotFound from './components/NotFound.js';
 
-
 const wait = 1000 * 60 * 7;
 
 function App() {
