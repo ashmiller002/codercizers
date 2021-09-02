@@ -19,17 +19,16 @@ function WorkoutHistory({ userId }) {
         gsap.to(popIn, { duration: 0, css: { visibility: "visible" } });
         gsap.from(headerText, {
             delay: 0.1,
-            duration: .1,
+            duration: .5,
             opacity: 0,
             x: 30,
             ease: Power3.easeIn,
           });
           gsap.from(cardMovement, {
             delay: 0.2,
-            duration: .2,
+            duration: .5,
             opacity: 0,
             y: 60,
-            scale: 1.5,
             ease: Power3.easeIn
           });
         if (userId !== 0) {
@@ -73,7 +72,7 @@ function WorkoutHistory({ userId }) {
     return (
         <div className="container" id="pageContainer">
             <div ref={(el) => (popIn = el)} className="pageContainer">
-                <h2 ref={(el) => (headerText = el)} >Workout History</h2>
+                <h2 ref={(el) => (headerText = el)} className="workoutHistory">Workout History</h2>
                 <div className="divider"></div>
                 <Error errorMessages={errors} />
                 <div ref={(el) => (cardMovement = el)} className="row">

@@ -6,3 +6,7 @@
 #pageContainer{
     visibility: hidden;
 }
+
+.suggestedWorkout{
+    font-family: 'Fredoka One', cursive;
+}

@@ -76,7 +76,7 @@ function Home({userId}) {
         <div ref={(el) => (popIn = el)}className="container" id="pageContainer">
             <h1 className="header" ref={(el) => (headerText = el)}>Workout Buddy</h1>
             <div className="divider"></div>
-            <h4 ref={(el) => (subHeaderText = el)}>Suggested Workout</h4>
+            <h4 ref={(el) => (subHeaderText = el)} className="suggestedWorkout">Suggested Workout</h4>
             <Error errorMessages={errors} />
             <div className="row" ref={(el) => (cardMovement2 = el)}>
                 <UserWorkoutCatalogueCard workout={workout} />

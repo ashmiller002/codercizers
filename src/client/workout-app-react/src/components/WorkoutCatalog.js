@@ -99,7 +99,7 @@ function WorkoutCatalog() {
 
     return (
         <div ref={(el) => (popIn = el)}className="container" id="pageContainer">
-            <h2  ref={(el) => (headerText = el)}>Workout Catalog</h2>
+            <h2  ref={(el) => (headerText = el)} className="workoutCataloug">Workout Catalog</h2>
             <div className="divider"></div>
             <div className="categorySelectors">
                 <button type="button" onClick={handleSelectCategory} value="1" className="btn-large" ref={(el) => (button1 = el)}>Upper Body Strength</button>
